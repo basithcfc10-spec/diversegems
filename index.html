@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Diverse Gems luxury digital showroom for natural Sri Lankan sapphires and rare fine gemstones, with private viewing appointments in Sri Lanka."
+    />
+    <title>Diverse Gems | Fine Sri Lankan Gemstones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=8" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <div class="announcement-bar" aria-live="polite">
+        <button class="announcement-control" type="button" data-announcement-prev aria-label="Previous announcement">‹</button>
+        <a class="announcement-link" href="#/private-viewing" id="announcementLink">Private gemstone viewings available by appointment in Sri Lanka</a>
+        <button class="announcement-control" type="button" data-announcement-next aria-label="Next announcement">›</button>
+      </div>
+      <div class="header-main">
+        <div class="utility-group utility-left locale-tools">
+          <label class="selector-label">
+            <span>Country / Language</span>
+            <select id="languageSelect" aria-label="Country and language">
+              <option value="en">English</option>
+              <option value="zh">中文</option>
+              <option value="th">ไทย</option>
+            </select>
+          </label>
+          <label class="selector-label">
+            <span>Currency</span>
+            <select id="currencySelect" aria-label="Display currency">
+              <option value="USD">USD</option>
+              <option value="LKR">LKR</option>
+              <option value="AUD">AUD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="CNY">CNY</option>
+              <option value="THB">THB</option>
+              <option value="JPY">JPY</option>
+              <option value="SGD">SGD</option>
+              <option value="AED">AED</option>
+              <option value="CAD">CAD</option>
+              <option value="NZD">NZD</option>
+              <option value="HKD">HKD</option>
+              <option value="INR">INR</option>
+              <option value="MYR">MYR</option>
+              <option value="IDR">IDR</option>
+              <option value="KRW">KRW</option>
+              <option value="CHF">CHF</option>
+              <option value="SAR">SAR</option>
+              <option value="QAR">QAR</option>
+              <option value="KWD">KWD</option>
+              <option value="ZAR">ZAR</option>
+            </select>
+          </label>
+        </div>
+        <a class="brand" href="#/" aria-label="Diverse Gems home">
+          <img class="brand-logo" src="assets/diverse-gems-logo-provided.jpg" alt="" />
+          <span>DIVERSE GEMS</span>
+        </a>
+        <div class="utility-group utility-right">
+          <a class="utility-link icon-only account-icon" href="#/login" aria-label="Sign up or log in">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+          </a>
+          <a class="utility-link icon-only account-icon" href="#/saved" aria-label="Saved favourites">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+          </a>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <div class="nav-links">
+          <a href="#/" data-route="/">Home</a>
+          <a href="#/collection" data-route="/collection" data-menu="collection">Our Collection</a>
+          <a href="#/heritage" data-route="/heritage" data-menu="heritage">Sri Lankan Heritage</a>
+          <a href="#/new-arrivals" data-route="/new-arrivals">New Arrivals</a>
+          <a href="#/custom-sourcing" data-route="/custom-sourcing">Custom Sourcing</a>
+          <a href="#/about" data-route="/about">About Us</a>
+          <a href="#/private-viewing" data-route="/private-viewing">Book a Private Viewing</a>
+          <a href="#/contact" data-route="/contact">Contact</a>
+        </div>
+      </nav>
+      <div class="mega-panel mega-collection-panel" id="megaPanel" aria-hidden="true">
+        <div class="mega-inner">
+          <div>
+            <p class="eyebrow" id="megaEyebrow">The Collection</p>
+            <h2 id="megaTitle">Natural stones selected for rarity, origin and quiet brilliance.</h2>
+          </div>
+          <div class="mega-grid" id="megaLinks">
+            <a href="#/sapphires">Sapphires</a>
+            <a href="#/rubies">Rubies</a>
+            <a href="#/emeralds">Emeralds</a>
+            <a href="#/spinels">Spinels</a>
+            <a href="#/alexandrites">Alexandrites</a>
+            <a href="#/other-precious-gemstones">Other Precious Gemstones</a>
+          </div>
+          <img id="megaImage" src="assets/collection-gems.jpg" alt="Fine gemstones arranged on a white surface" />
+        </div>
+      </div>
+      <div class="mega-panel mega-heritage-panel" aria-hidden="true">
+        <div class="mega-inner">
+          <div>
+            <p class="eyebrow">Sri Lankan Heritage</p>
+            <h2>From Ratnapura tradition to rare stones selected with care.</h2>
+          </div>
+          <div class="mega-grid">
+            <a href="#/heritage">Sri Lankan Heritage</a>
+            <a href="#/sapphires">Ceylon Sapphire Story</a>
+            <a href="#/custom-sourcing">Madagascar Sourcing</a>
+            <a href="#/about">Treatment Disclosure</a>
+            <a href="#/private-viewing">Private Consultation</a>
+          </div>
+          <img src="assets/heritage-artisan.jpg" alt="Gemstone artisan inspecting a sapphire" />
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1"></main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#/">
+            <img class="brand-logo" src="assets/diverse-gems-logo-footer-white.png" alt="" />
+            <span>DIVERSE GEMS</span>
+          </a>
+          <p>Natural Sri Lankan sapphires and rare collector gemstones for jewellers, investors and private collectors.</p>
+        </div>
+        <div>
+          <h3>Showroom</h3>
+          <a href="#/collection">Our Collection</a>
+          <a href="#/sapphires">Sapphires</a>
+          <a href="#/custom-sourcing">Custom Sourcing</a>
+          <a href="#/private-viewing">Private Viewing</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#/heritage">Sri Lankan Heritage</a>
+          <a href="#/about">About Us</a>
+          <a href="#/contact">Contact</a>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p><a href="tel:+94777386202">+94 77 738 6202</a></p>
+          <p><a href="https://maps.google.com/?q=No%2007%203%2F1%2C%20Kotalawala%20Gardens%2C%20Colombo%2000400%2C%20Sri%20Lanka" target="_blank" rel="noreferrer">No 07 3/1, Kotalawala Gardens, Colombo 00400, Sri Lanka</a></p>
+          <p><a href="mailto:diversegemsofficial@gmail.com">diversegemsofficial@gmail.com</a></p>
+          <p><a href="https://www.instagram.com/diversegems/" target="_blank" rel="noreferrer">@diversegems</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 DIVERSE GEMS. All rights reserved.</span>
+        <span>Ethically sourced natural gemstones.</span>
+      </div>
+    </footer>
+
+    <script src="app.js?v=8" defer></script>
+  </body>
+</html>
