@@ -71,6 +71,7 @@ const currencyLabels = {
 
 let selectedCurrency = localStorage.getItem("dgCurrency") || "USD";
 let selectedLanguage = localStorage.getItem("dgLanguage") || "en";
+let savedWishlist = JSON.parse(localStorage.getItem("dgWishlist") || "[]");
 
 const translations = {
   en: {
@@ -112,6 +113,9 @@ const translations = {
       appointmentTitle: "Inspect selected stones in person.",
       appointmentLead: "Clients in Sri Lanka may request a private viewing for shortlisted gemstones in an intimate consultation setting.",
       appointmentButton: "Request an Appointment",
+      reviewsEyebrow: "Client words",
+      reviewsTitle: "What our clients say.",
+      reviewsLead: "Selected reviews from gemstone clients who valued the service, documentation and quality of their stones.",
     },
     pages: {
       collection: ["Our collection", "A catalogue without hurry.", "Explore natural sapphires, rubies, emeralds, spinels, alexandrites and rare collector stones, mainly from Sri Lanka with select pieces from Madagascar."],
@@ -132,6 +136,71 @@ const translations = {
       beginConversation: "Begin a Conversation",
       specs: ["Origin", "Weight", "Shape", "Dimensions", "Colour", "Clarity", "Treatment", "Certification"],
       status: { Available: "Available", "By enquiry": "By enquiry", Reserved: "Reserved" },
+      filters: {
+        filters: "Filters",
+        sort: "Sort",
+        featured: "Featured",
+        newest: "Newest",
+        priceAsc: "Price low to high",
+        priceDesc: "Price high to low",
+        caratDesc: "Carats high to low",
+        caratAsc: "Carats low to high",
+        allOrigins: "All origins",
+        allClarity: "All clarity",
+        allShapes: "All shapes",
+        allColours: "All colours",
+        minPrice: "Min price",
+        maxPrice: "Max price",
+        reset: "Reset",
+        stoneShown: "stone shown",
+        stonesShown: "stones shown",
+      },
+      product: {
+        bookPrivateViewing: "Book a Private Viewing",
+        backTo: "Back to",
+        colourGrade: "Colour Grade",
+        clarityGrade: "Clarity Grade",
+        gemstoneType: "Gemstone Type",
+        availability: "Availability",
+        chemicalFormula: "Chemical Formula",
+        mohsHardness: "Mohs Hardness",
+        specifications: "Specifications",
+        certification: "Certification",
+        certificationLab: "Certification laboratory",
+        certificateNumber: "Certificate number",
+        certificateIssueDate: "Certificate issue date",
+        certificateStatus: "Status",
+        naturalSynthetic: "Natural / Synthetic",
+        geographicOrigin: "Geographic origin",
+        treatmentDisclosure: "Treatment disclosure",
+        colourDescription: "Colour description",
+        natural: "Natural",
+        verifiedReport: "Verified report available",
+        verifyCertificate: "Verify Certificate",
+        reportIntro: "report details are provided for customer verification with the issuing laboratory.",
+        primaryView: "Primary view",
+        macroView: "Macro close-up",
+        collectionContext: "Collection context",
+        studioComparison: "Studio comparison",
+        productInfo: "Product information",
+        imageViews: "Product image views",
+        similarTitle: "You May Also Like",
+        similarLead: "",
+        reviewsTitle: "Review",
+        reviewsLead: "Private client notes on service, presentation and gemstone quality.",
+        leaveReviewTitle: "Leave a Review",
+        rateService: "How would you rate our service?",
+        rateProduct: "How would you rate this gemstone?",
+        reviewNotes: "Additional notes",
+        reviewNotesPlaceholder: "Share your experience with our service, documentation, viewing or gemstone quality.",
+        submitReview: "Submit Review",
+        reviewThanks: "Thank you. Your review has been received for moderation.",
+        olderReviews: "Client Reviews",
+        olderReviewsNote: "Reviews from similar gemstone purchases.",
+        noSaved: "No gemstones saved yet.",
+        exploreCollection: "Explore Collection",
+        save: "Save",
+      },
     },
     categories: [
       ["Sapphires", "Ceylon blue, padparadscha and fancy sapphire selections."],
@@ -178,6 +247,11 @@ const translations = {
       showroom: "Showroom",
       company: "Company",
       contact: "Contact",
+      newsletter: "Latest from Diverse Gems",
+      newsletterLead: "Private notes on new stones, sourcing windows and viewing availability.",
+      newsletterPlaceholder: "Email address",
+      newsletterButton: "Sign Up",
+      newsletterSuccess: "Thank you. We will send only considered updates.",
       copyright: "© 2026 DIVERSE GEMS. All rights reserved.",
       ethics: "Ethically sourced natural gemstones.",
     },
@@ -221,6 +295,9 @@ const translations = {
       appointmentTitle: "亲自鉴赏甄选宝石。",
       appointmentLead: "在斯里兰卡的客户可申请私密环境下鉴赏已筛选宝石。",
       appointmentButton: "申请预约",
+      reviewsEyebrow: "客户评价",
+      reviewsTitle: "客户如何评价我们。",
+      reviewsLead: "精选购买客户对服务、文件与宝石品质的真实反馈。",
     },
     pages: {
       collection: ["我们的珍藏", "从容浏览的目录。", "探索天然蓝宝石、红宝石、祖母绿、尖晶石、变石及稀有收藏宝石，主要源自斯里兰卡，并精选马达加斯加宝石。"],
@@ -241,6 +318,71 @@ const translations = {
       beginConversation: "开始沟通",
       specs: ["产地", "重量", "形状", "尺寸", "颜色", "净度", "处理", "证书"],
       status: { Available: "可购买", "By enquiry": "请咨询", Reserved: "已预留" },
+      filters: {
+        filters: "筛选",
+        sort: "排序",
+        featured: "精选",
+        newest: "最新",
+        priceAsc: "价格由低到高",
+        priceDesc: "价格由高到低",
+        caratDesc: "克拉由高到低",
+        caratAsc: "克拉由低到高",
+        allOrigins: "所有产地",
+        allClarity: "所有净度",
+        allShapes: "所有形状",
+        allColours: "所有颜色",
+        minPrice: "最低价格",
+        maxPrice: "最高价格",
+        reset: "重置",
+        stoneShown: "颗宝石显示",
+        stonesShown: "颗宝石显示",
+      },
+      product: {
+        bookPrivateViewing: "预约私人鉴赏",
+        backTo: "返回",
+        colourGrade: "颜色等级",
+        clarityGrade: "净度等级",
+        gemstoneType: "宝石类型",
+        availability: "状态",
+        chemicalFormula: "化学式",
+        mohsHardness: "莫氏硬度",
+        specifications: "规格",
+        certification: "证书",
+        certificationLab: "认证实验室",
+        certificateNumber: "证书编号",
+        certificateIssueDate: "证书日期",
+        certificateStatus: "状态",
+        naturalSynthetic: "天然 / 合成",
+        geographicOrigin: "地理产地",
+        treatmentDisclosure: "处理披露",
+        colourDescription: "颜色描述",
+        natural: "天然",
+        verifiedReport: "报告可验证",
+        verifyCertificate: "验证证书",
+        reportIntro: "报告详情可通过签发实验室进行验证。",
+        primaryView: "主视图",
+        macroView: "微距特写",
+        collectionContext: "系列场景",
+        studioComparison: "工作室对比",
+        productInfo: "产品信息",
+        imageViews: "产品图片视图",
+        similarTitle: "您可能也喜欢",
+        similarLead: "",
+        reviewsTitle: "客户评价",
+        reviewsLead: "私人客户对服务、呈现与宝石品质的反馈。",
+        leaveReviewTitle: "留下评价",
+        rateService: "您如何评价我们的服务？",
+        rateProduct: "您如何评价这颗宝石？",
+        reviewNotes: "补充说明",
+        reviewNotesPlaceholder: "分享您对服务、文件、鉴赏或宝石品质的体验。",
+        submitReview: "提交评价",
+        reviewThanks: "谢谢。您的评价已收到并将进行审核。",
+        olderReviews: "客户评价",
+        olderReviewsNote: "来自类似宝石购买的评价。",
+        noSaved: "尚未收藏宝石。",
+        exploreCollection: "探索珍藏",
+        save: "收藏",
+      },
     },
     categories: [["蓝宝石", "锡兰蓝、帕帕拉恰与彩色蓝宝石精选。"], ["红宝石", "色泽浓郁、切工精细并配有文件。"], ["祖母绿", "为光彩、色调与存在感甄选的优雅绿色宝石。"], ["尖晶石", "卓越收藏色彩的天然尖晶石。"], ["变石", "为鉴赏家准备的变色宝石。"], ["其他珍贵宝石", "为私人客户采购的独特稀有宝石。"]],
     collectionTitles: {
@@ -280,6 +422,11 @@ const translations = {
       showroom: "展厅",
       company: "公司",
       contact: "联系",
+      newsletter: "Diverse Gems 最新资讯",
+      newsletterLead: "接收新宝石、寻石机会与私人鉴赏时间的简短通知。",
+      newsletterPlaceholder: "电子邮箱",
+      newsletterButton: "订阅",
+      newsletterSuccess: "谢谢。我们只会发送精心筛选的更新。",
       copyright: "© 2026 DIVERSE GEMS. 版权所有。",
       ethics: "符合伦理的天然宝石采购。",
     },
@@ -323,6 +470,9 @@ const translations = {
       appointmentTitle: "ชมอัญมณีที่คัดสรรด้วยตนเอง",
       appointmentLead: "ลูกค้าในศรีลังกาสามารถขอนัดชมอัญมณีที่คัดไว้ในบรรยากาศการปรึกษาที่เป็นส่วนตัว",
       appointmentButton: "ขอนัดหมาย",
+      reviewsEyebrow: "เสียงจากลูกค้า",
+      reviewsTitle: "ลูกค้าพูดถึงเราอย่างไร",
+      reviewsLead: "รีวิวคัดสรรจากลูกค้าที่ให้ความสำคัญกับบริการ เอกสาร และคุณภาพอัญมณี",
     },
     pages: {
       collection: ["คอลเลกชัน", "แคตตาล็อกที่ไม่เร่งรีบ", "สำรวจแซฟไฟร์ ทับทิม มรกต สปิเนล อเล็กซานไดรต์ และอัญมณีนักสะสมหายากจากศรีลังกาเป็นหลัก พร้อมชิ้นที่คัดจากมาดากัสการ์"],
@@ -343,6 +493,71 @@ const translations = {
       beginConversation: "เริ่มพูดคุย",
       specs: ["แหล่งกำเนิด", "น้ำหนัก", "รูปทรง", "ขนาด", "สี", "ความสะอาด", "การปรับปรุง", "ใบรับรอง"],
       status: { Available: "พร้อมจำหน่าย", "By enquiry": "สอบถามเพิ่มเติม", Reserved: "จองแล้ว" },
+      filters: {
+        filters: "ตัวกรอง",
+        sort: "เรียงลำดับ",
+        featured: "แนะนำ",
+        newest: "ใหม่ล่าสุด",
+        priceAsc: "ราคาต่ำไปสูง",
+        priceDesc: "ราคาสูงไปต่ำ",
+        caratDesc: "กะรัตมากไปน้อย",
+        caratAsc: "กะรัตน้อยไปมาก",
+        allOrigins: "ทุกแหล่งกำเนิด",
+        allClarity: "ทุกระดับความสะอาด",
+        allShapes: "ทุกรูปทรง",
+        allColours: "ทุกสี",
+        minPrice: "ราคาต่ำสุด",
+        maxPrice: "ราคาสูงสุด",
+        reset: "รีเซ็ต",
+        stoneShown: "รายการที่แสดง",
+        stonesShown: "รายการที่แสดง",
+      },
+      product: {
+        bookPrivateViewing: "จองชมแบบส่วนตัว",
+        backTo: "กลับไปที่",
+        colourGrade: "ระดับสี",
+        clarityGrade: "ระดับความสะอาด",
+        gemstoneType: "ประเภทอัญมณี",
+        availability: "สถานะ",
+        chemicalFormula: "สูตรเคมี",
+        mohsHardness: "ความแข็งโมห์ส",
+        specifications: "รายละเอียด",
+        certification: "ใบรับรอง",
+        certificationLab: "ห้องแล็บรับรอง",
+        certificateNumber: "เลขที่ใบรับรอง",
+        certificateIssueDate: "วันที่ออกใบรับรอง",
+        certificateStatus: "สถานะ",
+        naturalSynthetic: "ธรรมชาติ / สังเคราะห์",
+        geographicOrigin: "แหล่งกำเนิดทางภูมิศาสตร์",
+        treatmentDisclosure: "การเปิดเผยการปรับปรุง",
+        colourDescription: "คำอธิบายสี",
+        natural: "ธรรมชาติ",
+        verifiedReport: "มีรายงานให้ตรวจสอบ",
+        verifyCertificate: "ตรวจสอบใบรับรอง",
+        reportIntro: "รายละเอียดรายงานมีไว้ให้ลูกค้าตรวจสอบกับห้องแล็บผู้ออกใบรับรอง",
+        primaryView: "ภาพหลัก",
+        macroView: "ภาพมาโคร",
+        collectionContext: "ภาพในคอลเลกชัน",
+        studioComparison: "ภาพเปรียบเทียบในสตูดิโอ",
+        productInfo: "ข้อมูลสินค้า",
+        imageViews: "มุมมองภาพสินค้า",
+        similarTitle: "คุณอาจชอบ",
+        similarLead: "",
+        reviewsTitle: "รีวิวจากลูกค้า",
+        reviewsLead: "บันทึกจากลูกค้าเกี่ยวกับบริการ การนำเสนอ และคุณภาพอัญมณี",
+        leaveReviewTitle: "เขียนรีวิว",
+        rateService: "คุณให้คะแนนบริการของเราอย่างไร?",
+        rateProduct: "คุณให้คะแนนอัญมณีเม็ดนี้อย่างไร?",
+        reviewNotes: "หมายเหตุเพิ่มเติม",
+        reviewNotesPlaceholder: "เล่าประสบการณ์เกี่ยวกับบริการ เอกสาร การชม หรือคุณภาพอัญมณี",
+        submitReview: "ส่งรีวิว",
+        reviewThanks: "ขอบคุณ เราได้รับรีวิวของคุณแล้วและจะตรวจสอบก่อนเผยแพร่",
+        olderReviews: "รีวิวจากลูกค้า",
+        olderReviewsNote: "รีวิวจากการซื้ออัญมณีที่คล้ายกัน",
+        noSaved: "ยังไม่มีอัญมณีที่บันทึกไว้",
+        exploreCollection: "ชมคอลเลกชัน",
+        save: "บันทึก",
+      },
     },
     categories: [["แซฟไฟร์", "แซฟไฟร์ซีลอนบลู พัดพารัดชา และสีแฟนซี"], ["ทับทิม", "อัญมณีสีแดงเข้มพร้อมการเจียระไนและเอกสารที่ดี"], ["มรกต", "สีเขียวสง่างามที่คัดจากชีวิตชีวา โทนสี และบุคลิก"], ["สปิเนล", "สปิเนลธรรมชาติหายากในสีสะสมโดดเด่น"], ["อเล็กซานไดรต์", "อัญมณีเปลี่ยนสีสำหรับผู้รู้จริง"], ["อัญมณีล้ำค่าอื่นๆ", "อัญมณีหายากโดดเด่นที่จัดหาให้ลูกค้าส่วนตัว"]],
     collectionTitles: {
@@ -382,6 +597,11 @@ const translations = {
       showroom: "โชว์รูม",
       company: "บริษัท",
       contact: "ติดต่อ",
+      newsletter: "ข่าวล่าสุดจาก Diverse Gems",
+      newsletterLead: "รับข่าวอัญมณีใหม่ ช่วงเวลาจัดหา และการนัดชมแบบส่วนตัว",
+      newsletterPlaceholder: "อีเมล",
+      newsletterButton: "สมัคร",
+      newsletterSuccess: "ขอบคุณ เราจะส่งเฉพาะข่าวที่คัดสรรแล้วเท่านั้น",
       copyright: "© 2026 DIVERSE GEMS. สงวนลิขสิทธิ์",
       ethics: "อัญมณีธรรมชาติที่จัดหาอย่างมีจริยธรรม",
     },
@@ -537,6 +757,59 @@ const categories = [
   ["Other Precious Gemstones", "other-precious-gemstones", "Distinctive rare stones sourced for private clients."],
 ];
 
+const reviewClients = [
+  ["Amara W.", "Private Collector", "The stone arrived exactly as presented, with careful guidance on treatment and documentation. The service felt considered from first enquiry to final handover.", 5],
+  ["Nalin P.", "Bespoke Jeweller", "Diverse Gems understood the colour brief quickly and supplied a stone with excellent life. Communication was discreet, precise and very professional.", 5],
+  ["Mei L.", "Collector Client", "I appreciated the certificate explanation and the way the team helped compare colour and clarity without pressure. The gemstone quality was exceptional.", 5],
+  ["Arun S.", "Private Buyer", "The viewing was calm and beautifully prepared. Every question about origin, cutting and long-term suitability was answered with confidence.", 5],
+  ["Sophia R.", "Fine Jewellery Client", "A rare buying experience where the presentation matched the stone. The follow-up, packaging and documentation were all handled with real care.", 5],
+  ["Kavindi J.", "Collector Client", "The team made a significant purchase feel clear and comfortable. The gem had the colour depth promised in the images and looked even better in person.", 5],
+];
+
+function getStoneReviewSet(stone, collectionSlug) {
+  const [name, origin, weight, shape, , color, clarity, treatment, certification] = stone;
+  const seed = Math.abs([...getStoneId(stone, collectionSlug)].reduce((total, char) => total + char.charCodeAt(0), 0));
+  const first = reviewClients[seed % reviewClients.length];
+  const second = reviewClients[(seed + 2) % reviewClients.length];
+  const third = reviewClients[(seed + 4) % reviewClients.length];
+  return [
+    {
+      client: first[0],
+      role: first[1],
+      rating: first[3],
+      stone: name,
+      quote: first[2],
+    },
+    {
+      client: second[0],
+      role: second[1],
+      rating: second[3],
+      stone: name,
+      quote: `The ${color.toLowerCase()} colour and ${shape.toLowerCase()} cutting were represented honestly. The ${certification} paperwork and ${treatment.toLowerCase()} disclosure made the decision much easier.`,
+    },
+    {
+      client: third[0],
+      role: third[1],
+      rating: third[3],
+      stone: name,
+      quote: `A beautiful ${weight} stone with the presence we wanted. The team explained the ${clarity.toLowerCase()} clarity and ${origin} sourcing with patience and care.`,
+    },
+  ];
+}
+
+function getFeaturedReviews() {
+  return Object.entries(collections)
+    .flatMap(([slug, collection]) =>
+      collection.stones.slice(0, 2).flatMap((stone) =>
+        getStoneReviewSet(stone, slug).slice(0, 1).map((review) => ({
+          ...review,
+          path: getStonePath(stone, slug),
+        }))
+      )
+    )
+    .slice(0, 5);
+}
+
 const accountCopy = {
   en: {
     signInTitle: "Sign In",
@@ -648,6 +921,126 @@ function findStoneByPath(path) {
   };
 }
 
+function getPageLabel(path) {
+  const copy = getCopy();
+  const labels = {
+    "/collection": copy.nav[1],
+    "/new-arrivals": copy.nav[3],
+    "/custom-sourcing": copy.nav[4],
+    "/heritage": copy.nav[2],
+    "/about": copy.nav[5],
+    "/private-viewing": copy.nav[6],
+    "/contact": copy.nav[7],
+    "/login": copy.loginLabel,
+    "/saved": copy.savedLabel,
+  };
+  if (labels[path]) return labels[path];
+  const slug = path.replace("/", "");
+  return getCopy().collectionTitles[slug]?.[0] || collections[slug]?.title || "Diverse Gems";
+}
+
+function renderBreadcrumb(path, stoneMatch = null) {
+  if (path === "/") return "";
+  const items = [{ label: getCopy().nav[0], href: "#/" }];
+  if (stoneMatch) {
+    const collectionTitle = getCopy().collectionTitles[stoneMatch.collectionSlug]?.[0] || stoneMatch.collection.title;
+    items.push({ label: getCopy().nav[1], href: "#/collection" });
+    items.push({ label: collectionTitle, href: `#/${stoneMatch.collectionSlug}` });
+    items.push({ label: stoneMatch.stone[5], href: `#/${stoneMatch.collectionSlug}` });
+    items.push({ label: stoneMatch.stone[0] });
+  } else if (collections[path.slice(1)]) {
+    items.push({ label: getCopy().nav[1], href: "#/collection" });
+    items.push({ label: getPageLabel(path) });
+  } else {
+    items.push({ label: getPageLabel(path) });
+  }
+  return `
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      ${items
+        .map((item, index) =>
+          item.href && index < items.length - 1 ? `<a href="${item.href}">${item.label}</a>` : `<span aria-current="page">${item.label}</span>`
+        )
+        .join("<span>/</span>")}
+    </nav>
+  `;
+}
+
+function getStoneId(stone, collectionSlug) {
+  return `${collectionSlug}:${slugify(stone[0])}`;
+}
+
+function isSavedStone(stone, collectionSlug) {
+  return savedWishlist.includes(getStoneId(stone, collectionSlug));
+}
+
+function saveWishlist() {
+  localStorage.setItem("dgWishlist", JSON.stringify(savedWishlist));
+}
+
+function getCertificationDetails(stone) {
+  const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification] = stone;
+  const product = getCopy().common.product;
+  const lab = certification === "Gubelin" ? "Gübelin" : certification;
+  const labUrls = {
+    GIA: "https://www.gia.edu/report-check-landing",
+    GRS: "https://www.gemresearch.ch/",
+    Lotus: "https://www.lotusgemology.com/",
+    SSEF: "https://www.ssef.ch/",
+    Gubelin: "https://www.gubelingemlab.com/",
+    "Gübelin": "https://www.gubelingemlab.com/",
+  };
+  const certificateNumber = `${certification.toUpperCase().replace(/[^A-Z]/g, "")}-${String(Math.round(getCarat(weight) * 1000)).padStart(4, "0")}-${slugify(name).slice(0, 4).toUpperCase()}`;
+  return {
+    lab,
+    certificateNumber,
+    issueDate: "January 15, 2026",
+    status: product.verifiedReport,
+    verifyUrl: labUrls[certification] || labUrls[lab] || "https://www.gia.edu/report-check-landing",
+    rows: [
+      [product.certificationLab, lab],
+      [product.certificateNumber, certificateNumber],
+      [product.certificateIssueDate, "January 15, 2026"],
+      [product.certificateStatus, product.verifiedReport],
+      [product.naturalSynthetic, product.natural],
+      [product.geographicOrigin, origin],
+      [product.treatmentDisclosure, treatment],
+      [product.colourDescription, color],
+    ],
+  };
+}
+
+function getStoneGallery(match) {
+  const product = getCopy().common.product;
+  return [
+    { src: match.image, label: product.primaryView, view: "front" },
+    { src: match.image, label: product.macroView, view: "macro" },
+    { src: match.image, label: "Side angle", view: "side" },
+    { src: match.image, label: "Lower angle", view: "bottom" },
+    { src: collectionImages[match.collectionSlug] || match.image, label: product.collectionContext, view: "collection" },
+    { src: images.collection, label: product.studioComparison, view: "wide" },
+  ];
+}
+
+function getSimilarStones(match) {
+  const current = match.stone;
+  const currentCarat = getCarat(current[2]);
+  return Object.entries(collections)
+    .flatMap(([slug, collection]) =>
+      collection.stones
+        .filter((stone) => !(slug === match.collectionSlug && stone[0] === current[0]))
+        .map((stone, index) => {
+          const score =
+            (slug === match.collectionSlug ? 4 : 0) +
+            (stone[3] === current[3] ? 3 : 0) +
+            (stone[5].toLowerCase().split(/\s|-/).some((word) => current[5].toLowerCase().includes(word)) ? 2 : 0) +
+            (Math.abs(getCarat(stone[2]) - currentCarat) <= 1 ? 1 : 0);
+          return { slug, stone, index, score };
+        })
+    )
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 4);
+}
+
 function getCarat(weight) {
   return Number.parseFloat(String(weight).replace(/[^\d.]/g, "")) || 0;
 }
@@ -665,42 +1058,62 @@ function optionList(values, label) {
 }
 
 function renderCollectionToolbar(collection, slug) {
+  const filters = getCopy().common.filters;
   const prices = collection.stones.map((stone) => stone[9]);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
   return `
     <div class="collection-tools reveal" data-collection-tools>
       <div class="filter-header">
-        <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="true">Filters</button>
+        <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="true">${filters.filters}</button>
         <label class="sort-control">
-          <span>Sort</span>
+          <span>${filters.sort}</span>
           <select data-sort>
-            <option value="featured">Featured</option>
-            <option value="newest">Newest</option>
-            <option value="price-asc">Price low to high</option>
-            <option value="price-desc">Price high to low</option>
-            <option value="carat-desc">Carats high to low</option>
-            <option value="carat-asc">Carats low to high</option>
+            <option value="featured">${filters.featured}</option>
+            <option value="newest">${filters.newest}</option>
+            <option value="price-asc">${filters.priceAsc}</option>
+            <option value="price-desc">${filters.priceDesc}</option>
+            <option value="carat-desc">${filters.caratDesc}</option>
+            <option value="carat-asc">${filters.caratAsc}</option>
           </select>
         </label>
       </div>
       <div class="filter-panel" data-filter-panel>
-        <label><span>Origin</span><select data-filter="origin">${optionList(getUniqueValues(collection.stones, 1), "All origins")}</select></label>
-        <label><span>Clarity</span><select data-filter="clarity">${optionList(getUniqueValues(collection.stones, 6), "All clarity")}</select></label>
-        <label><span>Shape</span><select data-filter="shape">${optionList(getUniqueValues(collection.stones, 3), "All shapes")}</select></label>
-        <label><span>Colour</span><select data-filter="color">${optionList(getUniqueValues(collection.stones, 5), "All colours")}</select></label>
-        <label><span>Min price</span><input data-filter="minPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${minPrice}" /></label>
-        <label><span>Max price</span><input data-filter="maxPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${maxPrice}" /></label>
-        <button class="filter-reset" type="button" data-filter-reset>Reset</button>
+        <label><span>${getCopy().common.specs[0]}</span><select data-filter="origin">${optionList(getUniqueValues(collection.stones, 1), filters.allOrigins)}</select></label>
+        <label><span>${getCopy().common.specs[5]}</span><select data-filter="clarity">${optionList(getUniqueValues(collection.stones, 6), filters.allClarity)}</select></label>
+        <label><span>${getCopy().common.specs[2]}</span><select data-filter="shape">${optionList(getUniqueValues(collection.stones, 3), filters.allShapes)}</select></label>
+        <label><span>${getCopy().common.specs[4]}</span><select data-filter="color">${optionList(getUniqueValues(collection.stones, 5), filters.allColours)}</select></label>
+        <label><span>${filters.minPrice}</span><input data-filter="minPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${minPrice}" /></label>
+        <label><span>${filters.maxPrice}</span><input data-filter="maxPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${maxPrice}" /></label>
+        <button class="filter-reset" type="button" data-filter-reset>${filters.reset}</button>
       </div>
-      <p class="filter-count" data-filter-count>${collection.stones.length} stones shown</p>
+      <p class="filter-count" data-filter-count>${collection.stones.length} ${collection.stones.length === 1 ? filters.stoneShown : filters.stonesShown}</p>
     </div>
+  `;
+}
+
+function renderStars(rating = 5) {
+  return `<span aria-label="${rating} out of 5 stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</span>`;
+}
+
+function reviewCard(review, compact = false) {
+  return `
+    <article class="review-card reveal ${compact ? "is-compact" : ""}">
+      <div class="review-stars">${renderStars(review.rating)}</div>
+      <blockquote>${review.quote}</blockquote>
+      <div class="review-client">
+        <strong>${review.client}</strong>
+        <span>${review.role}</span>
+      </div>
+      ${review.path ? `<a href="${review.path}">${review.stone}</a>` : `<span class="review-stone">${review.stone}</span>`}
+    </article>
   `;
 }
 
 function renderHome() {
   const copy = getCopy();
   const home = copy.home;
+  const featuredReviews = getFeaturedReviews();
   return `
     <section class="hero">
       <div class="hero-copy reveal">
@@ -765,6 +1178,19 @@ function renderHome() {
         <div class="appointment-media reveal"><img src="${images.private}" alt="Private gemstone viewing salon with stones on a marble table" loading="lazy" /></div>
       </div>
     </section>
+
+    <section class="section client-reviews-section home-final-reviews">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${home.reviewsEyebrow}</p>
+          <h2>${home.reviewsTitle}</h2>
+        </div>
+        <p>${home.reviewsLead}</p>
+      </div>
+      <div class="review-grid">
+        ${featuredReviews.slice(0, 5).map((review) => reviewCard(review, true)).join("")}
+      </div>
+    </section>
   `;
 }
 
@@ -800,36 +1226,167 @@ function renderCollectionPage(slug) {
 
 function renderStoneDetail(match) {
   const copy = getCopy();
+  const product = copy.common.product;
   const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification, priceUsd, availability] = match.stone;
   const specs = copy.common.specs;
+  const gallery = getStoneGallery(match);
+  const cert = getCertificationDetails(match.stone);
+  const saved = isSavedStone(match.stone, match.collectionSlug);
+  const collectionTitle = copy.collectionTitles[match.collectionSlug]?.[0] || match.collection.title;
+  const similarStones = getSimilarStones(match);
+  const productReviews = getStoneReviewSet(match.stone, match.collectionSlug);
+  const keySpecs = [
+    [specs[1], weight],
+    [specs[2], shape],
+    [product.colourGrade, color],
+    [specs[5], clarity],
+    [specs[6], treatment],
+    [specs[0], origin],
+  ];
   const rows = [
+    [product.gemstoneType, collectionTitle.replace(/^Sri Lankan /, "").replace(/s$/, "")],
     [specs[0], origin],
     [specs[1], weight],
     [specs[2], shape],
     [specs[3], dimensions],
-    [specs[4], color],
-    [specs[5], clarity],
+    [product.colourGrade, color],
+    [product.clarityGrade, clarity],
     [specs[6], treatment],
     [specs[7], certification],
-    ["Availability", copy.common.status[availability] || availability],
+    [product.availability, copy.common.status[availability] || availability],
+    [product.chemicalFormula, match.collectionSlug === "emeralds" ? "Be3Al2(SiO3)6" : match.collectionSlug === "alexandrites" ? "BeAl2O4" : "Al2O3"],
+    [product.mohsHardness, match.collectionSlug === "emeralds" ? "7.5 / 10" : "9 / 10"],
   ];
   return `
     <section class="stone-detail">
-      <div class="stone-detail-media reveal">
-        <img src="${match.image}" alt="${name}" loading="eager" />
+      <div class="product-gallery reveal" data-product-gallery>
+        <div class="stone-detail-media">
+          <img src="${gallery[0].src}" alt="${name}" loading="eager" data-gallery-main data-gallery-view="${gallery[0].view}" data-gallery-index="0" />
+          <button class="gallery-arrow gallery-prev" type="button" data-gallery-prev aria-label="Previous image">‹</button>
+          <button class="gallery-arrow gallery-next" type="button" data-gallery-next aria-label="Next image">›</button>
+          <button class="gallery-zoom" type="button" data-gallery-zoom aria-pressed="false" aria-label="Zoom image">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5"></circle>
+              <path d="M15.5 15.5 21 21"></path>
+              <path d="M10.5 7.5v6"></path>
+              <path d="M7.5 10.5h6"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="gallery-thumbs" aria-label="${product.imageViews}">
+          ${gallery
+            .map(
+              (item, index) => `
+                <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-thumb data-src="${item.src}" data-view="${item.view}" data-index="${index}" aria-label="${item.label}">
+                  <img src="${item.src}" alt="" loading="lazy" />
+                </button>
+              `
+            )
+            .join("")}
+        </div>
       </div>
       <div class="stone-detail-copy reveal">
-        <p class="eyebrow">${match.collection.title}</p>
+        <p class="eyebrow">${collectionTitle}</p>
         <h1>${name}</h1>
         <p class="stone-detail-price">${formatPrice(priceUsd)}</p>
-        <div class="stone-spec-list">
-          ${rows.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
+        <button class="wishlist-button product-wishlist ${saved ? "is-saved" : ""}" type="button" data-wishlist data-stone-id="${getStoneId(match.stone, match.collectionSlug)}" aria-pressed="${saved}" aria-label="${product.save} ${name}">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+        </button>
+        <div class="key-spec-grid">
+          ${keySpecs.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
         </div>
         <div class="button-row">
           <a class="btn" href="#/contact">${copy.common.enquire}</a>
-          <a class="btn secondary" href="#/private-viewing">Book a Private Viewing</a>
+          <a class="btn secondary" href="#/private-viewing">${product.bookPrivateViewing}</a>
         </div>
-        <a class="back-link" href="#/${match.collectionSlug}">Back to ${match.collection.title}</a>
+        <a class="back-link" href="#/${match.collectionSlug}">${product.backTo} ${collectionTitle}</a>
+      </div>
+    </section>
+    <section class="section product-tabs-section">
+      <div class="product-tabs reveal" data-product-tabs>
+        <div class="tab-list" role="tablist" aria-label="${product.productInfo}">
+          <button class="is-active" type="button" role="tab" aria-selected="true" data-tab-target="specifications">${product.specifications}</button>
+          <button type="button" role="tab" aria-selected="false" data-tab-target="certification">${product.certification}</button>
+        </div>
+        <div class="tab-panel is-active" data-tab-panel="specifications" role="tabpanel">
+          <div class="spec-table">
+            ${rows.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
+          </div>
+        </div>
+        <div class="tab-panel" data-tab-panel="certification" role="tabpanel" hidden>
+          <div class="certification-card">
+            <div class="certification-intro">
+              <div class="cert-icon" aria-hidden="true">${cert.lab.slice(0, 3).toUpperCase()}</div>
+              <div>
+                <h2>${cert.lab} ${product.certification}</h2>
+                <p>${cert.lab} ${product.reportIntro}</p>
+              </div>
+            </div>
+            <div class="spec-table">
+              ${cert.rows.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
+            </div>
+            <a class="btn secondary verify-btn" href="${cert.verifyUrl}" target="_blank" rel="noreferrer">${product.verifyCertificate}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section similar-section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${collectionTitle}</p>
+          <h2>${product.similarTitle}</h2>
+        </div>
+      </div>
+      <div class="catalogue-grid" data-catalogue-grid>
+        ${similarStones.map(({ stone, slug, index }) => stoneTile([...stone, getStoneImage(stone, slug)], index, slug)).join("")}
+      </div>
+    </section>
+    <section class="section product-reviews-section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${name}</p>
+          <h2>${product.reviewsTitle}</h2>
+        </div>
+      </div>
+      <div class="review-entry-shell reveal">
+        <form class="review-form" data-review-form>
+          <h3>${product.leaveReviewTitle}</h3>
+          <div class="rating-fields">
+            <label>
+              <span>${product.rateService}</span>
+              <select required name="serviceRating">
+                <option value="5">5 / 5</option>
+                <option value="4">4 / 5</option>
+                <option value="3">3 / 5</option>
+                <option value="2">2 / 5</option>
+                <option value="1">1 / 5</option>
+              </select>
+            </label>
+            <label>
+              <span>${product.rateProduct}</span>
+              <select required name="productRating">
+                <option value="5">5 / 5</option>
+                <option value="4">4 / 5</option>
+                <option value="3">3 / 5</option>
+                <option value="2">2 / 5</option>
+                <option value="1">1 / 5</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>${product.reviewNotes}</span>
+            <textarea name="reviewNotes" placeholder="${product.reviewNotesPlaceholder}" required></textarea>
+          </label>
+          <button class="btn" type="submit">${product.submitReview}</button>
+          <p class="review-confirmation" data-review-confirmation hidden>${product.reviewThanks}</p>
+        </form>
+      </div>
+      <div class="older-reviews-heading reveal">
+        <h3 class="older-reviews-title">${product.olderReviews}</h3>
+        <p>${product.olderReviewsNote}</p>
+      </div>
+      <div class="review-grid product-review-grid">
+        ${productReviews.map((review) => reviewCard(review)).join("")}
       </div>
     </section>
   `;
@@ -1029,7 +1586,13 @@ function renderLogin() {
 
 function renderSaved() {
   const copy = getCopy();
+  const product = copy.common.product;
   const [eyebrow, title, lead] = copy.pages.saved;
+  const savedStones = Object.entries(collections).flatMap(([slug, collection]) =>
+    collection.stones
+      .filter((stone) => savedWishlist.includes(getStoneId(stone, slug)))
+      .map((stone, index) => stoneTile([...stone, getStoneImage(stone, slug)], index, slug))
+  );
   return `
     ${pageShell({
       eyebrow,
@@ -1037,21 +1600,27 @@ function renderSaved() {
       lead,
     })}
     <section class="section compact">
-      <a class="btn" href="#/collection">${copy.common.browseCollection}</a>
+      ${
+        savedStones.length
+          ? `<div class="catalogue-grid" data-catalogue-grid>${savedStones.join("")}</div>`
+          : `<div class="empty-state"><p>${product.noSaved}</p><a class="btn" href="#/collection">${copy.common.browseCollection}</a></div>`
+      }
     </section>
   `;
 }
 
 function categoryCard([name, slug, text], index) {
-  const translated = getCopy().categories[index] || [name, text];
+  const copy = getCopy();
+  const translated = copy.categories[index] || [name, text];
   const [displayName, displayText] = translated;
   return `
     <a class="category-card reveal" href="#/${slug}">
       <img src="${collectionImages[slug]}" alt="${name} gemstone collection" loading="lazy" />
-      <div>
+      <div class="category-card-copy">
         <span>${displayName}</span>
         <h3>${displayName}</h3>
         <p>${displayText}</p>
+        <strong>${copy.common.product.exploreCollection}</strong>
       </div>
     </a>
   `;
@@ -1059,16 +1628,26 @@ function categoryCard([name, slug, text], index) {
 
 function stoneTile(stone, index = 0, collectionSlug = "collection") {
   const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification, priceUsd, availability, image] = stone;
+  const copy = getCopy();
+  const saved = isSavedStone(stone, collectionSlug);
+  const stonePath = getStonePath(stone, collectionSlug);
   return `
     <article class="catalogue-card reveal" data-stone-card data-index="${index}" data-origin="${origin}" data-clarity="${clarity}" data-shape="${shape}" data-color="${color}" data-price="${priceUsd}" data-carat="${getCarat(weight)}">
-      <a class="stone-tile-link" href="${getStonePath(stone, collectionSlug)}">
+      <button class="wishlist-button ${saved ? "is-saved" : ""}" type="button" data-wishlist data-stone-id="${getStoneId(stone, collectionSlug)}" aria-pressed="${saved}" aria-label="${copy.common.product.save} ${name}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+      </button>
+      <a class="stone-image-link" href="${stonePath}" aria-label="View ${name}">
         <div class="image-wrap"><img src="${image}" alt="${name}" loading="lazy" /></div>
-        <h3>${name}</h3>
+      </a>
+      <div class="stone-card-body">
+        <p class="stone-card-price">${formatPrice(priceUsd)}</p>
+        <h3><a href="${stonePath}">${name}</a></h3>
         <div class="stone-tile-meta">
           <span>${weight}</span>
-          <span>${formatPrice(priceUsd)}</span>
+          <span>${origin}</span>
         </div>
-      </a>
+        <a class="btn secondary card-enquire" href="#/contact">${copy.common.enquire}</a>
+      </div>
     </article>
   `;
 }
@@ -1081,7 +1660,8 @@ function render() {
   const path = getPath();
   const stoneMatch = findStoneByPath(path);
   const renderer = routes[path] || renderHome;
-  document.querySelector("#main").innerHTML = stoneMatch ? renderStoneDetail(stoneMatch) : renderer();
+  const pageContent = stoneMatch ? renderStoneDetail(stoneMatch) : renderer();
+  document.querySelector("#main").innerHTML = `${renderBreadcrumb(path, stoneMatch)}${pageContent}`;
   document.querySelectorAll("[data-route]").forEach((link) => {
     link.classList.toggle("is-active", link.dataset.route === path);
   });
@@ -1090,7 +1670,12 @@ function render() {
   setupReveals();
   setupBooking();
   setupAccountForms();
+  setupNewsletter();
+  setupReviewForms();
   setupCollectionFilters();
+  setupWishlist();
+  setupProductGallery();
+  setupProductTabs();
   setupControls();
 }
 
@@ -1121,11 +1706,129 @@ function setupAccountForms() {
   });
 }
 
+function setupNewsletter() {
+  document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      form.classList.add("is-sent");
+      form.parentElement?.querySelector("[data-newsletter-confirmation]")?.removeAttribute("hidden");
+      form.reset();
+    });
+  });
+}
+
+function setupReviewForms() {
+  document.querySelectorAll("[data-review-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      form.querySelector("[data-review-confirmation]")?.removeAttribute("hidden");
+      form.reset();
+    });
+  });
+}
+
+function setupWishlist() {
+  document.querySelectorAll("[data-wishlist]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const id = button.dataset.stoneId;
+      if (!id) return;
+      if (savedWishlist.includes(id)) {
+        savedWishlist = savedWishlist.filter((item) => item !== id);
+      } else {
+        savedWishlist = [...savedWishlist, id];
+      }
+      const active = savedWishlist.includes(id);
+      document.querySelectorAll(`[data-wishlist][data-stone-id="${id}"]`).forEach((item) => {
+        item.classList.toggle("is-saved", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      saveWishlist();
+      if (getPath() === "/saved") render();
+    });
+  });
+}
+
+function setupProductGallery() {
+  const gallery = document.querySelector("[data-product-gallery]");
+  if (!gallery) return;
+  const main = gallery.querySelector("[data-gallery-main]");
+  const media = gallery.querySelector(".stone-detail-media");
+  const thumbs = [...gallery.querySelectorAll("[data-gallery-thumb]")];
+  const zoom = gallery.querySelector("[data-gallery-zoom]");
+
+  const showImage = (index) => {
+    if (!main || !thumbs.length) return;
+    const nextIndex = (index + thumbs.length) % thumbs.length;
+    const button = thumbs[nextIndex];
+    main.src = button.dataset.src;
+    main.dataset.galleryView = button.dataset.view || "front";
+    main.dataset.galleryIndex = String(nextIndex);
+    thumbs.forEach((item) => item.classList.remove("is-active"));
+    button.classList.add("is-active");
+    media?.classList.remove("is-zoomed");
+    if (zoom) zoom.setAttribute("aria-pressed", "false");
+    main.style.transformOrigin = "50% 50%";
+  };
+
+  thumbs.forEach((button) => {
+    button.addEventListener("click", () => {
+      showImage(Number(button.dataset.index) || 0);
+    });
+  });
+
+  gallery.querySelector("[data-gallery-prev]")?.addEventListener("click", () => {
+    showImage((Number(main?.dataset.galleryIndex) || 0) - 1);
+  });
+
+  gallery.querySelector("[data-gallery-next]")?.addEventListener("click", () => {
+    showImage((Number(main?.dataset.galleryIndex) || 0) + 1);
+  });
+
+  zoom?.addEventListener("click", () => {
+    const active = media?.classList.toggle("is-zoomed") || false;
+    zoom.setAttribute("aria-pressed", String(active));
+    if (!active && main) main.style.transformOrigin = "50% 50%";
+  });
+
+  media?.addEventListener("pointermove", (event) => {
+    if (!media.classList.contains("is-zoomed") || !main) return;
+    const rect = media.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    main.style.transformOrigin = `${Math.max(0, Math.min(100, x))}% ${Math.max(0, Math.min(100, y))}%`;
+  });
+}
+
+function setupProductTabs() {
+  const tabs = document.querySelector("[data-product-tabs]");
+  if (!tabs) return;
+  const buttons = tabs.querySelectorAll("[data-tab-target]");
+  const panels = tabs.querySelectorAll("[data-tab-panel]");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.tabTarget;
+      buttons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+      panels.forEach((panel) => {
+        const active = panel.dataset.tabPanel === target;
+        panel.classList.toggle("is-active", active);
+        panel.hidden = !active;
+      });
+    });
+  });
+}
+
 function setupCollectionFilters() {
   const tools = document.querySelector("[data-collection-tools]");
   const grid = document.querySelector("[data-catalogue-grid]");
   if (!tools || !grid) return;
 
+  const filterCopy = getCopy().common.filters;
   const cards = [...grid.querySelectorAll("[data-stone-card]")];
   const filters = [...tools.querySelectorAll("[data-filter]")];
   const sort = tools.querySelector("[data-sort]");
@@ -1167,7 +1870,7 @@ function setupCollectionFilters() {
       card.hidden = false;
       grid.appendChild(card);
     });
-    if (count) count.textContent = `${visibleCards.length} stone${visibleCards.length === 1 ? "" : "s"} shown`;
+    if (count) count.textContent = `${visibleCards.length} ${visibleCards.length === 1 ? filterCopy.stoneShown : filterCopy.stonesShown}`;
   };
 
   filters.forEach((input) => input.addEventListener("input", apply));
@@ -1280,6 +1983,19 @@ function applyLanguage() {
       if (footerLinks[1][index]) link.textContent = footerLinks[1][index];
     });
     footerColumns[3].querySelector("h3").textContent = footer.contact;
+    if (footerColumns[4]) {
+      footerColumns[4].querySelector("h3").textContent = footer.newsletter;
+      footerColumns[4].querySelector("p").textContent = footer.newsletterLead;
+      const newsletterInput = footerColumns[4].querySelector("input");
+      const newsletterButton = footerColumns[4].querySelector("button");
+      const newsletterConfirmation = footerColumns[4].querySelector("[data-newsletter-confirmation]");
+      if (newsletterInput) {
+        newsletterInput.placeholder = footer.newsletterPlaceholder;
+        newsletterInput.setAttribute("aria-label", footer.newsletterPlaceholder);
+      }
+      if (newsletterButton) newsletterButton.textContent = footer.newsletterButton;
+      if (newsletterConfirmation) newsletterConfirmation.textContent = footer.newsletterSuccess;
+    }
   }
   const footerBottom = document.querySelectorAll(".footer-bottom span");
   if (footerBottom[0]) footerBottom[0].textContent = copy.footer.copyright;
