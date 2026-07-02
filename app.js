@@ -130,7 +130,7 @@ const translations = {
       browseCollection: "Browse Collection",
       contactClientCare: "Contact Client Care",
       beginConversation: "Begin a Conversation",
-      specs: ["Origin", "Weight", "Dimensions", "Colour", "Treatment", "Certification"],
+      specs: ["Origin", "Weight", "Shape", "Dimensions", "Colour", "Clarity", "Treatment", "Certification"],
       status: { Available: "Available", "By enquiry": "By enquiry", Reserved: "Reserved" },
     },
     categories: [
@@ -239,7 +239,7 @@ const translations = {
       browseCollection: "浏览珍藏",
       contactClientCare: "联系客户服务",
       beginConversation: "开始沟通",
-      specs: ["产地", "重量", "尺寸", "颜色", "处理", "证书"],
+      specs: ["产地", "重量", "形状", "尺寸", "颜色", "净度", "处理", "证书"],
       status: { Available: "可购买", "By enquiry": "请咨询", Reserved: "已预留" },
     },
     categories: [["蓝宝石", "锡兰蓝、帕帕拉恰与彩色蓝宝石精选。"], ["红宝石", "色泽浓郁、切工精细并配有文件。"], ["祖母绿", "为光彩、色调与存在感甄选的优雅绿色宝石。"], ["尖晶石", "卓越收藏色彩的天然尖晶石。"], ["变石", "为鉴赏家准备的变色宝石。"], ["其他珍贵宝石", "为私人客户采购的独特稀有宝石。"]],
@@ -341,7 +341,7 @@ const translations = {
       browseCollection: "ชมคอลเลกชัน",
       contactClientCare: "ติดต่อฝ่ายดูแลลูกค้า",
       beginConversation: "เริ่มพูดคุย",
-      specs: ["แหล่งกำเนิด", "น้ำหนัก", "ขนาด", "สี", "การปรับปรุง", "ใบรับรอง"],
+      specs: ["แหล่งกำเนิด", "น้ำหนัก", "รูปทรง", "ขนาด", "สี", "ความสะอาด", "การปรับปรุง", "ใบรับรอง"],
       status: { Available: "พร้อมจำหน่าย", "By enquiry": "สอบถามเพิ่มเติม", Reserved: "จองแล้ว" },
     },
     categories: [["แซฟไฟร์", "แซฟไฟร์ซีลอนบลู พัดพารัดชา และสีแฟนซี"], ["ทับทิม", "อัญมณีสีแดงเข้มพร้อมการเจียระไนและเอกสารที่ดี"], ["มรกต", "สีเขียวสง่างามที่คัดจากชีวิตชีวา โทนสี และบุคลิก"], ["สปิเนล", "สปิเนลธรรมชาติหายากในสีสะสมโดดเด่น"], ["อเล็กซานไดรต์", "อัญมณีเปลี่ยนสีสำหรับผู้รู้จริง"], ["อัญมณีล้ำค่าอื่นๆ", "อัญมณีหายากโดดเด่นที่จัดหาให้ลูกค้าส่วนตัว"]],
@@ -398,24 +398,24 @@ const collectionImages = {
 };
 
 const stoneImages = {
-  "Royal Blue Cushion Sapphire": "assets/stone-royal-blue-cushion-sapphire.jpg",
-  "Cornflower Oval Sapphire": "assets/stone-cornflower-oval-sapphire.jpg",
+  "Royal Blue Sapphire": "assets/stone-royal-blue-cushion-sapphire.jpg",
+  "Cornflower Sapphire": "assets/stone-cornflower-oval-sapphire.jpg",
   "Padparadscha Sapphire": "assets/stone-padparadscha-sapphire.jpg",
-  "Velvet Blue Emerald Cut": "assets/stone-velvet-blue-emerald-cut.jpg",
-  "Pink Oval Sapphire": "assets/stone-pink-sapphire.jpg",
-  "Yellow Cushion Sapphire": "assets/stone-yellow-sapphire.jpg",
-  "Green Oval Sapphire": "assets/stone-green-sapphire.jpg",
-  "Teal Pear Sapphire": "assets/stone-teal-sapphire.jpg",
-  "Violet Round Sapphire": "assets/stone-violet-sapphire.jpg",
-  "Orange Oval Sapphire": "assets/stone-orange-sapphire.jpg",
-  "Pigeon Blood Oval Ruby": "assets/gem-rubies.jpg",
-  "Classic Cushion Ruby": "assets/stone-classic-cushion-ruby.jpg",
-  "Madagascar Emerald Cut": "assets/gem-emeralds.jpg",
-  "Sri Lankan Octagon Emerald": "assets/stone-zambian-octagon-emerald.jpg",
+  "Velvet Blue Sapphire": "assets/stone-velvet-blue-emerald-cut.jpg",
+  "Pink Sapphire": "assets/stone-pink-sapphire.jpg",
+  "Yellow Sapphire": "assets/stone-yellow-sapphire.jpg",
+  "Green Sapphire": "assets/stone-green-sapphire.jpg",
+  "Teal Sapphire": "assets/stone-teal-sapphire.jpg",
+  "Violet Sapphire": "assets/stone-violet-sapphire.jpg",
+  "Orange Sapphire": "assets/stone-orange-sapphire.jpg",
+  "Pigeon Blood Ruby": "assets/gem-rubies.jpg",
+  "Classic Ruby": "assets/stone-classic-cushion-ruby.jpg",
+  "Madagascar Emerald": "assets/gem-emeralds.jpg",
+  "Sri Lankan Emerald": "assets/stone-zambian-octagon-emerald.jpg",
   "Cobalt Blue Spinel": "assets/gem-spinels.jpg",
   "Madagascar Pink Spinel": "assets/stone-mahenge-pink-spinel.jpg",
-  "Oval Alexandrite": "assets/gem-alexandrites.jpg",
-  "Collector Cushion Alexandrite": "assets/stone-collector-cushion-alexandrite.jpg",
+  "Alexandrite": "assets/gem-alexandrites.jpg",
+  "Collector Alexandrite": "assets/stone-collector-cushion-alexandrite.jpg",
   "Cat's Eye Chrysoberyl": "assets/gem-other-precious-gemstones.jpg",
   "Paraiba Tourmaline": "assets/stone-paraiba-tourmaline.jpg",
 };
@@ -469,16 +469,16 @@ const collections = {
     intro:
       "Ceylon sapphires selected for saturation, crystal, provenance and enduring collector appeal.",
     stones: [
-      ["Royal Blue Cushion Sapphire", "Sri Lanka", "5.42 ct", "10.1 x 8.8 x 5.3 mm", "Royal blue", "Heated", "GIA", 18400, "Available"],
-      ["Cornflower Oval Sapphire", "Ratnapura, Sri Lanka", "3.18 ct", "9.2 x 7.4 x 4.6 mm", "Cornflower blue", "No indication of heat", "GRS", 14200, "By enquiry"],
-      ["Padparadscha Sapphire", "Sri Lanka", "2.06 ct", "8.0 x 6.5 x 3.9 mm", "Pinkish orange", "Heated", "Lotus", 22800, "Reserved"],
-      ["Velvet Blue Emerald Cut", "Elahera, Sri Lanka", "4.81 ct", "9.8 x 7.1 x 4.8 mm", "Velvet blue", "No indication of heat", "SSEF", 19600, "Available"],
-      ["Pink Oval Sapphire", "Sri Lanka", "2.44 ct", "8.6 x 6.7 x 4.2 mm", "Vivid pink", "Heated", "Lotus", 11800, "Available"],
-      ["Yellow Cushion Sapphire", "Sri Lanka", "3.72 ct", "8.9 x 8.1 x 5.0 mm", "Golden yellow", "Heated", "GIA", 9200, "Available"],
-      ["Green Oval Sapphire", "Madagascar", "2.96 ct", "8.8 x 7.0 x 4.5 mm", "Forest green", "No indication of heat", "GRS", 10900, "By enquiry"],
-      ["Teal Pear Sapphire", "Sri Lanka", "2.58 ct", "9.4 x 6.6 x 4.3 mm", "Blue-green teal", "No indication of heat", "SSEF", 12600, "Available"],
-      ["Violet Round Sapphire", "Sri Lanka", "1.84 ct", "7.1 x 7.1 x 4.1 mm", "Violet purple", "Heated", "GIA", 7800, "Available"],
-      ["Orange Oval Sapphire", "Madagascar", "2.21 ct", "8.2 x 6.4 x 4.0 mm", "Mandarin orange", "Heated", "Lotus", 8400, "By enquiry"],
+      ["Royal Blue Sapphire", "Sri Lanka", "5.42 ct", "Cushion", "10.1 x 8.8 x 5.3 mm", "Royal blue", "Eye clean", "Heated", "GIA", 18400, "Available"],
+      ["Cornflower Sapphire", "Ratnapura, Sri Lanka", "3.18 ct", "Oval", "9.2 x 7.4 x 4.6 mm", "Cornflower blue", "Very slightly included", "No indication of heat", "GRS", 14200, "By enquiry"],
+      ["Padparadscha Sapphire", "Sri Lanka", "2.06 ct", "Cushion", "8.0 x 6.5 x 3.9 mm", "Pinkish orange", "Eye clean", "Heated", "Lotus", 22800, "Reserved"],
+      ["Velvet Blue Sapphire", "Elahera, Sri Lanka", "4.81 ct", "Emerald cut", "9.8 x 7.1 x 4.8 mm", "Velvet blue", "Eye clean", "No indication of heat", "SSEF", 19600, "Available"],
+      ["Pink Sapphire", "Sri Lanka", "2.44 ct", "Oval", "8.6 x 6.7 x 4.2 mm", "Vivid pink", "Eye clean", "Heated", "Lotus", 11800, "Available"],
+      ["Yellow Sapphire", "Sri Lanka", "3.72 ct", "Cushion", "8.9 x 8.1 x 5.0 mm", "Golden yellow", "Slightly included", "Heated", "GIA", 9200, "Available"],
+      ["Green Sapphire", "Madagascar", "2.96 ct", "Oval", "8.8 x 7.0 x 4.5 mm", "Forest green", "Eye clean", "No indication of heat", "GRS", 10900, "By enquiry"],
+      ["Teal Sapphire", "Sri Lanka", "2.58 ct", "Pear", "9.4 x 6.6 x 4.3 mm", "Blue-green teal", "Very slightly included", "No indication of heat", "SSEF", 12600, "Available"],
+      ["Violet Sapphire", "Sri Lanka", "1.84 ct", "Round", "7.1 x 7.1 x 4.1 mm", "Violet purple", "Eye clean", "Heated", "GIA", 7800, "Available"],
+      ["Orange Sapphire", "Madagascar", "2.21 ct", "Oval", "8.2 x 6.4 x 4.0 mm", "Mandarin orange", "Slightly included", "Heated", "Lotus", 8400, "By enquiry"],
     ],
   },
   rubies: {
@@ -486,8 +486,8 @@ const collections = {
     intro:
       "Fine rubies with rich red colour, balanced cutting and documentation for discerning jewellery houses.",
     stones: [
-      ["Pigeon Blood Oval Ruby", "Madagascar", "2.74 ct", "8.4 x 6.7 x 4.1 mm", "Vivid red", "Heated", "Gubelin", 16500, "Available"],
-      ["Classic Cushion Ruby", "Madagascar", "1.92 ct", "7.1 x 6.4 x 3.8 mm", "Deep red", "No indication of heat", "GRS", 9800, "By enquiry"],
+      ["Pigeon Blood Ruby", "Madagascar", "2.74 ct", "Oval", "8.4 x 6.7 x 4.1 mm", "Vivid red", "Eye clean", "Heated", "Gubelin", 16500, "Available"],
+      ["Classic Ruby", "Madagascar", "1.92 ct", "Cushion", "7.1 x 6.4 x 3.8 mm", "Deep red", "Slightly included", "No indication of heat", "GRS", 9800, "By enquiry"],
     ],
   },
   emeralds: {
@@ -495,8 +495,8 @@ const collections = {
     intro:
       "Elegant emeralds chosen for life, garden, tone and suitability for important bespoke pieces.",
     stones: [
-      ["Madagascar Emerald Cut", "Madagascar", "3.62 ct", "9.7 x 7.2 x 5.0 mm", "Vivid green", "Minor oil", "SSEF", 12800, "Available"],
-      ["Sri Lankan Octagon Emerald", "Sri Lanka", "4.24 ct", "10.2 x 8.1 x 5.2 mm", "Bluish green", "Insignificant oil", "GIA", 15400, "By enquiry"],
+      ["Madagascar Emerald", "Madagascar", "3.62 ct", "Emerald cut", "9.7 x 7.2 x 5.0 mm", "Vivid green", "Moderately included", "Minor oil", "SSEF", 12800, "Available"],
+      ["Sri Lankan Emerald", "Sri Lanka", "4.24 ct", "Octagon", "10.2 x 8.1 x 5.2 mm", "Bluish green", "Slightly included", "Insignificant oil", "GIA", 15400, "By enquiry"],
     ],
   },
   spinels: {
@@ -504,8 +504,8 @@ const collections = {
     intro:
       "Collector spinels in refined reds, greys, violets and cobalt blues with crisp brilliance.",
     stones: [
-      ["Cobalt Blue Spinel", "Sri Lanka", "1.64 ct", "7.2 x 5.8 x 3.7 mm", "Cobalt blue", "No treatment", "Lotus", 7200, "Available"],
-      ["Madagascar Pink Spinel", "Madagascar", "3.33 ct", "8.8 x 7.3 x 4.9 mm", "Vivid pink", "No treatment", "GRS", 6800, "Available"],
+      ["Cobalt Blue Spinel", "Sri Lanka", "1.64 ct", "Cushion", "7.2 x 5.8 x 3.7 mm", "Cobalt blue", "Eye clean", "No treatment", "Lotus", 7200, "Available"],
+      ["Madagascar Pink Spinel", "Madagascar", "3.33 ct", "Cushion", "8.8 x 7.3 x 4.9 mm", "Vivid pink", "Eye clean", "No treatment", "GRS", 6800, "Available"],
     ],
   },
   alexandrites: {
@@ -513,8 +513,8 @@ const collections = {
     intro:
       "Rare colour-change chrysoberyl sourced for strength of phenomenon, clarity and collector value.",
     stones: [
-      ["Oval Alexandrite", "Sri Lanka", "1.47 ct", "7.4 x 6.1 x 3.9 mm", "Green to purplish red", "No treatment", "GIA", 12400, "By enquiry"],
-      ["Collector Cushion Alexandrite", "Madagascar", "2.12 ct", "7.8 x 6.9 x 4.2 mm", "Teal to raspberry", "No treatment", "SSEF", 17100, "Available"],
+      ["Alexandrite", "Sri Lanka", "1.47 ct", "Oval", "7.4 x 6.1 x 3.9 mm", "Green to purplish red", "Very slightly included", "No treatment", "GIA", 12400, "By enquiry"],
+      ["Collector Alexandrite", "Madagascar", "2.12 ct", "Cushion", "7.8 x 6.9 x 4.2 mm", "Teal to raspberry", "Eye clean", "No treatment", "SSEF", 17100, "Available"],
     ],
   },
   "other-precious-gemstones": {
@@ -522,8 +522,8 @@ const collections = {
     intro:
       "Rare collector stones sourced on request, from chrysoberyl and garnet to exceptional tourmaline and zircon.",
     stones: [
-      ["Cat's Eye Chrysoberyl", "Sri Lanka", "5.88 ct", "9.9 x 8.2 x 6.1 mm", "Honey green", "No treatment", "GIA", 5900, "Available"],
-      ["Paraiba Tourmaline", "Madagascar", "1.21 ct", "7.0 x 5.5 x 3.4 mm", "Neon blue-green", "Heated", "Gubelin", 14300, "By enquiry"],
+      ["Cat's Eye Chrysoberyl", "Sri Lanka", "5.88 ct", "Cabochon", "9.9 x 8.2 x 6.1 mm", "Honey green", "Translucent", "No treatment", "GIA", 5900, "Available"],
+      ["Paraiba Tourmaline", "Madagascar", "1.21 ct", "Oval", "7.0 x 5.5 x 3.4 mm", "Neon blue-green", "Slightly included", "Heated", "Gubelin", 14300, "By enquiry"],
     ],
   },
 };
@@ -614,6 +614,60 @@ function formatPrice(priceUsd) {
     currency,
     maximumFractionDigits: 0,
   }).format(priceUsd * rate);
+}
+
+function getStoneImage(stone, slug) {
+  return stoneImages[stone[0]] || collectionImages[slug] || images.collection;
+}
+
+function getCarat(weight) {
+  return Number.parseFloat(String(weight).replace(/[^\d.]/g, "")) || 0;
+}
+
+function normaliseFilterValue(value) {
+  return String(value || "").toLowerCase();
+}
+
+function getUniqueValues(stones, index) {
+  return [...new Set(stones.map((stone) => stone[index]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+function optionList(values, label) {
+  return [`<option value="">${label}</option>`, ...values.map((value) => `<option value="${value}">${value}</option>`)].join("");
+}
+
+function renderCollectionToolbar(collection, slug) {
+  const prices = collection.stones.map((stone) => stone[9]);
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
+  return `
+    <div class="collection-tools reveal" data-collection-tools>
+      <div class="filter-header">
+        <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="true">Filters</button>
+        <label class="sort-control">
+          <span>Sort</span>
+          <select data-sort>
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="price-asc">Price low to high</option>
+            <option value="price-desc">Price high to low</option>
+            <option value="carat-desc">Carats high to low</option>
+            <option value="carat-asc">Carats low to high</option>
+          </select>
+        </label>
+      </div>
+      <div class="filter-panel" data-filter-panel>
+        <label><span>Origin</span><select data-filter="origin">${optionList(getUniqueValues(collection.stones, 1), "All origins")}</select></label>
+        <label><span>Clarity</span><select data-filter="clarity">${optionList(getUniqueValues(collection.stones, 6), "All clarity")}</select></label>
+        <label><span>Shape</span><select data-filter="shape">${optionList(getUniqueValues(collection.stones, 3), "All shapes")}</select></label>
+        <label><span>Colour</span><select data-filter="color">${optionList(getUniqueValues(collection.stones, 5), "All colours")}</select></label>
+        <label><span>Min price</span><input data-filter="minPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${minPrice}" /></label>
+        <label><span>Max price</span><input data-filter="maxPrice" type="number" min="${minPrice}" max="${maxPrice}" step="100" placeholder="${maxPrice}" /></label>
+        <button class="filter-reset" type="button" data-filter-reset>Reset</button>
+      </div>
+      <p class="filter-count" data-filter-count>${collection.stones.length} stones shown</p>
+    </div>
+  `;
 }
 
 function renderHome() {
@@ -708,8 +762,9 @@ function renderCollectionPage(slug) {
   return `
     ${pageShell({ eyebrow: copy.common.collectionEyebrow, title, lead })}
     <section class="section">
-      <div class="catalogue-grid">
-        ${collection.stones.map((stone) => stoneCard([...stone, stoneImages[stone[0]] || collectionImages[slug] || images.collection])).join("")}
+      ${renderCollectionToolbar(collection, slug)}
+      <div class="catalogue-grid" data-catalogue-grid>
+        ${collection.stones.map((stone, index) => stoneCard([...stone, getStoneImage(stone, slug)], index)).join("")}
       </div>
     </section>
   `;
@@ -719,9 +774,9 @@ function renderNewArrivals() {
   const copy = getCopy();
   const [eyebrow, title, lead] = copy.pages.newArrivals;
   const newArrivalStones = [
-    [...collections.sapphires.stones[1], stoneImages["Cornflower Oval Sapphire"]],
+    [...collections.sapphires.stones[1], stoneImages["Cornflower Sapphire"]],
     [...collections.sapphires.stones[2], stoneImages["Padparadscha Sapphire"]],
-    [...collections.alexandrites.stones[1], stoneImages["Collector Cushion Alexandrite"]],
+    [...collections.alexandrites.stones[1], stoneImages["Collector Alexandrite"]],
     [...collections["other-precious-gemstones"].stones[1], stoneImages["Paraiba Tourmaline"]],
   ];
 
@@ -934,21 +989,23 @@ function categoryCard([name, slug, text], index) {
   `;
 }
 
-function stoneCard(stone) {
+function stoneCard(stone, index = 0) {
   const copy = getCopy();
-  const [name, origin, weight, dimensions, color, treatment, certification, priceUsd, availability, image] = stone;
+  const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification, priceUsd, availability, image] = stone;
   const specs = copy.common.specs;
   return `
-    <article class="catalogue-card reveal">
+    <article class="catalogue-card reveal" data-stone-card data-index="${index}" data-origin="${origin}" data-clarity="${clarity}" data-shape="${shape}" data-color="${color}" data-price="${priceUsd}" data-carat="${getCarat(weight)}">
       <div class="image-wrap"><img src="${image}" alt="${name}" loading="lazy" /></div>
       <h3>${name}</h3>
       <div class="spec-grid">
         <span><b>${specs[0]}</b>${origin}</span>
         <span><b>${specs[1]}</b>${weight}</span>
-        <span><b>${specs[2]}</b>${dimensions}</span>
-        <span><b>${specs[3]}</b>${color}</span>
-        <span><b>${specs[4]}</b>${treatment}</span>
-        <span><b>${specs[5]}</b>${certification}</span>
+        <span><b>${specs[2]}</b>${shape}</span>
+        <span><b>${specs[3]}</b>${dimensions}</span>
+        <span><b>${specs[4]}</b>${color}</span>
+        <span><b>${specs[5]}</b>${clarity}</span>
+        <span><b>${specs[6]}</b>${treatment}</span>
+        <span><b>${specs[7]}</b>${certification}</span>
       </div>
       <div class="card-commercial">
         <p class="price">${formatPrice(priceUsd)}</p>
@@ -975,6 +1032,7 @@ function render() {
   setupReveals();
   setupBooking();
   setupAccountForms();
+  setupCollectionFilters();
   setupControls();
 }
 
@@ -1003,6 +1061,71 @@ function setupAccountForms() {
       event.preventDefault();
     });
   });
+}
+
+function setupCollectionFilters() {
+  const tools = document.querySelector("[data-collection-tools]");
+  const grid = document.querySelector("[data-catalogue-grid]");
+  if (!tools || !grid) return;
+
+  const cards = [...grid.querySelectorAll("[data-stone-card]")];
+  const filters = [...tools.querySelectorAll("[data-filter]")];
+  const sort = tools.querySelector("[data-sort]");
+  const count = tools.querySelector("[data-filter-count]");
+  const panel = tools.querySelector("[data-filter-panel]");
+  const toggle = tools.querySelector("[data-filter-toggle]");
+
+  const apply = () => {
+    const state = Object.fromEntries(filters.map((input) => [input.dataset.filter, input.value]));
+    const minPrice = Number.parseFloat(state.minPrice) || 0;
+    const maxPrice = Number.parseFloat(state.maxPrice) || Number.POSITIVE_INFINITY;
+
+    let visibleCards = cards.filter((card) => {
+      const price = Number.parseFloat(card.dataset.price) || 0;
+      return (
+        (!state.origin || normaliseFilterValue(card.dataset.origin).includes(normaliseFilterValue(state.origin))) &&
+        (!state.clarity || card.dataset.clarity === state.clarity) &&
+        (!state.shape || card.dataset.shape === state.shape) &&
+        (!state.color || card.dataset.color === state.color) &&
+        price >= minPrice &&
+        price <= maxPrice
+      );
+    });
+
+    const sortValue = sort?.value || "featured";
+    visibleCards.sort((a, b) => {
+      if (sortValue === "newest") return Number(b.dataset.index) - Number(a.dataset.index);
+      if (sortValue === "price-asc") return Number(a.dataset.price) - Number(b.dataset.price);
+      if (sortValue === "price-desc") return Number(b.dataset.price) - Number(a.dataset.price);
+      if (sortValue === "carat-desc") return Number(b.dataset.carat) - Number(a.dataset.carat);
+      if (sortValue === "carat-asc") return Number(a.dataset.carat) - Number(b.dataset.carat);
+      return Number(a.dataset.index) - Number(b.dataset.index);
+    });
+
+    cards.forEach((card) => {
+      card.hidden = true;
+    });
+    visibleCards.forEach((card) => {
+      card.hidden = false;
+      grid.appendChild(card);
+    });
+    if (count) count.textContent = `${visibleCards.length} stone${visibleCards.length === 1 ? "" : "s"} shown`;
+  };
+
+  filters.forEach((input) => input.addEventListener("input", apply));
+  sort?.addEventListener("change", apply);
+  tools.querySelector("[data-filter-reset]")?.addEventListener("click", () => {
+    filters.forEach((input) => {
+      input.value = "";
+    });
+    if (sort) sort.value = "featured";
+    apply();
+  });
+  toggle?.addEventListener("click", () => {
+    const open = panel?.classList.toggle("is-collapsed") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  apply();
 }
 
 function setupControls() {
