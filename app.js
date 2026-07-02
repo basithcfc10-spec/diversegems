@@ -115,7 +115,7 @@ const translations = {
       appointmentButton: "Request an Appointment",
       reviewsEyebrow: "Client words",
       reviewsTitle: "What our clients say.",
-      reviewsLead: "Selected reviews from gemstone clients who valued the service, documentation and quality of their stones.",
+      reviewsLead: "",
     },
     pages: {
       collection: ["Our collection", "A catalogue without hurry.", "Explore natural sapphires, rubies, emeralds, spinels, alexandrites and rare collector stones, mainly from Sri Lanka with select pieces from Madagascar."],
@@ -821,6 +821,14 @@ const accountCopy = {
     registerTitle: "Create an Account",
     registerLead: "Save selected stones, view your private shortlist and access enquiry history from any device.",
     registerButton: "Register",
+    createTitle: "Create Your Account",
+    createLead: "Register for private shortlist access, saved stones and enquiry history.",
+    firstName: "First name",
+    lastName: "Last name",
+    phone: "Phone number",
+    confirmPassword: "Confirm password",
+    createButton: "Create Account",
+    backToSignIn: "Already have an account?",
   },
   zh: {
     signInTitle: "登录",
@@ -832,6 +840,14 @@ const accountCopy = {
     registerTitle: "创建账户",
     registerLead: "保存甄选宝石，查看私人候选清单，并在任何设备访问咨询记录。",
     registerButton: "注册",
+    createTitle: "创建您的账户",
+    createLead: "注册以访问私人候选清单、收藏宝石和咨询记录。",
+    firstName: "名",
+    lastName: "姓",
+    phone: "电话号码",
+    confirmPassword: "确认密码",
+    createButton: "创建账户",
+    backToSignIn: "已有账户？",
   },
   th: {
     signInTitle: "เข้าสู่ระบบ",
@@ -843,6 +859,14 @@ const accountCopy = {
     registerTitle: "สร้างบัญชี",
     registerLead: "บันทึกอัญมณีที่เลือก ดูรายการคัดเลือกส่วนตัว และเข้าถึงประวัติการสอบถามได้จากทุกอุปกรณ์",
     registerButton: "ลงทะเบียน",
+    createTitle: "สร้างบัญชีของคุณ",
+    createLead: "ลงทะเบียนเพื่อเข้าถึงรายการส่วนตัว อัญมณีที่บันทึกไว้ และประวัติการสอบถาม",
+    firstName: "ชื่อ",
+    lastName: "นามสกุล",
+    phone: "หมายเลขโทรศัพท์",
+    confirmPassword: "ยืนยันรหัสผ่าน",
+    createButton: "สร้างบัญชี",
+    backToSignIn: "มีบัญชีอยู่แล้ว?",
   },
 };
 
@@ -856,6 +880,7 @@ const routes = {
   "/private-viewing": renderPrivateViewing,
   "/contact": renderContact,
   "/login": renderLogin,
+  "/register": renderRegister,
   "/saved": renderSaved,
 };
 
@@ -932,6 +957,7 @@ function getPageLabel(path) {
     "/private-viewing": copy.nav[6],
     "/contact": copy.nav[7],
     "/login": copy.loginLabel,
+    "/register": (accountCopy[selectedLanguage] || accountCopy.en).registerButton,
     "/saved": copy.savedLabel,
   };
   if (labels[path]) return labels[path];
@@ -1185,7 +1211,7 @@ function renderHome() {
           <p class="eyebrow">${home.reviewsEyebrow}</p>
           <h2>${home.reviewsTitle}</h2>
         </div>
-        <p>${home.reviewsLead}</p>
+        ${home.reviewsLead ? `<p>${home.reviewsLead}</p>` : ""}
       </div>
       <div class="review-grid">
         ${featuredReviews.slice(0, 5).map((review) => reviewCard(review, true)).join("")}
@@ -1575,9 +1601,35 @@ function renderLogin() {
         <div class="account-panel">
           <h1>${account.registerTitle}</h1>
           <p>${account.registerLead}</p>
-          <form class="account-form" data-account-form>
-            <button class="btn account-action" type="submit">${account.registerButton}</button>
+          <a class="btn account-action" href="#/register">${account.registerButton}</a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderRegister() {
+  const account = accountCopy[selectedLanguage] || accountCopy.en;
+  return `
+    <section class="section account-section">
+      <div class="account-shell account-shell-single reveal">
+        <div class="account-panel">
+          <h1>${account.createTitle}</h1>
+          <p>${account.createLead}</p>
+          <form class="account-form account-form-register" data-account-form>
+            <div class="account-form-grid">
+              <input type="text" autocomplete="given-name" placeholder="${account.firstName}" aria-label="${account.firstName}" required />
+              <input type="text" autocomplete="family-name" placeholder="${account.lastName}" aria-label="${account.lastName}" required />
+            </div>
+            <input type="email" autocomplete="email" placeholder="${account.email}" aria-label="${account.email}" required />
+            <input type="tel" autocomplete="tel" placeholder="${account.phone}" aria-label="${account.phone}" />
+            <div class="account-form-grid">
+              <input type="password" autocomplete="new-password" placeholder="${account.password}" aria-label="${account.password}" required />
+              <input type="password" autocomplete="new-password" placeholder="${account.confirmPassword}" aria-label="${account.confirmPassword}" required />
+            </div>
+            <button class="btn account-action" type="submit">${account.createButton}</button>
           </form>
+          <a class="forgot-link" href="#/login">${account.backToSignIn} <span aria-hidden="true">›</span></a>
         </div>
       </div>
     </section>
