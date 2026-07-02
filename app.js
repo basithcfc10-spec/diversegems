@@ -620,6 +620,34 @@ function getStoneImage(stone, slug) {
   return stoneImages[stone[0]] || collectionImages[slug] || images.collection;
 }
 
+function slugify(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function getStonePath(stone, collectionSlug) {
+  return `#/stone/${collectionSlug}/${slugify(stone[0])}`;
+}
+
+function findStoneByPath(path) {
+  const [, collectionSlug, stoneSlug] = path.match(/^\/stone\/([^/]+)\/([^/]+)$/) || [];
+  const collection = collections[collectionSlug];
+  if (!collection) return null;
+  const index = collection.stones.findIndex((stone) => slugify(stone[0]) === stoneSlug);
+  if (index < 0) return null;
+  const stone = collection.stones[index];
+  return {
+    collection,
+    collectionSlug,
+    index,
+    stone,
+    image: getStoneImage(stone, collectionSlug),
+  };
+}
+
 function getCarat(weight) {
   return Number.parseFloat(String(weight).replace(/[^\d.]/g, "")) || 0;
 }
@@ -764,7 +792,44 @@ function renderCollectionPage(slug) {
     <section class="section">
       ${renderCollectionToolbar(collection, slug)}
       <div class="catalogue-grid" data-catalogue-grid>
-        ${collection.stones.map((stone, index) => stoneCard([...stone, getStoneImage(stone, slug)], index)).join("")}
+        ${collection.stones.map((stone, index) => stoneTile([...stone, getStoneImage(stone, slug)], index, slug)).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderStoneDetail(match) {
+  const copy = getCopy();
+  const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification, priceUsd, availability] = match.stone;
+  const specs = copy.common.specs;
+  const rows = [
+    [specs[0], origin],
+    [specs[1], weight],
+    [specs[2], shape],
+    [specs[3], dimensions],
+    [specs[4], color],
+    [specs[5], clarity],
+    [specs[6], treatment],
+    [specs[7], certification],
+    ["Availability", copy.common.status[availability] || availability],
+  ];
+  return `
+    <section class="stone-detail">
+      <div class="stone-detail-media reveal">
+        <img src="${match.image}" alt="${name}" loading="eager" />
+      </div>
+      <div class="stone-detail-copy reveal">
+        <p class="eyebrow">${match.collection.title}</p>
+        <h1>${name}</h1>
+        <p class="stone-detail-price">${formatPrice(priceUsd)}</p>
+        <div class="stone-spec-list">
+          ${rows.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
+        </div>
+        <div class="button-row">
+          <a class="btn" href="#/contact">${copy.common.enquire}</a>
+          <a class="btn secondary" href="#/private-viewing">Book a Private Viewing</a>
+        </div>
+        <a class="back-link" href="#/${match.collectionSlug}">Back to ${match.collection.title}</a>
       </div>
     </section>
   `;
@@ -788,7 +853,10 @@ function renderNewArrivals() {
     })}
     <section class="section">
       <div class="catalogue-grid">
-        ${newArrivalStones.map(stoneCard).join("")}
+        ${newArrivalStones.map((stone, index) => {
+          const sourceSlug = Object.keys(collections).find((slug) => collections[slug].stones.some((item) => item[0] === stone[0])) || "collection";
+          return stoneTile(stone, index, sourceSlug);
+        }).join("")}
       </div>
     </section>
   `;
@@ -989,29 +1057,18 @@ function categoryCard([name, slug, text], index) {
   `;
 }
 
-function stoneCard(stone, index = 0) {
-  const copy = getCopy();
+function stoneTile(stone, index = 0, collectionSlug = "collection") {
   const [name, origin, weight, shape, dimensions, color, clarity, treatment, certification, priceUsd, availability, image] = stone;
-  const specs = copy.common.specs;
   return `
     <article class="catalogue-card reveal" data-stone-card data-index="${index}" data-origin="${origin}" data-clarity="${clarity}" data-shape="${shape}" data-color="${color}" data-price="${priceUsd}" data-carat="${getCarat(weight)}">
-      <div class="image-wrap"><img src="${image}" alt="${name}" loading="lazy" /></div>
-      <h3>${name}</h3>
-      <div class="spec-grid">
-        <span><b>${specs[0]}</b>${origin}</span>
-        <span><b>${specs[1]}</b>${weight}</span>
-        <span><b>${specs[2]}</b>${shape}</span>
-        <span><b>${specs[3]}</b>${dimensions}</span>
-        <span><b>${specs[4]}</b>${color}</span>
-        <span><b>${specs[5]}</b>${clarity}</span>
-        <span><b>${specs[6]}</b>${treatment}</span>
-        <span><b>${specs[7]}</b>${certification}</span>
-      </div>
-      <div class="card-commercial">
-        <p class="price">${formatPrice(priceUsd)}</p>
-        <p class="availability">${copy.common.status[availability] || availability}</p>
-      </div>
-      <a class="btn secondary" href="#/contact">${copy.common.enquire}</a>
+      <a class="stone-tile-link" href="${getStonePath(stone, collectionSlug)}">
+        <div class="image-wrap"><img src="${image}" alt="${name}" loading="lazy" /></div>
+        <h3>${name}</h3>
+        <div class="stone-tile-meta">
+          <span>${weight}</span>
+          <span>${formatPrice(priceUsd)}</span>
+        </div>
+      </a>
     </article>
   `;
 }
@@ -1022,8 +1079,9 @@ function getPath() {
 
 function render() {
   const path = getPath();
+  const stoneMatch = findStoneByPath(path);
   const renderer = routes[path] || renderHome;
-  document.querySelector("#main").innerHTML = renderer();
+  document.querySelector("#main").innerHTML = stoneMatch ? renderStoneDetail(stoneMatch) : renderer();
   document.querySelectorAll("[data-route]").forEach((link) => {
     link.classList.toggle("is-active", link.dataset.route === path);
   });
