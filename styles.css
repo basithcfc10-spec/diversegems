@@ -263,6 +263,19 @@ textarea {
   color: var(--navy);
 }
 
+.nav-menu-item {
+  display: contents;
+}
+
+.nav-menu-link-row {
+  display: contents;
+}
+
+.mobile-submenu-toggle,
+.mobile-submenu {
+  display: none;
+}
+
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -360,7 +373,7 @@ textarea {
   color: var(--navy);
   font-size: 12px;
   line-height: 1.35;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .mega-grid a:hover {
@@ -1658,6 +1671,73 @@ h3 {
   color: var(--navy);
 }
 
+.viewing-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.viewing-gate[hidden] {
+  display: none;
+}
+
+.viewing-gate-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(19, 36, 66, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.viewing-gate-dialog {
+  position: relative;
+  width: min(520px, 100%);
+  border: 1px solid rgba(19, 36, 66, 0.16);
+  background: var(--white);
+  padding: clamp(28px, 4vw, 44px);
+  box-shadow: 0 28px 70px rgba(19, 36, 66, 0.18);
+}
+
+.viewing-gate-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--navy);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.viewing-gate-dialog h2 {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(31px, 3.2vw, 46px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.viewing-gate-dialog p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.viewing-gate-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
 .card-commercial .availability {
   margin: 0;
 }
@@ -2009,8 +2089,69 @@ h3 {
     display: flex;
   }
 
-  .nav-links a {
+  .nav-menu-item {
+    display: block;
+  }
+
+  .nav-menu-link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-menu-link-row > a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav-links > a,
+  .nav-menu-link-row > a {
     padding: 16px 0;
+  }
+
+  .mobile-submenu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 44px;
+    min-height: 48px;
+    border: 0;
+    background: transparent;
+    color: var(--navy);
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 220ms ease;
+  }
+
+  .nav-menu-item.is-open .mobile-submenu-toggle {
+    transform: rotate(90deg);
+  }
+
+  .mobile-submenu {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 260ms ease, opacity 220ms ease;
+  }
+
+  .nav-menu-item.is-open .mobile-submenu {
+    max-height: 420px;
+    opacity: 1;
+  }
+
+  .mobile-submenu a {
+    display: block;
+    margin-left: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: none;
   }
 
   .nav-links a::after,
@@ -2331,6 +2472,28 @@ h3 {
     margin-top: 16px;
     font-size: 11px;
     justify-content: center;
+  }
+
+  .viewing-gate {
+    padding: 16px;
+  }
+
+  .viewing-gate-dialog {
+    padding: 28px 20px 22px;
+  }
+
+  .viewing-gate-dialog h2 {
+    font-size: 28px;
+  }
+
+  .viewing-gate-dialog p:not(.eyebrow) {
+    font-size: 13px;
+  }
+
+  .viewing-gate-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 22px;
   }
 
   .section-header,

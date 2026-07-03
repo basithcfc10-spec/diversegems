@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=19" />
+    <link rel="stylesheet" href="styles.css?v=21" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -83,14 +83,40 @@
       </div>
       <nav class="nav-shell" aria-label="Primary navigation">
         <div class="nav-links">
-          <a href="#/" data-route="/">Home</a>
-          <a href="#/collection" data-route="/collection" data-menu="collection">Our Collection</a>
-          <a href="#/heritage" data-route="/heritage" data-menu="heritage">Sri Lankan Heritage</a>
-          <a href="#/new-arrivals" data-route="/new-arrivals">New Arrivals</a>
-          <a href="#/custom-sourcing" data-route="/custom-sourcing">Custom Sourcing</a>
-          <a href="#/about" data-route="/about">About Us</a>
-          <a href="#/private-viewing" data-route="/private-viewing">Book a Private Viewing</a>
-          <a href="#/contact" data-route="/contact">Contact</a>
+          <a class="primary-nav-link" href="#/" data-route="/">Home</a>
+          <div class="nav-menu-item">
+            <div class="nav-menu-link-row">
+              <a class="primary-nav-link" href="#/collection" data-route="/collection" data-menu="collection">Our Collection</a>
+              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="collection" aria-expanded="false" aria-label="Open collection submenu">›</button>
+            </div>
+            <div class="mobile-submenu" data-mobile-submenu-panel="collection">
+              <a href="#/sapphires">Sapphires</a>
+              <a href="#/rubies">Rubies</a>
+              <a href="#/emeralds">Emeralds</a>
+              <a href="#/spinels">Spinels</a>
+              <a href="#/alexandrites">Alexandrites</a>
+              <a href="#/other-precious-gemstones">Other Precious Gemstones</a>
+              <a href="#/new-arrivals">New Arrivals</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <div class="nav-menu-link-row">
+              <a class="primary-nav-link" href="#/heritage" data-route="/heritage" data-menu="heritage">Sri Lankan Heritage</a>
+              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="heritage" aria-expanded="false" aria-label="Open Sri Lankan heritage submenu">›</button>
+            </div>
+            <div class="mobile-submenu" data-mobile-submenu-panel="heritage">
+              <a href="#/heritage">Sri Lankan Heritage</a>
+              <a href="#/heritage#ceylon-sapphire-story">Ceylon Sapphire Story</a>
+              <a href="#/heritage#madagascar-sourcing">Madagascar Sourcing</a>
+              <a href="#/heritage#treatment-disclosure">Treatment Disclosure</a>
+              <a href="#/private-viewing">Private Consultation</a>
+            </div>
+          </div>
+          <a class="primary-nav-link" href="#/new-arrivals" data-route="/new-arrivals">New Arrivals</a>
+          <a class="primary-nav-link" href="#/custom-sourcing" data-route="/custom-sourcing">Custom Sourcing</a>
+          <a class="primary-nav-link" href="#/about" data-route="/about">About Us</a>
+          <a class="primary-nav-link" href="#/private-viewing" data-route="/private-viewing">Book a Private Viewing</a>
+          <a class="primary-nav-link" href="#/contact" data-route="/contact">Contact</a>
           <div class="mobile-menu-tools" aria-label="Mobile language and currency controls">
             <label class="selector-label">
               <span>Country / Language</span>
@@ -189,6 +215,20 @@
       </div>
     </footer>
 
-    <script src="app.js?v=24" defer></script>
+    <div class="viewing-gate" data-viewing-gate hidden>
+      <div class="viewing-gate-backdrop" data-viewing-gate-close></div>
+      <section class="viewing-gate-dialog" role="dialog" aria-modal="true" aria-labelledby="viewingGateTitle" aria-describedby="viewingGateLead">
+        <button class="viewing-gate-close" type="button" data-viewing-gate-close aria-label="Close">×</button>
+        <p class="eyebrow" data-viewing-gate-eyebrow>Private appointment</p>
+        <h2 id="viewingGateTitle" data-viewing-gate-title>Sign in to request a private viewing.</h2>
+        <p id="viewingGateLead" data-viewing-gate-lead>Private gemstone viewings are arranged through a client account. Do you already have an account?</p>
+        <div class="viewing-gate-actions">
+          <a class="btn" href="#/login" data-viewing-gate-action>Sign In</a>
+          <a class="btn secondary" href="#/register" data-viewing-gate-action>Sign Up</a>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js?v=26" defer></script>
   </body>
 </html>

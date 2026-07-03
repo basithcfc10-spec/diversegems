@@ -870,6 +870,33 @@ const accountCopy = {
   },
 };
 
+const viewingGateCopy = {
+  en: {
+    close: "Close",
+    eyebrow: "Private appointment",
+    title: "Sign in to request a private viewing.",
+    lead: "Private gemstone viewings are arranged through a client account. Do you already have an account?",
+    signIn: "Sign In",
+    signUp: "Sign Up",
+  },
+  zh: {
+    close: "关闭",
+    eyebrow: "私人预约",
+    title: "请登录后申请私人鉴赏。",
+    lead: "私人宝石鉴赏需通过客户账户安排。您已经有账户了吗？",
+    signIn: "登录",
+    signUp: "注册",
+  },
+  th: {
+    close: "ปิด",
+    eyebrow: "นัดหมายส่วนตัว",
+    title: "กรุณาเข้าสู่ระบบเพื่อขอชมแบบส่วนตัว",
+    lead: "การชมอัญมณีแบบส่วนตัวจะจัดผ่านบัญชีลูกค้า คุณมีบัญชีอยู่แล้วหรือไม่?",
+    signIn: "เข้าสู่ระบบ",
+    signUp: "สมัครสมาชิก",
+  },
+};
+
 const routes = {
   "/": renderHome,
   "/collection": renderCollectionIndex,
@@ -1982,7 +2009,34 @@ const megaEyebrow = document.querySelector("#megaEyebrow");
 const megaTitle = document.querySelector("#megaTitle");
 const megaLinks = document.querySelector("#megaLinks");
 const megaImage = document.querySelector("#megaImage");
+const viewingGate = document.querySelector("[data-viewing-gate]");
 let announcementIndex = 0;
+
+function applyViewingGateLanguage() {
+  if (!viewingGate) return;
+  const copy = viewingGateCopy[selectedLanguage] || viewingGateCopy.en;
+  viewingGate.querySelector(".viewing-gate-close")?.setAttribute("aria-label", copy.close);
+  viewingGate.querySelector("[data-viewing-gate-eyebrow]").textContent = copy.eyebrow;
+  viewingGate.querySelector("[data-viewing-gate-title]").textContent = copy.title;
+  viewingGate.querySelector("[data-viewing-gate-lead]").textContent = copy.lead;
+  const actions = viewingGate.querySelectorAll("[data-viewing-gate-action]");
+  if (actions[0]) actions[0].textContent = copy.signIn;
+  if (actions[1]) actions[1].textContent = copy.signUp;
+}
+
+function openViewingGate() {
+  if (!viewingGate) return;
+  applyViewingGateLanguage();
+  viewingGate.hidden = false;
+  document.body.style.overflow = "hidden";
+  viewingGate.querySelector("[data-viewing-gate-action]")?.focus();
+}
+
+function closeViewingGate() {
+  if (!viewingGate) return;
+  viewingGate.hidden = true;
+  document.body.style.overflow = "";
+}
 
 function updateAnnouncement(nextIndex) {
   announcementIndex = (nextIndex + announcementItems.length) % announcementItems.length;
@@ -2000,7 +2054,7 @@ function applyLanguage() {
   const language = translations[selectedLanguage] ? selectedLanguage : "en";
   const copy = translations[language];
   document.documentElement.lang = language;
-  document.querySelectorAll(".nav-links a").forEach((link, index) => {
+  document.querySelectorAll(".primary-nav-link").forEach((link, index) => {
     if (copy.nav[index]) link.textContent = copy.nav[index];
   });
   [document.querySelector("#languageSelect"), document.querySelector("#mobileLanguageSelect")].filter(Boolean).forEach((select) => {
@@ -2029,11 +2083,17 @@ function applyLanguage() {
     collectionPanel.querySelector(".mega-grid").innerHTML = megaContent.collection.links
       .map(([, href], index) => `<a href="${href}">${copy.mega.collectionLinks[index]}</a>`)
       .join("");
+    document.querySelector("[data-mobile-submenu-panel='collection']").innerHTML = megaContent.collection.links
+      .map(([, href], index) => `<a href="${href}">${copy.mega.collectionLinks[index]}</a>`)
+      .join("");
   }
   if (heritagePanel) {
     heritagePanel.querySelector(".eyebrow").textContent = copy.mega.heritageEyebrow;
     heritagePanel.querySelector("h2").textContent = copy.mega.heritageTitle;
     heritagePanel.querySelector(".mega-grid").innerHTML = megaContent.heritage.links
+      .map(([, href], index) => `<a href="${href}">${copy.mega.heritageLinks[index]}</a>`)
+      .join("");
+    document.querySelector("[data-mobile-submenu-panel='heritage']").innerHTML = megaContent.heritage.links
       .map(([, href], index) => `<a href="${href}">${copy.mega.heritageLinks[index]}</a>`)
       .join("");
   }
@@ -2071,6 +2131,7 @@ function applyLanguage() {
   const footerBottom = document.querySelectorAll(".footer-bottom span");
   if (footerBottom[0]) footerBottom[0].textContent = copy.footer.copyright;
   if (footerBottom[1]) footerBottom[1].textContent = copy.footer.ethics;
+  applyViewingGateLanguage();
   updateAnnouncement(announcementIndex);
 }
 
@@ -2088,12 +2149,16 @@ function updateMega(type) {
 toggle.addEventListener("click", () => {
   const open = nav.classList.toggle("is-open");
   toggle.setAttribute("aria-expanded", String(open));
+  if (!open) {
+    document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
+    document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
+  }
 });
 
 document.querySelectorAll("[data-menu]").forEach((link) => {
   const openMenu = () => {
-    if (link.dataset.menu === "collection") {
-      updateMega("collection");
+    if (link.dataset.menu === "collection" || link.dataset.menu === "heritage") {
+      updateMega(link.dataset.menu);
       mega.classList.add("is-open");
       return;
     }
@@ -2103,6 +2168,42 @@ document.querySelectorAll("[data-menu]").forEach((link) => {
   link.addEventListener("mouseover", openMenu);
   link.addEventListener("mouseenter", openMenu);
   link.addEventListener("focus", openMenu);
+});
+
+document.querySelectorAll("[data-mobile-submenu]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".nav-menu-item");
+    const open = !item.classList.contains("is-open");
+    document.querySelectorAll(".nav-menu-item.is-open").forEach((openItem) => {
+      if (openItem !== item) {
+        openItem.classList.remove("is-open");
+        openItem.querySelector("[data-mobile-submenu]")?.setAttribute("aria-expanded", "false");
+      }
+    });
+    item.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", String(open));
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const privateViewingLink = event.target.closest("a[href='#/private-viewing']");
+  if (privateViewingLink) {
+    event.preventDefault();
+    nav.classList.remove("is-open");
+    mega.classList.remove("is-open");
+    document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
+    document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
+    toggle.setAttribute("aria-expanded", "false");
+    openViewingGate();
+    return;
+  }
+  if (event.target.closest("[data-viewing-gate-close]")) {
+    closeViewingGate();
+  }
+});
+
+document.querySelectorAll("[data-viewing-gate-action]").forEach((action) => {
+  action.addEventListener("click", () => closeViewingGate());
 });
 
 document.querySelector("[data-announcement-prev]").addEventListener("click", () => updateAnnouncement(announcementIndex - 1));
@@ -2132,14 +2233,19 @@ function handleLanguageChange(value) {
 header.addEventListener("mouseleave", () => mega.classList.remove("is-open"));
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    closeViewingGate();
     mega.classList.remove("is-open");
     nav.classList.remove("is-open");
+    document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
+    document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
     toggle.setAttribute("aria-expanded", "false");
   }
 });
 
 window.addEventListener("hashchange", () => {
   nav.classList.remove("is-open");
+  document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
+  document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
   toggle.setAttribute("aria-expanded", "false");
   mega.classList.remove("is-open");
   render();
