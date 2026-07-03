@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=16" />
+    <link rel="stylesheet" href="styles.css?v=19" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -71,7 +71,10 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
           </a>
           <a class="utility-link icon-only account-icon" href="#/saved" aria-label="Saved favourites">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            <svg class="gem-heart" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="gem-heart-outline" d="M12 20.5 4.7 13.4C2 10.7 2.2 6.4 5.3 4.8c2-1 4.2-.4 5.4 1.2L12 7.5l1.3-1.5c1.2-1.6 3.5-2.2 5.4-1.2 3.1 1.6 3.3 5.9.6 8.6L12 20.5Z"/>
+              <path class="gem-heart-facet" d="M6.2 6.2 9.2 12 12 20.5 14.8 12l3-5.8M4.6 13.2h14.8M9.2 12h5.6M12 7.5v13"/>
+            </svg>
           </a>
         </div>
         <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
@@ -88,6 +91,20 @@
           <a href="#/about" data-route="/about">About Us</a>
           <a href="#/private-viewing" data-route="/private-viewing">Book a Private Viewing</a>
           <a href="#/contact" data-route="/contact">Contact</a>
+          <div class="mobile-menu-tools" aria-label="Mobile language and currency controls">
+            <label class="selector-label">
+              <span>Country / Language</span>
+              <select id="mobileLanguageSelect" aria-label="Country and language">
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+                <option value="th">ไทย</option>
+              </select>
+            </label>
+            <label class="selector-label">
+              <span>Currency</span>
+              <select id="mobileCurrencySelect" aria-label="Currency"></select>
+            </label>
+          </div>
         </div>
       </nav>
       <div class="mega-panel mega-collection-panel" id="megaPanel" aria-hidden="true">
@@ -172,6 +189,6 @@
       </div>
     </footer>
 
-    <script src="app.js?v=22" defer></script>
+    <script src="app.js?v=24" defer></script>
   </body>
 </html>

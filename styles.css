@@ -80,7 +80,7 @@ textarea {
   background: var(--navy);
   color: var(--white);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
   border-bottom: 1px solid var(--navy);
 }
@@ -107,7 +107,8 @@ textarea {
   border: 0;
   background: transparent;
   color: var(--white);
-  font-size: 30px;
+  font-size: 27px;
+  font-weight: 300;
   line-height: 1;
   cursor: pointer;
 }
@@ -161,8 +162,27 @@ textarea {
   width: 24px;
   height: 24px;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 1.35;
   fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gem-heart .gem-heart-outline,
+.gem-heart .gem-heart-facet {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gem-heart .gem-heart-outline {
+  stroke-width: 1.35;
+}
+
+.gem-heart .gem-heart-facet {
+  stroke-width: 1;
+  opacity: 0.72;
 }
 
 .nav-shell {
@@ -259,6 +279,10 @@ textarea {
 .nav-links a:hover::after,
 .nav-links a.is-active::after {
   transform: scaleX(1);
+}
+
+.mobile-menu-tools {
+  display: none;
 }
 
 .menu-toggle {
@@ -855,7 +879,7 @@ h3 {
   width: 22px;
   height: 22px;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 1.35;
   fill: transparent;
   transition: fill 220ms ease, transform 220ms ease;
 }
@@ -872,8 +896,16 @@ h3 {
 }
 
 .wishlist-button.is-saved svg {
-  fill: currentColor;
   transform: scale(1.08);
+}
+
+.wishlist-button.is-saved .gem-heart-outline {
+  fill: currentColor;
+}
+
+.wishlist-button.is-saved .gem-heart-facet {
+  stroke: var(--navy);
+  opacity: 0.45;
 }
 
 .stone-detail {
@@ -2046,49 +2078,52 @@ h3 {
   .announcement-control {
     width: 38px;
     height: 40px;
-    font-size: 25px;
-  }
-
-  .nav-shell {
-    padding: 0 20px;
+    font-size: 22px;
   }
 
   .header-main {
     width: 100%;
     max-width: 100vw;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    padding: 0 14px 8px;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    grid-template-rows: auto;
+    min-height: 76px;
+    padding: 8px 12px;
     gap: 8px;
+    align-items: center;
   }
 
   .header-main .locale-tools {
-    grid-column: 1 / 3;
-    grid-row: 1;
-    max-width: 100%;
-    overflow: hidden;
+    display: none;
   }
 
   .header-main .utility-right {
     grid-column: 3 / 4;
     grid-row: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
   }
 
-  .header-main .selector-label select {
-    max-width: 82px;
-    min-width: 0;
-    font-size: 10px;
+  .header-main .icon-only {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-main .icon-only svg {
+    width: 19px;
+    height: 19px;
   }
 
   .header-main .brand {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    grid-column: 2 / 3;
+    grid-row: 1;
     justify-self: center;
     justify-content: center;
     min-width: 0;
-    gap: 10px;
+    gap: 8px;
     overflow: hidden;
-    max-width: calc(100% - 74px);
+    max-width: 100%;
+    font-size: clamp(18px, 5vw, 24px);
   }
 
   .header-main .brand span {
@@ -2097,13 +2132,67 @@ h3 {
     text-overflow: ellipsis;
   }
 
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
   .menu-toggle {
-    grid-column: 3 / 4;
-    grid-row: 2;
+    grid-column: 1 / 2;
+    grid-row: 1;
     align-self: center;
-    justify-self: end;
+    justify-self: start;
     position: relative;
     z-index: 2;
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-shell {
+    padding: 0;
+  }
+
+  .nav-links {
+    padding: 10px 18px 16px;
+  }
+
+  .mobile-menu-tools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links .mobile-menu-tools .selector-label {
+    display: grid;
+    gap: 5px;
+  }
+
+  .nav-links .mobile-menu-tools .selector-label span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    color: var(--navy);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .nav-links .mobile-menu-tools select {
+    width: 100%;
+    min-width: 0;
+    min-height: 36px;
+    padding: 0 28px 0 10px;
+    border: 1px solid var(--line);
+    background-color: var(--white);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
   }
 
   body {

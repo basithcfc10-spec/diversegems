@@ -1122,6 +1122,15 @@ function renderStars(rating = 5) {
   return `<span aria-label="${rating} out of 5 stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</span>`;
 }
 
+function gemHeartIcon() {
+  return `
+    <svg class="gem-heart" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="gem-heart-outline" d="M12 20.5 4.7 13.4C2 10.7 2.2 6.4 5.3 4.8c2-1 4.2-.4 5.4 1.2L12 7.5l1.3-1.5c1.2-1.6 3.5-2.2 5.4-1.2 3.1 1.6 3.3 5.9.6 8.6L12 20.5Z"/>
+      <path class="gem-heart-facet" d="M6.2 6.2 9.2 12 12 20.5 14.8 12l3-5.8M4.6 13.2h14.8M9.2 12h5.6M12 7.5v13"/>
+    </svg>
+  `;
+}
+
 function reviewCard(review, compact = false) {
   return `
     <article class="review-card reveal ${compact ? "is-compact" : ""}">
@@ -1316,7 +1325,7 @@ function renderStoneDetail(match) {
         <h1>${name}</h1>
         <p class="stone-detail-price">${formatPrice(priceUsd)}</p>
         <button class="wishlist-button product-wishlist ${saved ? "is-saved" : ""}" type="button" data-wishlist data-stone-id="${getStoneId(match.stone, match.collectionSlug)}" aria-pressed="${saved}" aria-label="${product.save} ${name}">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+          ${gemHeartIcon()}
         </button>
         <div class="key-spec-grid">
           ${keySpecs.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join("")}
@@ -1686,7 +1695,7 @@ function stoneTile(stone, index = 0, collectionSlug = "collection") {
   return `
     <article class="catalogue-card reveal" data-stone-card data-index="${index}" data-origin="${origin}" data-clarity="${clarity}" data-shape="${shape}" data-color="${color}" data-price="${priceUsd}" data-carat="${getCarat(weight)}">
       <button class="wishlist-button ${saved ? "is-saved" : ""}" type="button" data-wishlist data-stone-id="${getStoneId(stone, collectionSlug)}" aria-pressed="${saved}" aria-label="${copy.common.product.save} ${name}">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+        ${gemHeartIcon()}
       </button>
       <a class="stone-image-link" href="${stonePath}" aria-label="View ${name}">
         <div class="image-wrap"><img src="${image}" alt="${name}" loading="lazy" /></div>
@@ -1944,16 +1953,19 @@ function setupCollectionFilters() {
 function setupControls() {
   const currencySelect = document.querySelector("#currencySelect");
   const languageSelect = document.querySelector("#languageSelect");
-  if (currencySelect) {
-    currencySelect.innerHTML = Object.keys(currencies)
+  const mobileCurrencySelect = document.querySelector("#mobileCurrencySelect");
+  const mobileLanguageSelect = document.querySelector("#mobileLanguageSelect");
+  const currencyOptions = Object.keys(currencies)
       .map((code) => `<option value="${code}">${currencyLabels[code] || code}</option>`)
       .join("");
-    currencySelect.value = selectedCurrency;
-  }
-  if (languageSelect) {
-    languageSelect.value = selectedLanguage;
-    document.documentElement.lang = languageSelect.value;
-  }
+  [currencySelect, mobileCurrencySelect].filter(Boolean).forEach((select) => {
+    select.innerHTML = currencyOptions;
+    select.value = selectedCurrency;
+  });
+  [languageSelect, mobileLanguageSelect].filter(Boolean).forEach((select) => {
+    select.value = selectedLanguage;
+  });
+  document.documentElement.lang = selectedLanguage;
   applyLanguage();
 }
 
@@ -1964,6 +1976,8 @@ const header = document.querySelector("#siteHeader");
 const announcementLink = document.querySelector("#announcementLink");
 const currencySelect = document.querySelector("#currencySelect");
 const languageSelect = document.querySelector("#languageSelect");
+const mobileCurrencySelect = document.querySelector("#mobileCurrencySelect");
+const mobileLanguageSelect = document.querySelector("#mobileLanguageSelect");
 const megaEyebrow = document.querySelector("#megaEyebrow");
 const megaTitle = document.querySelector("#megaTitle");
 const megaLinks = document.querySelector("#megaLinks");
@@ -1989,9 +2003,14 @@ function applyLanguage() {
   document.querySelectorAll(".nav-links a").forEach((link, index) => {
     if (copy.nav[index]) link.textContent = copy.nav[index];
   });
-  const selectorLabels = document.querySelectorAll(".selector-label span");
-  if (selectorLabels[0]) selectorLabels[0].textContent = copy.languageLabel;
-  if (selectorLabels[1]) selectorLabels[1].textContent = copy.currencyLabel;
+  [document.querySelector("#languageSelect"), document.querySelector("#mobileLanguageSelect")].filter(Boolean).forEach((select) => {
+    const labelText = select.closest(".selector-label")?.querySelector("span");
+    if (labelText) labelText.textContent = copy.languageLabel;
+  });
+  [document.querySelector("#currencySelect"), document.querySelector("#mobileCurrencySelect")].filter(Boolean).forEach((select) => {
+    const labelText = select.closest(".selector-label")?.querySelector("span");
+    if (labelText) labelText.textContent = copy.currencyLabel;
+  });
   const accountLink = document.querySelector(".utility-right a[href='#/login']");
   const savedLink = document.querySelector(".utility-right a[href='#/saved']");
   if (accountLink) {
@@ -2090,16 +2109,24 @@ document.querySelector("[data-announcement-prev]").addEventListener("click", () 
 document.querySelector("[data-announcement-next]").addEventListener("click", () => updateAnnouncement(announcementIndex + 1));
 window.setInterval(() => updateAnnouncement(announcementIndex + 1), 5200);
 
-currencySelect.addEventListener("change", () => {
-  selectedCurrency = currencySelect.value;
+function handleCurrencyChange(value) {
+  selectedCurrency = value;
   localStorage.setItem("dgCurrency", selectedCurrency);
   render();
-});
+}
 
-languageSelect.addEventListener("change", () => {
-  selectedLanguage = languageSelect.value;
+function handleLanguageChange(value) {
+  selectedLanguage = value;
   localStorage.setItem("dgLanguage", selectedLanguage);
   render();
+}
+
+[currencySelect, mobileCurrencySelect].filter(Boolean).forEach((select) => {
+  select.addEventListener("change", () => handleCurrencyChange(select.value));
+});
+
+[languageSelect, mobileLanguageSelect].filter(Boolean).forEach((select) => {
+  select.addEventListener("change", () => handleLanguageChange(select.value));
 });
 
 header.addEventListener("mouseleave", () => mega.classList.remove("is-open"));
