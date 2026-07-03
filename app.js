@@ -75,7 +75,7 @@ let savedWishlist = JSON.parse(localStorage.getItem("dgWishlist") || "[]");
 
 const translations = {
   en: {
-    nav: ["Home", "Our Collection", "Sri Lankan Heritage", "New Arrivals", "Custom Sourcing", "About Us", "Book a Private Viewing", "Contact"],
+    nav: ["Home", "Our Collection", "Services", "Private Viewing", "Events & Exhibitions", "Sri Lankan Heritage", "About Us"],
     languageLabel: "Country / Language",
     currencyLabel: "Currency",
     loginLabel: "Log in",
@@ -90,8 +90,15 @@ const translations = {
       collectionTitle: "Natural stones selected for rarity, origin and quiet brilliance.",
       heritageEyebrow: "Sri Lankan Heritage",
       heritageTitle: "From Ratnapura tradition to rare stones selected with care.",
+      servicesEyebrow: "Services",
+      servicesTitle: "Private gemstone services for collectors and jewellers.",
+      privateEyebrow: "Private Viewing",
+      privateTitle: "Arrange a discreet appointment or speak with our team.",
       collectionLinks: ["Sapphires", "Rubies", "Emeralds", "Spinels", "Alexandrites", "Other Precious Gemstones", "New Arrivals"],
-      heritageLinks: ["Sri Lankan Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure", "Private Consultation"],
+      heritageLinks: ["Local Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure"],
+      servicesLinks: ["Custom Sourcing", "Customisation"],
+      privateLinks: ["Book a Private Viewing", "Contact"],
+      featured: "Featured",
     },
     home: {
       eyebrow: "Natural Sri Lankan gemstones",
@@ -116,14 +123,23 @@ const translations = {
       reviewsEyebrow: "Client words",
       reviewsTitle: "What our clients say.",
       reviewsLead: "",
+      eventsEyebrow: "Events & exhibitions",
+      eventsTitle: "Showing Sri Lankan gemstones on the world stage.",
+      eventsIntro: "Diverse Gems presents selected natural sapphires and rare coloured gemstones at leading international gem and jewellery exhibitions, connecting private collectors, jewellers and trade clients with carefully documented stones.",
+      eventsNext: "Next exhibition",
+      eventsLearnMore: "Learn More",
+      eventsViewAll: "View All Events",
+      eventsReadMore: "Read More",
     },
     pages: {
       collection: ["Our collection", "A catalogue without hurry.", "Explore natural sapphires, rubies, emeralds, spinels, alexandrites and rare collector stones, mainly from Sri Lanka with select pieces from Madagascar."],
       newArrivals: ["New Arrivals", "Recently acquired stones.", "A fresh selection of collector gemstones now available for private enquiry."],
       customSourcing: ["Custom sourcing", "Rare stones, sourced with discretion.", "For clients seeking a particular origin, colour, size, treatment profile or certification standard, Diverse Gems conducts private sourcing with a focus on Sri Lanka and selected Madagascar supply."],
+      customisation: ["Customisation", "Personal gemstone presentation and jewellery planning.", "For clients refining a shortlist into a bespoke piece or private collection direction, our team can assist with stone matching, setting considerations and presentation guidance."],
       heritage: ["Sri Lankan heritage", "An island renowned for sapphire.", "Sri Lanka remains our primary sourcing heritage, complemented by selected Madagascar gemstones where rarity, beauty and documentation meet our standard."],
       about: ["About Diverse Gems", "A private house for exceptional natural gemstones.", "Diverse Gems exports fine Sri Lankan sapphires and rare coloured stones, with select Madagascar acquisitions, to collectors, jewellers and trade clients who expect discretion, documentation and refined service."],
       privateViewing: ["Private viewing", "A discreet appointment in Sri Lanka.", "Private inspections are available only within Sri Lanka and are arranged for clients with a genuine interest in selected gemstones."],
+      events: ["Events & Exhibitions", "International showcases and private exhibition appointments.", "Explore upcoming appearances and past exhibitions where Diverse Gems has presented natural sapphires, rubies, emeralds and rare collector gemstones to clients around the world."],
       contact: ["Contact", "Begin a private enquiry.", "For collection requests, sourcing briefs or private appointments, contact the Diverse Gems concierge team."],
       login: ["Client Account", "Private access, coming soon.", "The Diverse Gems client account area will support saved stones, enquiry history and private shortlist access. For now, please contact client care for assistance."],
       saved: ["Saved Favourites", "Your private shortlist.", "Saved gemstone favourites will be available in the client account experience. Until then, use the enquire button on any stone and our team will build a private shortlist for you."],
@@ -220,6 +236,7 @@ const translations = {
     },
     sections: {
       customSteps: [["Brief", "Define the desired stone and acquisition context."], ["Search", "Review suitable stones from vetted suppliers and cutters."], ["Verification", "Confirm treatment, origin evidence and documentation."], ["Presentation", "Share a private shortlist for inspection or remote review."]],
+      customisationSteps: [["Stone matching", "Compare colour, shape, carat and certification options for a refined shortlist."], ["Jewellery planning", "Consider setting direction, proportions and long-term wearability with the selected stone."], ["Private presentation", "Prepare a collector-ready or jeweller-ready presentation with documentation notes."]],
       heritageTitle: "Heritage expressed through care.",
       heritageLead: "Our work honours Sri Lankan gemstone heritage through careful selection, transparent disclosure and a presentation style that lets each stone remain the centre of attention. Select Madagascar stones are included only when they meet the same standard.",
       heritageRules: [["Ratnapura", "The historic city of gems"], ["Ceylon sapphire", "Celebrated for luminous blue tones"], ["Craftsmanship", "Cutting decisions guided by beauty and yield"]],
@@ -231,6 +248,14 @@ const translations = {
       name: "Full name",
       email: "Email",
       phone: "Phone",
+      colour: "Preferred colour",
+      cut: "Preferred cut",
+      size: "Preferred size",
+      weight: "Preferred weight",
+      additional: "Additional details",
+      additionalPlaceholder: "Share preferred origin, certificate needs, jewellery plans or timing.",
+      colourOptions: ["Royal blue", "Cornflower blue", "Pink", "Yellow", "Green", "Teal", "Violet", "Orange", "Ruby red", "Emerald green", "Open to guidance"],
+      cutOptions: ["Cushion", "Oval", "Emerald", "Round", "Pear", "Radiant", "Asscher", "Open to guidance"],
       date: "Preferred date",
       time: "Preferred time",
       selectTime: "Select a time",
@@ -257,7 +282,7 @@ const translations = {
     },
   },
   zh: {
-    nav: ["首页", "我们的珍藏", "斯里兰卡传承", "新品", "定制寻石", "关于我们", "预约私人鉴赏", "联系"],
+    nav: ["首页", "我们的珍藏", "服务", "私人鉴赏", "展会活动", "斯里兰卡传承", "关于我们"],
     languageLabel: "国家 / 语言",
     currencyLabel: "货币",
     loginLabel: "登录",
@@ -272,8 +297,15 @@ const translations = {
       collectionTitle: "以稀有度、产地与含蓄光彩精心甄选的天然宝石。",
       heritageEyebrow: "斯里兰卡传承",
       heritageTitle: "源自拉特纳普勒传统，以细致眼光甄选稀有宝石。",
+      servicesEyebrow: "服务",
+      servicesTitle: "为收藏家与珠宝商提供私人宝石服务。",
+      privateEyebrow: "私人鉴赏",
+      privateTitle: "安排私密预约或联系我们团队。",
       collectionLinks: ["蓝宝石", "红宝石", "祖母绿", "尖晶石", "变石", "其他珍贵宝石", "新品"],
-      heritageLinks: ["斯里兰卡传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露", "私人咨询"],
+      heritageLinks: ["本地传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露"],
+      servicesLinks: ["定制寻石", "定制服务"],
+      privateLinks: ["预约私人鉴赏", "联系"],
+      featured: "精选",
     },
     home: {
       eyebrow: "斯里兰卡天然宝石",
@@ -298,14 +330,23 @@ const translations = {
       reviewsEyebrow: "客户评价",
       reviewsTitle: "客户如何评价我们。",
       reviewsLead: "精选购买客户对服务、文件与宝石品质的真实反馈。",
+      eventsEyebrow: "展会活动",
+      eventsTitle: "在国际舞台展示斯里兰卡宝石。",
+      eventsIntro: "Diverse Gems 在国际宝石与珠宝展会上展示甄选天然蓝宝石及稀有彩色宝石，让私人收藏家、珠宝商与贸易客户了解文件齐备的优质宝石。",
+      eventsNext: "下一场展会",
+      eventsLearnMore: "了解更多",
+      eventsViewAll: "查看全部活动",
+      eventsReadMore: "阅读更多",
     },
     pages: {
       collection: ["我们的珍藏", "从容浏览的目录。", "探索天然蓝宝石、红宝石、祖母绿、尖晶石、变石及稀有收藏宝石，主要源自斯里兰卡，并精选马达加斯加宝石。"],
       newArrivals: ["新品", "近期入库宝石。", "全新精选收藏级宝石，现可私人咨询。"],
       customSourcing: ["定制寻石", "以私密方式寻找稀有宝石。", "针对指定产地、颜色、尺寸、处理状态或证书标准的客户，Diverse Gems 提供以斯里兰卡与精选马达加斯加供应为重点的私人寻石服务。"],
+      customisation: ["定制服务", "私人宝石呈现与珠宝规划。", "当客户希望将候选宝石发展为定制珠宝或私人收藏方向时，我们可协助宝石搭配、镶嵌考量与呈现建议。"],
       heritage: ["斯里兰卡传承", "以蓝宝石闻名的岛屿。", "斯里兰卡是我们的主要采购传承，并辅以符合稀有度、美感与文件标准的精选马达加斯加宝石。"],
       about: ["关于 Diverse Gems", "面向卓越天然宝石的私人品牌。", "Diverse Gems 向收藏家、珠宝商与贸易客户出口高级斯里兰卡蓝宝石和稀有彩色宝石，并提供精选马达加斯加宝石。"],
       privateViewing: ["私人鉴赏", "在斯里兰卡的私密预约。", "私人鉴赏仅在斯里兰卡提供，并为对甄选宝石有真实兴趣的客户安排。"],
+      events: ["展会活动", "国际展示与私人展会预约。", "浏览 Diverse Gems 展示天然蓝宝石、红宝石、祖母绿及稀有收藏宝石的未来与过往展会。"],
       contact: ["联系", "开启私人咨询。", "如需珍藏咨询、寻石需求或私人预约，请联系 Diverse Gems 礼宾团队。"],
       login: ["客户账户", "私人访问即将推出。", "Diverse Gems 客户账户将支持收藏宝石、咨询记录与私人候选清单。当前请联系客户服务。"],
       saved: ["已收藏", "您的私人候选清单。", "已收藏宝石功能将在客户账户中提供。当前可在任意宝石页面点击咨询，我们会为您建立私人清单。"],
@@ -395,6 +436,7 @@ const translations = {
     },
     sections: {
       customSteps: [["需求", "确定理想宝石与购买背景。"], ["搜索", "从可靠供应商与切割师处筛选合适宝石。"], ["验证", "确认处理、产地证据与文件。"], ["呈现", "提供私人候选清单用于现场或远程鉴赏。"]],
+      customisationSteps: [["宝石搭配", "比较颜色、形状、克拉与证书选项，形成精致候选清单。"], ["珠宝规划", "结合所选宝石考虑镶嵌方向、比例与长期佩戴性。"], ["私人呈现", "准备适合收藏家或珠宝商使用的展示资料与文件说明。"]],
       heritageTitle: "以细致表达传承。",
       heritageLead: "我们通过严谨甄选、透明披露与克制呈现来尊重斯里兰卡宝石传统，让每颗宝石成为焦点。精选马达加斯加宝石仅在符合相同标准时纳入。",
       heritageRules: [["拉特纳普勒", "历史悠久的宝石之城"], ["锡兰蓝宝石", "以明亮蓝色调闻名"], ["工艺", "切割决策兼顾美感与保重"]],
@@ -406,6 +448,14 @@ const translations = {
       name: "姓名",
       email: "电子邮箱",
       phone: "电话",
+      colour: "偏好颜色",
+      cut: "偏好切工",
+      size: "偏好尺寸",
+      weight: "偏好重量",
+      additional: "补充说明",
+      additionalPlaceholder: "请说明偏好产地、证书需求、珠宝计划或时间安排。",
+      colourOptions: ["皇家蓝", "矢车菊蓝", "粉色", "黄色", "绿色", "蓝绿色", "紫色", "橙色", "红宝石红", "祖母绿", "接受建议"],
+      cutOptions: ["枕形", "椭圆形", "祖母绿形", "圆形", "梨形", "雷地恩形", "阿斯切形", "接受建议"],
       date: "期望日期",
       time: "期望时间",
       selectTime: "选择时间",
@@ -432,7 +482,7 @@ const translations = {
     },
   },
   th: {
-    nav: ["หน้าแรก", "คอลเลกชัน", "มรดกศรีลังกา", "สินค้าใหม่", "จัดหาเฉพาะ", "เกี่ยวกับเรา", "จองชมแบบส่วนตัว", "ติดต่อ"],
+    nav: ["หน้าแรก", "คอลเลกชัน", "บริการ", "ชมแบบส่วนตัว", "งานแสดง", "มรดกศรีลังกา", "เกี่ยวกับเรา"],
     languageLabel: "ประเทศ / ภาษา",
     currencyLabel: "สกุลเงิน",
     loginLabel: "เข้าสู่ระบบ",
@@ -447,8 +497,15 @@ const translations = {
       collectionTitle: "อัญมณีธรรมชาติที่คัดสรรจากความหายาก แหล่งกำเนิด และประกายอย่างสงบงาม",
       heritageEyebrow: "มรดกศรีลังกา",
       heritageTitle: "จากธรรมเนียมรัตนปุระสู่อัญมณีหายากที่คัดสรรด้วยความประณีต",
+      servicesEyebrow: "บริการ",
+      servicesTitle: "บริการอัญมณีแบบส่วนตัวสำหรับนักสะสมและช่างจิวเวลรี",
+      privateEyebrow: "ชมแบบส่วนตัว",
+      privateTitle: "นัดหมายอย่างเป็นส่วนตัวหรือติดต่อทีมของเรา",
       collectionLinks: ["แซฟไฟร์", "ทับทิม", "มรกต", "สปิเนล", "อเล็กซานไดรต์", "อัญมณีล้ำค่าอื่นๆ", "สินค้าใหม่"],
-      heritageLinks: ["มรดกศรีลังกา", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ", "ปรึกษาส่วนตัว"],
+      heritageLinks: ["มรดกท้องถิ่น", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ"],
+      servicesLinks: ["จัดหาเฉพาะ", "ปรับแต่งเฉพาะ"],
+      privateLinks: ["จองชมแบบส่วนตัว", "ติดต่อ"],
+      featured: "แนะนำ",
     },
     home: {
       eyebrow: "อัญมณีธรรมชาติจากศรีลังกา",
@@ -473,14 +530,23 @@ const translations = {
       reviewsEyebrow: "เสียงจากลูกค้า",
       reviewsTitle: "ลูกค้าพูดถึงเราอย่างไร",
       reviewsLead: "รีวิวคัดสรรจากลูกค้าที่ให้ความสำคัญกับบริการ เอกสาร และคุณภาพอัญมณี",
+      eventsEyebrow: "งานแสดง",
+      eventsTitle: "นำเสนออัญมณีศรีลังกาบนเวทีนานาชาติ",
+      eventsIntro: "Diverse Gems นำเสนอแซฟไฟร์ธรรมชาติและอัญมณีสีหายากในงานอัญมณีและจิวเวลรีระดับนานาชาติ เพื่อเชื่อมต่อนักสะสม ช่างจิวเวลรี และลูกค้าการค้ากับอัญมณีที่มีเอกสารครบถ้วน",
+      eventsNext: "งานถัดไป",
+      eventsLearnMore: "ดูเพิ่มเติม",
+      eventsViewAll: "ดูงานทั้งหมด",
+      eventsReadMore: "อ่านเพิ่มเติม",
     },
     pages: {
       collection: ["คอลเลกชัน", "แคตตาล็อกที่ไม่เร่งรีบ", "สำรวจแซฟไฟร์ ทับทิม มรกต สปิเนล อเล็กซานไดรต์ และอัญมณีนักสะสมหายากจากศรีลังกาเป็นหลัก พร้อมชิ้นที่คัดจากมาดากัสการ์"],
       newArrivals: ["สินค้าใหม่", "อัญมณีที่เพิ่งคัดสรรมา", "อัญมณีนักสะสมชุดใหม่พร้อมให้สอบถามแบบส่วนตัว"],
       customSourcing: ["จัดหาเฉพาะ", "อัญมณีหายากที่จัดหาอย่างเป็นส่วนตัว", "สำหรับลูกค้าที่ต้องการแหล่งกำเนิด สี ขนาด ลักษณะการปรับปรุง หรือมาตรฐานใบรับรองเฉพาะ Diverse Gems ให้บริการจัดหาแบบส่วนตัวโดยเน้นศรีลังกาและแหล่งมาดากัสการ์ที่คัดสรร"],
+      customisation: ["ปรับแต่งเฉพาะ", "การนำเสนออัญมณีและวางแผนจิวเวลรีแบบส่วนตัว", "สำหรับลูกค้าที่ต้องการพัฒนารายการคัดเลือกไปสู่ชิ้นงานเฉพาะหรือทิศทางการสะสม ทีมของเราช่วยให้คำแนะนำด้านการจับคู่ การตั้งตัวเรือน และการนำเสนอ"],
       heritage: ["มรดกศรีลังกา", "เกาะที่มีชื่อเสียงด้านแซฟไฟร์", "ศรีลังกาคือมรดกหลักด้านการจัดหาของเรา เสริมด้วยอัญมณีมาดากัสการ์ที่ผ่านมาตรฐานด้านความหายาก ความงาม และเอกสาร"],
       about: ["เกี่ยวกับ Diverse Gems", "บ้านส่วนตัวสำหรับอัญมณีธรรมชาติชั้นเลิศ", "Diverse Gems ส่งออกแซฟไฟร์ศรีลังกาชั้นดีและอัญมณีสีหายาก พร้อมชิ้นคัดจากมาดากัสการ์ ให้กับนักสะสม ช่างอัญมณี และลูกค้าการค้าที่ต้องการความเป็นส่วนตัว เอกสาร และบริการประณีต"],
       privateViewing: ["ชมแบบส่วนตัว", "นัดหมายอย่างเป็นส่วนตัวในศรีลังกา", "การชมแบบส่วนตัวมีเฉพาะในศรีลังกา และจัดให้ลูกค้าที่สนใจอัญมณีที่คัดสรรอย่างแท้จริง"],
+      events: ["งานแสดง", "การจัดแสดงระดับนานาชาติและนัดหมายส่วนตัว", "สำรวจงานแสดงที่กำลังจะมาถึงและงานที่ผ่านมา ซึ่ง Diverse Gems ได้นำเสนอแซฟไฟร์ รูบี้ มรกต และอัญมณีหายากสำหรับนักสะสม"],
       contact: ["ติดต่อ", "เริ่มการสอบถามแบบส่วนตัว", "สำหรับคำขอคอลเลกชัน รายละเอียดการจัดหา หรือการนัดหมายส่วนตัว ติดต่อทีมคอนเซียจของ Diverse Gems"],
       login: ["บัญชีลูกค้า", "การเข้าถึงส่วนตัวกำลังจะมา", "พื้นที่บัญชีลูกค้าของ Diverse Gems จะรองรับอัญมณีที่บันทึกไว้ ประวัติการสอบถาม และรายการคัดเลือกส่วนตัว ขณะนี้โปรดติดต่อฝ่ายดูแลลูกค้า"],
       saved: ["รายการที่บันทึก", "รายการคัดเลือกส่วนตัวของคุณ", "รายการอัญมณีที่บันทึกไว้จะพร้อมใช้งานในประสบการณ์บัญชีลูกค้า ระหว่างนี้ใช้ปุ่มสอบถามบนอัญมณีแต่ละเม็ด แล้วทีมของเราจะจัดทำรายการคัดเลือกส่วนตัวให้คุณ"],
@@ -570,6 +636,7 @@ const translations = {
     },
     sections: {
       customSteps: [["บรีฟ", "กำหนดอัญมณีที่ต้องการและบริบทการซื้อ"], ["ค้นหา", "คัดเลือกอัญมณีที่เหมาะจากซัพพลายเออร์และช่างเจียระไนที่ไว้ใจได้"], ["ตรวจสอบ", "ยืนยันการปรับปรุง แหล่งกำเนิด และเอกสาร"], ["นำเสนอ", "แชร์รายการคัดเลือกส่วนตัวเพื่อชมจริงหรือทางไกล"]],
+      customisationSteps: [["จับคู่อัญมณี", "เปรียบเทียบสี รูปทรง กะรัต และใบรับรองสำหรับรายการคัดเลือกที่ประณีต"], ["วางแผนจิวเวลรี", "พิจารณาทิศทางตัวเรือน สัดส่วน และความเหมาะสมระยะยาวกับอัญมณีที่เลือก"], ["นำเสนอส่วนตัว", "จัดเตรียมการนำเสนอพร้อมบันทึกเอกสารสำหรับนักสะสมหรือช่างจิวเวลรี"]],
       heritageTitle: "ถ่ายทอดมรดกผ่านความใส่ใจ",
       heritageLead: "เรายกย่องมรดกอัญมณีศรีลังกาผ่านการคัดสรรอย่างรอบคอบ การเปิดเผยอย่างโปร่งใส และการนำเสนอที่ให้ตัวอัญมณีเป็นจุดศูนย์กลาง อัญมณีมาดากัสการ์จะถูกเพิ่มเมื่อผ่านมาตรฐานเดียวกันเท่านั้น",
       heritageRules: [["รัตนปุระ", "เมืองอัญมณีเก่าแก่"], ["แซฟไฟร์ซีลอน", "โดดเด่นด้วยโทนสีน้ำเงินเปล่งประกาย"], ["งานฝีมือ", "การเจียระไนที่คำนึงถึงความงามและผลลัพธ์"]],
@@ -581,6 +648,14 @@ const translations = {
       name: "ชื่อเต็ม",
       email: "อีเมล",
       phone: "โทรศัพท์",
+      colour: "สีที่ต้องการ",
+      cut: "ทรงเจียระไนที่ต้องการ",
+      size: "ขนาดที่ต้องการ",
+      weight: "น้ำหนักที่ต้องการ",
+      additional: "รายละเอียดเพิ่มเติม",
+      additionalPlaceholder: "แจ้งแหล่งกำเนิด ใบรับรอง แผนจิวเวลรี หรือช่วงเวลาที่ต้องการ",
+      colourOptions: ["รอยัลบลู", "คอร์นฟลาวเวอร์บลู", "ชมพู", "เหลือง", "เขียว", "ทีล", "ม่วง", "ส้ม", "แดงทับทิม", "เขียวมรกต", "เปิดรับคำแนะนำ"],
+      cutOptions: ["คุชชั่น", "โอวัล", "เอเมอรัลด์", "กลม", "หยดน้ำ", "เรเดียนท์", "แอสเชอร์", "เปิดรับคำแนะนำ"],
       date: "วันที่ต้องการ",
       time: "เวลาที่ต้องการ",
       selectTime: "เลือกเวลา",
@@ -667,6 +742,10 @@ const megaContent = {
       ["Other Precious Gemstones", "#/other-precious-gemstones"],
       ["New Arrivals", "#/new-arrivals"],
     ],
+    groups: [
+      { labelKey: "collectionEyebrow", start: 0, end: 6 },
+      { labelKey: "featured", start: 6, end: 7 },
+    ],
   },
   heritage: {
     eyebrow: "Sri Lankan Heritage",
@@ -678,10 +757,128 @@ const megaContent = {
       ["Ceylon Sapphire Story", "#/sapphires"],
       ["Madagascar Sourcing", "#/custom-sourcing"],
       ["Treatment Disclosure", "#/about"],
-      ["Private Consultation", "#/private-viewing"],
     ],
+    groups: [{ labelKey: "heritageEyebrow", start: 0, end: 4 }],
+  },
+  services: {
+    eyebrow: "Services",
+    title: "Private gemstone services for collectors and jewellers.",
+    image: "assets/private-viewing.jpg",
+    alt: "Private gemstone consultation",
+    links: [
+      ["Custom Sourcing", "#/custom-sourcing"],
+      ["Customisation", "#/customisation"],
+    ],
+    groups: [{ labelKey: "servicesEyebrow", start: 0, end: 2 }],
+  },
+  private: {
+    eyebrow: "Private Viewing",
+    title: "Arrange a discreet appointment or speak with our team.",
+    image: "assets/private-viewing.jpg",
+    alt: "Private gemstone viewing salon",
+    links: [
+      ["Book a Private Viewing", "#/private-viewing"],
+      ["Contact", "#/contact"],
+    ],
+    groups: [{ labelKey: "privateEyebrow", start: 0, end: 2 }],
   },
 };
+
+const exhibitionImages = {
+  bangkok: images.collection,
+  hongKong: "assets/gem-sapphires.jpg",
+  sriLanka: "assets/private-viewing.jpg",
+  singapore: "assets/collection-gems.jpg",
+  geneva: "assets/heritage-artisan.jpg",
+};
+
+const exhibitions = [
+  {
+    slug: "bangkok-gems-2026",
+    status: "upcoming",
+    name: "Bangkok Gems & Jewelry Fair",
+    location: "Bangkok, Thailand",
+    dates: "September 9-13, 2026",
+    year: "2026",
+    booth: "Sri Lanka Pavilion, booth to be confirmed",
+    image: exhibitionImages.bangkok,
+    gallery: [exhibitionImages.bangkok, "assets/gem-sapphires.jpg", "assets/stone-teal-sapphire.jpg", images.private],
+    short: "A private presentation of Ceylon sapphires, fancy sapphires and selected collector stones for regional buyers and jewellery houses.",
+    overview: "Diverse Gems will present a focused selection of documented natural gemstones with private appointments available during the fair.",
+    detail: "The Bangkok showcase is designed for collectors, designers and trade clients seeking refined Sri Lankan sapphire supply, calibrated fancy colours and discreet sourcing support.",
+    highlights: ["Private buyer appointments", "Ceylon sapphire suite presentations", "Fancy sapphire and spinel shortlist reviews"],
+    gemstones: ["Royal blue sapphires", "Padparadscha sapphires", "Teal sapphires", "Natural spinels"],
+    achievement: "Upcoming showcase focused on relationship-led sourcing and private collection building.",
+  },
+  {
+    slug: "hong-kong-jewellery-2026",
+    status: "upcoming",
+    name: "Jewellery & Gem WORLD Hong Kong",
+    location: "Hong Kong",
+    dates: "September 17-21, 2026",
+    year: "2026",
+    booth: "By appointment",
+    image: exhibitionImages.hongKong,
+    gallery: [exhibitionImages.hongKong, "assets/stone-royal-blue-cushion-sapphire.jpg", "assets/stone-yellow-sapphire.jpg", images.collection],
+    short: "A curated appointment calendar for international clients reviewing high-value sapphires and rare coloured stones.",
+    overview: "The Hong Kong presentation centres on private collection previews, certification review and quiet trade introductions.",
+    detail: "Clients can request focused appointments for specific colour, carat, origin and documentation preferences ahead of the exhibition week.",
+    highlights: ["International private viewings", "Certification-led stone reviews", "Collector sapphire sourcing briefs"],
+    gemstones: ["Cornflower sapphires", "Royal blue sapphires", "Yellow sapphires", "Alexandrites"],
+    achievement: "Upcoming appointment-led presentation for serious international buyers.",
+  },
+  {
+    slug: "facets-sri-lanka-2025",
+    status: "past",
+    name: "FACETS Sri Lanka",
+    location: "Colombo, Sri Lanka",
+    dates: "January 4-7, 2025",
+    year: "2025",
+    booth: "Private viewing suite",
+    image: exhibitionImages.sriLanka,
+    gallery: [exhibitionImages.sriLanka, images.hero, "assets/stone-royal-blue-cushion-sapphire.jpg", "assets/stone-padparadscha-sapphire.jpg"],
+    short: "An intimate Colombo showcase of Ceylon sapphires and rare natural gemstones for local and visiting clients.",
+    overview: "Diverse Gems presented a refined Sri Lankan collection in a private consultation setting.",
+    detail: "The exhibition focused on gemstone education, treatment disclosure and careful comparison of colour, clarity and cutting across blue and fancy sapphire selections.",
+    highlights: ["Private gemstone viewings in Colombo", "Treatment and certification discussions", "Collector sapphire shortlist building"],
+    gemstones: ["Royal blue sapphire", "Cornflower sapphire", "Padparadscha sapphire", "Cat's eye chrysoberyl"],
+    achievement: "Memorable client consultations around Sri Lankan origin and long-term collector suitability.",
+  },
+  {
+    slug: "singapore-gem-preview-2024",
+    status: "past",
+    name: "Singapore Private Gem Preview",
+    location: "Singapore",
+    dates: "October 18-20, 2024",
+    year: "2024",
+    booth: "Invitation-only salon",
+    image: exhibitionImages.singapore,
+    gallery: [exhibitionImages.singapore, "assets/gem-rubies.jpg", "assets/gem-emeralds.jpg", "assets/gem-spinels.jpg"],
+    short: "A private salon event for jewellery designers, collectors and sourcing partners across Southeast Asia.",
+    overview: "The Singapore preview introduced selected coloured stones to a small group of established jewellery clients.",
+    detail: "The presentation balanced important sapphires with rubies, emeralds and spinels, allowing clients to compare colour families and discuss bespoke jewellery suitability.",
+    highlights: ["Designer-focused stone appointments", "Comparative colour presentations", "Bespoke jewellery sourcing conversations"],
+    gemstones: ["Rubies", "Emeralds", "Cobalt spinels", "Teal sapphires"],
+    achievement: "Strengthened private sourcing relationships with regional jewellery studios.",
+  },
+  {
+    slug: "geneva-collector-showcase-2023",
+    status: "past",
+    name: "Geneva Collector Showcase",
+    location: "Geneva, Switzerland",
+    dates: "May 11-13, 2023",
+    year: "2023",
+    booth: "Private appointment room",
+    image: exhibitionImages.geneva,
+    gallery: [exhibitionImages.geneva, "assets/stone-collector-cushion-alexandrite.jpg", "assets/stone-paraiba-tourmaline.jpg", "assets/gem-other-precious-gemstones.jpg"],
+    short: "A collector-focused presentation of rare stones, colour-change gems and important certified sapphires.",
+    overview: "The Geneva showcase centred on quiet, appointment-only meetings for collectors reviewing rare gemstone opportunities.",
+    detail: "Sessions explored rarity, provenance, certification and long-term collection value, with particular attention to colour-change and exceptional blue stones.",
+    highlights: ["Collector appointments", "Rare gemstone education", "Long-term acquisition planning"],
+    gemstones: ["Alexandrites", "Paraiba tourmaline", "Royal blue sapphires", "Rare chrysoberyl"],
+    achievement: "A refined archive presentation that reinforced the company's discreet international client service.",
+  },
+];
 
 const collections = {
   sapphires: {
@@ -897,11 +1094,58 @@ const viewingGateCopy = {
   },
 };
 
+const eventsUiCopy = {
+  en: {
+    upcoming: "Upcoming",
+    upcomingEyebrow: "Upcoming exhibitions",
+    upcomingTitle: "Upcoming showcases",
+    archiveEyebrow: "Archive",
+    archiveTitle: "Past exhibitions",
+    location: "Location",
+    dates: "Dates",
+    booth: "Booth",
+    overview: "Event overview",
+    notesTitle: "Exhibition notes",
+    highlights: "Highlights",
+    gemstones: "Notable gemstones",
+  },
+  zh: {
+    upcoming: "即将举行",
+    upcomingEyebrow: "即将举行的展会",
+    upcomingTitle: "未来展示",
+    archiveEyebrow: "档案",
+    archiveTitle: "过往展会",
+    location: "地点",
+    dates: "日期",
+    booth: "展位",
+    overview: "活动概览",
+    notesTitle: "展会记录",
+    highlights: "亮点",
+    gemstones: "重点宝石",
+  },
+  th: {
+    upcoming: "กำลังจะมาถึง",
+    upcomingEyebrow: "งานแสดงที่กำลังจะมาถึง",
+    upcomingTitle: "งานแสดงถัดไป",
+    archiveEyebrow: "คลังงาน",
+    archiveTitle: "งานแสดงที่ผ่านมา",
+    location: "สถานที่",
+    dates: "วันที่",
+    booth: "บูธ",
+    overview: "ภาพรวมงาน",
+    notesTitle: "บันทึกงานแสดง",
+    highlights: "ไฮไลต์",
+    gemstones: "อัญมณีเด่น",
+  },
+};
+
 const routes = {
   "/": renderHome,
   "/collection": renderCollectionIndex,
   "/new-arrivals": renderNewArrivals,
+  "/events-exhibitions": renderEventsPage,
   "/custom-sourcing": renderCustomSourcing,
+  "/customisation": renderCustomisation,
   "/heritage": renderHeritage,
   "/about": renderAbout,
   "/private-viewing": renderPrivateViewing,
@@ -917,6 +1161,10 @@ Object.keys(collections).forEach((slug) => {
 
 function getCopy() {
   return translations[selectedLanguage] || translations.en;
+}
+
+function getEventsCopy() {
+  return eventsUiCopy[selectedLanguage] || eventsUiCopy.en;
 }
 
 function pageShell({ eyebrow, title, lead }) {
@@ -973,16 +1221,24 @@ function findStoneByPath(path) {
   };
 }
 
+function findExhibitionByPath(path) {
+  const [, eventSlug] = path.match(/^\/events-exhibitions\/([^/]+)$/) || [];
+  if (!eventSlug) return null;
+  return exhibitions.find((event) => event.slug === eventSlug) || null;
+}
+
 function getPageLabel(path) {
   const copy = getCopy();
   const labels = {
     "/collection": copy.nav[1],
-    "/new-arrivals": copy.nav[3],
-    "/custom-sourcing": copy.nav[4],
-    "/heritage": copy.nav[2],
-    "/about": copy.nav[5],
-    "/private-viewing": copy.nav[6],
-    "/contact": copy.nav[7],
+    "/new-arrivals": copy.pages.newArrivals[0],
+    "/events-exhibitions": copy.nav[4],
+    "/custom-sourcing": copy.pages.customSourcing[0],
+    "/customisation": copy.pages.customisation[0],
+    "/heritage": copy.nav[5],
+    "/about": copy.nav[6],
+    "/private-viewing": copy.nav[3],
+    "/contact": copy.pages.contact[0],
     "/login": copy.loginLabel,
     "/register": (accountCopy[selectedLanguage] || accountCopy.en).registerButton,
     "/saved": copy.savedLabel,
@@ -992,7 +1248,7 @@ function getPageLabel(path) {
   return getCopy().collectionTitles[slug]?.[0] || collections[slug]?.title || "Diverse Gems";
 }
 
-function renderBreadcrumb(path, stoneMatch = null) {
+function renderBreadcrumb(path, stoneMatch = null, eventMatch = null) {
   if (path === "/") return "";
   const items = [{ label: getCopy().nav[0], href: "#/" }];
   if (stoneMatch) {
@@ -1001,6 +1257,9 @@ function renderBreadcrumb(path, stoneMatch = null) {
     items.push({ label: collectionTitle, href: `#/${stoneMatch.collectionSlug}` });
     items.push({ label: stoneMatch.stone[5], href: `#/${stoneMatch.collectionSlug}` });
     items.push({ label: stoneMatch.stone[0] });
+  } else if (eventMatch) {
+    items.push({ label: getCopy().nav[4], href: "#/events-exhibitions" });
+    items.push({ label: eventMatch.name });
   } else if (collections[path.slice(1)]) {
     items.push({ label: getCopy().nav[1], href: "#/collection" });
     items.push({ label: getPageLabel(path) });
@@ -1241,6 +1500,8 @@ function renderHome() {
       </div>
     </section>
 
+    ${renderHomeEventsPreview()}
+
     <section class="section client-reviews-section home-final-reviews">
       <div class="section-header reveal">
         <div>
@@ -1251,6 +1512,165 @@ function renderHome() {
       </div>
       <div class="review-grid">
         ${featuredReviews.slice(0, 5).map((review) => reviewCard(review, true)).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function eventPath(event) {
+  return `#/events-exhibitions/${event.slug}`;
+}
+
+function renderHomeEventsPreview() {
+  const home = getCopy().home;
+  const eventText = getEventsCopy();
+  const sliderEvents = exhibitions.filter((event) => event.status === "past").slice(0, 4);
+  const nextEvent = exhibitions.find((event) => event.status === "upcoming") || exhibitions[0];
+  return `
+    <section class="section events-preview-section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${home.eventsEyebrow}</p>
+          <h2>${home.eventsTitle}</h2>
+        </div>
+      </div>
+      <div class="events-preview-grid">
+        <div class="event-slider reveal" data-event-slider>
+          ${sliderEvents
+            .map(
+              (event, index) => `
+                <article class="event-slide ${index === 0 ? "is-active" : ""}" data-event-slide>
+                  <img src="${event.image}" alt="${event.name}" loading="${index === 0 ? "eager" : "lazy"}" />
+                  <div class="event-slide-content">
+                    <p class="eyebrow">${event.location} · ${event.year}</p>
+                    <h3>${event.name}</h3>
+                    <a class="btn secondary home-invert" href="${eventPath(event)}">${home.eventsReadMore}</a>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+          <div class="event-slider-dots" aria-label="${home.eventsTitle}">
+            ${sliderEvents
+              .map((event, index) => `<button class="${index === 0 ? "is-active" : ""}" type="button" data-event-dot="${index}" aria-label="${event.name}"></button>`)
+              .join("")}
+          </div>
+        </div>
+        <div class="events-preview-copy reveal">
+          <p>${home.eventsIntro}</p>
+          <article class="next-event-card">
+            <p class="eyebrow">${home.eventsNext}</p>
+            <h3>${nextEvent.name}</h3>
+            <dl class="event-facts">
+              <div><dt>${eventText.location}</dt><dd>${nextEvent.location}</dd></div>
+              <div><dt>${eventText.dates}</dt><dd>${nextEvent.dates}</dd></div>
+              <div><dt>${eventText.booth}</dt><dd>${nextEvent.booth}</dd></div>
+            </dl>
+            <p>${nextEvent.short}</p>
+            <div class="button-row">
+              <a class="btn" href="${eventPath(nextEvent)}">${home.eventsLearnMore}</a>
+              <a class="btn secondary" href="#/events-exhibitions">${home.eventsViewAll}</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderEventCard(event) {
+  const home = getCopy().home;
+  const eventText = getEventsCopy();
+  return `
+    <article class="event-card reveal">
+      <a class="event-card-image" href="${eventPath(event)}">
+        <img src="${event.image}" alt="${event.name}" loading="lazy" />
+      </a>
+      <div class="event-card-body">
+        <p class="eyebrow">${event.status === "upcoming" ? eventText.upcoming : event.year}</p>
+        <h3><a href="${eventPath(event)}">${event.name}</a></h3>
+        <dl class="event-facts">
+          <div><dt>${eventText.dates}</dt><dd>${event.dates}</dd></div>
+          <div><dt>${eventText.location}</dt><dd>${event.location}</dd></div>
+          <div><dt>${eventText.booth}</dt><dd>${event.booth}</dd></div>
+        </dl>
+        <p>${event.short}</p>
+        <a class="btn secondary" href="${eventPath(event)}">${home.eventsLearnMore}</a>
+      </div>
+    </article>
+  `;
+}
+
+function renderEventsPage() {
+  const copy = getCopy();
+  const eventText = getEventsCopy();
+  const [eyebrow, title, lead] = copy.pages.events;
+  const upcoming = exhibitions.filter((event) => event.status === "upcoming");
+  const past = exhibitions.filter((event) => event.status === "past");
+  return `
+    ${pageShell({ eyebrow, title, lead })}
+    <section class="section events-page-section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${eventText.upcomingEyebrow}</p>
+          <h2>${eventText.upcomingTitle}</h2>
+        </div>
+      </div>
+      <div class="event-card-grid">
+        ${upcoming.map(renderEventCard).join("")}
+      </div>
+    </section>
+    <section class="section events-page-section">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">${eventText.archiveEyebrow}</p>
+          <h2>${eventText.archiveTitle}</h2>
+        </div>
+      </div>
+      <div class="event-card-grid">
+        ${past.map(renderEventCard).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderExhibitionDetail(event) {
+  const eventText = getEventsCopy();
+  return `
+    <section class="event-detail-hero">
+      <div class="event-detail-copy reveal">
+        <p class="eyebrow">${event.location} · ${event.year}</p>
+        <h1>${event.name}</h1>
+        <p class="lead">${event.overview}</p>
+        <dl class="event-facts">
+          <div><dt>${eventText.dates}</dt><dd>${event.dates}</dd></div>
+          <div><dt>${eventText.location}</dt><dd>${event.location}</dd></div>
+          <div><dt>${eventText.booth}</dt><dd>${event.booth}</dd></div>
+        </dl>
+      </div>
+      <div class="event-detail-media reveal">
+        <img src="${event.image}" alt="${event.name}" loading="eager" />
+      </div>
+    </section>
+    <section class="section event-detail-section">
+      <div class="event-detail-gallery reveal">
+        ${event.gallery.map((src, index) => `<img src="${src}" alt="${event.name} gallery image ${index + 1}" loading="lazy" />`).join("")}
+      </div>
+      <div class="event-detail-grid">
+        <article class="text-stack reveal">
+          <p class="eyebrow">${eventText.overview}</p>
+          <h2>${eventText.notesTitle}</h2>
+          <p>${event.detail}</p>
+          <p>${event.achievement}</p>
+        </article>
+        <article class="event-list-block reveal">
+          <h3>${eventText.highlights}</h3>
+          <ul>${event.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </article>
+        <article class="event-list-block reveal">
+          <h3>${eventText.gemstones}</h3>
+          <ul>${event.gemstones.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </article>
       </div>
     </section>
   `;
@@ -1481,6 +1901,41 @@ function renderNewArrivals() {
   `;
 }
 
+function getAllStoneCards() {
+  return Object.entries(collections).flatMap(([slug, collection]) =>
+    collection.stones.map((stone, index) => ({
+      slug,
+      collection,
+      stone,
+      index,
+      image: getStoneImage(stone, slug),
+      path: getStonePath(stone, slug),
+    }))
+  );
+}
+
+function getPopularStoneCards() {
+  const preferred = ["Royal Blue Sapphire", "Padparadscha Sapphire", "Pigeon Blood Ruby", "Madagascar Emerald", "Teal Sapphire", "Collector Alexandrite"];
+  const allCards = getAllStoneCards();
+  return preferred
+    .map((name) => allCards.find((item) => item.stone[0] === name))
+    .filter(Boolean);
+}
+
+function renderSearchProduct(item) {
+  const href = item.href || item.path;
+  const label = item.label || item.stone?.[0] || "";
+  const image = item.image;
+  const price = item.price || (item.stone ? formatPrice(item.stone[9]) : "");
+  return `
+    <a class="search-product" href="${href}">
+      <img src="${image}" alt="${label}" loading="lazy" />
+      ${price ? `<span>${price}</span>` : ""}
+      <strong>${label}</strong>
+    </a>
+  `;
+}
+
 function renderCustomSourcing() {
   const copy = getCopy();
   const [eyebrow, title, lead] = copy.pages.customSourcing;
@@ -1499,6 +1954,41 @@ function renderCustomSourcing() {
             <p>${text}</p>
           </article>
         `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderCustomisation() {
+  const copy = getCopy();
+  const [eyebrow, title, lead] = copy.pages.customisation;
+  const form = copy.form;
+  return `
+    ${pageShell({ eyebrow, title, lead })}
+    <section class="section compact">
+      <div class="customisation-form-shell reveal">
+        <form class="form customisation-form" id="bookingForm">
+          <div class="field"><label for="customName">${form.name}</label><input id="customName" required autocomplete="name" /></div>
+          <div class="field"><label for="customEmail">${form.email}</label><input id="customEmail" type="email" required autocomplete="email" /></div>
+          <div class="field"><label for="customPhone">${form.phone}</label><input id="customPhone" autocomplete="tel" /></div>
+          <div class="field">
+            <label for="customColour">${form.colour}</label>
+            <select id="customColour">
+              ${form.colourOptions.map((option) => `<option>${option}</option>`).join("")}
+            </select>
+          </div>
+          <div class="field">
+            <label for="customCut">${form.cut}</label>
+            <select id="customCut">
+              ${form.cutOptions.map((option) => `<option>${option}</option>`).join("")}
+            </select>
+          </div>
+          <div class="field"><label for="customSize">${form.size}</label><input id="customSize" /></div>
+          <div class="field"><label for="customWeight">${form.weight}</label><input id="customWeight" /></div>
+          <div class="field full"><label for="customDetails">${form.additional}</label><textarea id="customDetails" placeholder="${form.additionalPlaceholder}"></textarea></div>
+          <button class="btn" type="submit">${form.submit}</button>
+        </form>
+        <p class="confirmation" id="confirmation">${form.confirmation}</p>
       </div>
     </section>
   `;
@@ -1747,11 +2237,20 @@ function getPath() {
 function render() {
   const path = getPath();
   const stoneMatch = findStoneByPath(path);
+  const eventMatch = findExhibitionByPath(path);
   const renderer = routes[path] || renderHome;
-  const pageContent = stoneMatch ? renderStoneDetail(stoneMatch) : renderer();
-  document.querySelector("#main").innerHTML = `${renderBreadcrumb(path, stoneMatch)}${pageContent}`;
+  rememberViewedStone(stoneMatch);
+  const pageContent = stoneMatch ? renderStoneDetail(stoneMatch) : eventMatch ? renderExhibitionDetail(eventMatch) : renderer();
+  document.querySelector("#main").innerHTML = `${renderBreadcrumb(path, stoneMatch, eventMatch)}${pageContent}`;
   document.querySelectorAll("[data-route]").forEach((link) => {
-    link.classList.toggle("is-active", link.dataset.route === path);
+    const route = link.dataset.route;
+    const active =
+      route === path ||
+      (route === "/collection" && ["/new-arrivals"].includes(path)) ||
+      (route === "/events-exhibitions" && path.startsWith("/events-exhibitions/")) ||
+      (route === "/custom-sourcing" && ["/custom-sourcing", "/customisation"].includes(path)) ||
+      (route === "/private-viewing" && ["/private-viewing", "/contact"].includes(path));
+    link.classList.toggle("is-active", active);
   });
   document.title = path === "/" ? "Diverse Gems | Fine Sri Lankan Gemstones" : `Diverse Gems | ${path.slice(1).replaceAll("-", " ")}`;
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -1764,7 +2263,10 @@ function render() {
   setupWishlist();
   setupProductGallery();
   setupProductTabs();
+  setupEventSlider();
   setupControls();
+  updateHeaderHeight();
+  handleHeaderScroll();
 }
 
 function setupReveals() {
@@ -1802,6 +2304,27 @@ function setupNewsletter() {
       form.parentElement?.querySelector("[data-newsletter-confirmation]")?.removeAttribute("hidden");
       form.reset();
     });
+  });
+}
+
+function setupEventSlider() {
+  eventSliderTimers.forEach((timer) => window.clearInterval(timer));
+  eventSliderTimers = [];
+  document.querySelectorAll("[data-event-slider]").forEach((slider) => {
+    const slides = [...slider.querySelectorAll("[data-event-slide]")];
+    const dots = [...slider.querySelectorAll("[data-event-dot]")];
+    if (slides.length <= 1) return;
+    let activeIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
+    if (activeIndex < 0) activeIndex = 0;
+    const setActive = (nextIndex) => {
+      activeIndex = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, index) => slide.classList.toggle("is-active", index === activeIndex));
+      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === activeIndex));
+    };
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => setActive(Number(dot.dataset.eventDot)));
+    });
+    eventSliderTimers.push(window.setInterval(() => setActive(activeIndex + 1), 5200));
   });
 }
 
@@ -1998,19 +2521,66 @@ function setupControls() {
 
 const nav = document.querySelector(".nav-links");
 const toggle = document.querySelector(".menu-toggle");
-const mega = document.querySelector("#megaPanel");
+const megaPanels = [...document.querySelectorAll("[data-mega-panel]")];
 const header = document.querySelector("#siteHeader");
 const announcementLink = document.querySelector("#announcementLink");
 const currencySelect = document.querySelector("#currencySelect");
 const languageSelect = document.querySelector("#languageSelect");
 const mobileCurrencySelect = document.querySelector("#mobileCurrencySelect");
 const mobileLanguageSelect = document.querySelector("#mobileLanguageSelect");
-const megaEyebrow = document.querySelector("#megaEyebrow");
-const megaTitle = document.querySelector("#megaTitle");
-const megaLinks = document.querySelector("#megaLinks");
-const megaImage = document.querySelector("#megaImage");
 const viewingGate = document.querySelector("[data-viewing-gate]");
+const searchOverlay = document.querySelector("[data-search-overlay]");
+const searchInput = document.querySelector("[data-search-input]");
 let announcementIndex = 0;
+let lastScrollY = window.scrollY;
+let headerScrollTicking = false;
+let headerAutoHideArmed = false;
+let eventSliderTimers = [];
+
+function updateHeaderHeight() {
+  if (!header) return;
+  if (nav?.classList.contains("is-open")) return;
+  document.documentElement.style.setProperty("--site-header-height", `${header.offsetHeight}px`);
+}
+
+function showHeader() {
+  header?.classList.remove("is-hidden");
+}
+
+function handleHeaderScroll() {
+  if (!header) return;
+  const currentY = Math.max(window.scrollY, 0);
+  const menuOpen =
+    nav.classList.contains("is-open") ||
+    megaPanels.some((panel) => panel.classList.contains("is-open")) ||
+    !viewingGate?.hidden ||
+    !searchOverlay?.hidden;
+  header.classList.toggle("is-at-top", currentY <= 8);
+  if (!headerAutoHideArmed || menuOpen || currentY <= 8) {
+    showHeader();
+    lastScrollY = currentY;
+    return;
+  }
+  if (currentY > lastScrollY + 8) {
+    header.classList.add("is-hidden");
+  } else if (currentY < lastScrollY - 8) {
+    showHeader();
+  }
+  lastScrollY = currentY;
+}
+
+function armHeaderAutoHide() {
+  headerAutoHideArmed = true;
+}
+
+function requestHeaderScrollUpdate() {
+  if (headerScrollTicking) return;
+  headerScrollTicking = true;
+  window.requestAnimationFrame(() => {
+    handleHeaderScroll();
+    headerScrollTicking = false;
+  });
+}
 
 function applyViewingGateLanguage() {
   if (!viewingGate) return;
@@ -2027,6 +2597,7 @@ function applyViewingGateLanguage() {
 function openViewingGate() {
   if (!viewingGate) return;
   applyViewingGateLanguage();
+  showHeader();
   viewingGate.hidden = false;
   document.body.style.overflow = "hidden";
   viewingGate.querySelector("[data-viewing-gate-action]")?.focus();
@@ -2048,6 +2619,264 @@ function updateAnnouncement(nextIndex) {
     announcementLink.textContent = translations[language].announcements[announcementIndex];
     announcementLink.href = item.href;
   });
+}
+
+function closeSearch() {
+  if (!searchOverlay) return;
+  searchOverlay.hidden = true;
+  activeSearchIndex = -1;
+}
+
+const searchStorageKeys = {
+  history: "dgRecentSearches",
+  viewed: "dgRecentlyViewed",
+  stats: "dgSearchStats",
+};
+
+let activeSearchIndex = -1;
+
+function readStoredJson(key, fallback) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key) || "");
+    return value || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeStoredJson(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Browser storage can be unavailable in private contexts; search still works without it.
+  }
+}
+
+function uniqueByHref(items) {
+  const seen = new Set();
+  return items.filter((item) => {
+    if (!item?.href || seen.has(item.href)) return false;
+    seen.add(item.href);
+    return true;
+  });
+}
+
+function saveRecentSearch(query) {
+  const term = query.trim();
+  if (!term) return;
+  const existing = readStoredJson(searchStorageKeys.history, []);
+  const next = [term, ...existing.filter((item) => item.toLowerCase() !== term.toLowerCase())].slice(0, 6);
+  writeStoredJson(searchStorageKeys.history, next);
+}
+
+function incrementSearchStat(label) {
+  if (!label) return;
+  const stats = readStoredJson(searchStorageKeys.stats, {});
+  stats[label] = (stats[label] || 0) + 1;
+  writeStoredJson(searchStorageKeys.stats, stats);
+}
+
+function rememberViewedStone(stoneMatch) {
+  if (!stoneMatch) return;
+  const item = {
+    href: getStonePath(stoneMatch.stone, stoneMatch.collectionSlug),
+    label: stoneMatch.stone[0],
+    image: getStoneImage(stoneMatch.stone, stoneMatch.collectionSlug),
+    price: formatPrice(stoneMatch.stone[9]),
+  };
+  const existing = readStoredJson(searchStorageKeys.viewed, []);
+  writeStoredJson(searchStorageKeys.viewed, uniqueByHref([item, ...existing]).slice(0, 4));
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#039;",
+  })[char]);
+}
+
+function highlightMatch(label, query) {
+  const escaped = escapeHtml(label);
+  const term = query.trim();
+  if (!term) return escaped;
+  const pattern = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return escaped.replace(new RegExp(`(${pattern})`, "ig"), "<mark>$1</mark>");
+}
+
+function getSearchIndex() {
+  const copy = getCopy();
+  const stones = getAllStoneCards().map((item) => ({
+    label: item.stone[0],
+    href: item.path,
+    type: "Gemstone",
+    image: item.image,
+    price: formatPrice(item.stone[9]),
+    keywords: [item.stone[0], item.stone[1], item.stone[2], item.stone[3], item.stone[5], item.stone[6], item.stone[7], item.collection.title].join(" "),
+  }));
+  const collectionItems = Object.entries(collections).map(([slug, collection]) => ({
+    label: collection.title,
+    href: `#/${slug}`,
+    type: "Collection",
+    keywords: `${collection.title} gemstones ${collection.lead}`,
+  }));
+  const pageItems = [
+    [copy.nav[0], "#/", "Page", "home diverse gems"],
+    [copy.nav[1], "#/collection", "Collection", "collection gemstones sapphires rubies emeralds"],
+    [copy.pages.newArrivals[0], "#/new-arrivals", "Collection", "new arrivals recently acquired stones"],
+    [copy.nav[5], "#/heritage", "Page", "sri lankan heritage ratnapura ceylon sapphire story"],
+    [copy.nav[4], "#/events-exhibitions", "Page", "events exhibitions gemstone shows"],
+    [copy.pages.customSourcing[0], "#/custom-sourcing", "Service", "custom sourcing gemstone search"],
+    [copy.pages.customisation[0], "#/customisation", "Service", "customisation color cut size weight"],
+    [copy.nav[3], "#/private-viewing", "Service", "book private viewing appointment"],
+    ["Contact", "#/contact", "Page", "contact email phone"],
+    ["Log in", "#/login", "Account", "login sign in account"],
+    ["Register", "#/register", "Account", "create account sign up register"],
+  ].map(([label, href, type, keywords]) => ({ label, href, type, keywords }));
+  return [...stones, ...collectionItems, ...pageItems];
+}
+
+function scoreSearchItem(item, term) {
+  const label = item.label.toLowerCase();
+  const keywords = item.keywords.toLowerCase();
+  if (label === term) return 100;
+  if (label.startsWith(term)) return 80;
+  if (label.includes(term)) return 60;
+  if (keywords.includes(term)) return 35;
+  return 0;
+}
+
+function getPopularSearchItems() {
+  const stats = readStoredJson(searchStorageKeys.stats, {});
+  const seeded = ["Royal Blue Sapphire", "Padparadscha Sapphire", "Emerald", "Private Viewing", "New Arrivals", "Custom Sourcing"];
+  const labels = Object.keys(stats).sort((a, b) => stats[b] - stats[a]);
+  const combined = [...labels, ...seeded].filter((label, index, list) => list.findIndex((item) => item.toLowerCase() === label.toLowerCase()) === index);
+  const index = getSearchIndex();
+  return combined.slice(0, 6).map((label) => {
+    const match = index.find((item) => item.label.toLowerCase().includes(label.toLowerCase()) || label.toLowerCase().includes(item.label.toLowerCase()));
+    return match || { label, href: "#/collection", type: "Popular Search", keywords: label };
+  });
+}
+
+function renderSearchLinkItem(item, query = "") {
+  return `<a href="${item.href}" data-search-label="${escapeHtml(item.label)}">${highlightMatch(item.label, query)}</a>`;
+}
+
+function renderSearchSuggestion(item, query, index) {
+  return `
+    <a class="search-suggestion" href="${item.href}" data-search-result data-search-index="${index}" data-search-label="${escapeHtml(item.label)}">
+      <strong>${highlightMatch(item.label, query)}</strong>
+      <span>${escapeHtml(item.type)}</span>
+    </a>
+  `;
+}
+
+function renderDefaultSearchView() {
+  if (!searchOverlay) return;
+  const history = readStoredJson(searchStorageKeys.history, []);
+  const viewed = readStoredJson(searchStorageKeys.viewed, []);
+  const popular = getPopularSearchItems();
+  const historyContainer = searchOverlay.querySelector("[data-search-history]");
+  const viewedContainer = searchOverlay.querySelector("[data-search-recent]");
+  const popularContainer = searchOverlay.querySelector("[data-search-popular]");
+  const index = getSearchIndex();
+  const historyItems = history.map((label) => {
+    const term = label.toLowerCase();
+    const match = index
+      .map((item) => ({ ...item, score: scoreSearchItem(item, term) }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score)[0];
+    return { label, href: match?.href || "#/collection" };
+  });
+  historyContainer.closest("section").hidden = history.length === 0;
+  viewedContainer.closest("section").hidden = viewed.length === 0;
+  popularContainer.closest("section").hidden = false;
+  historyContainer.innerHTML = historyItems.map((item) => renderSearchLinkItem(item)).join("");
+  viewedContainer.innerHTML = viewed.map(renderSearchProduct).join("");
+  popularContainer.innerHTML = popular.map((item) => renderSearchLinkItem(item)).join("");
+}
+
+function openSearch() {
+  if (!searchOverlay) return;
+  closeMegaPanels();
+  showHeader();
+  if (searchInput) searchInput.value = "";
+  renderDefaultSearchView();
+  updateSearchResults("");
+  searchOverlay.hidden = false;
+  window.requestAnimationFrame(() => searchInput?.focus());
+}
+
+function updateSearchResults(query) {
+  if (!searchOverlay) return;
+  const term = query.trim().toLowerCase();
+  const defaultView = searchOverlay.querySelector("[data-search-default]");
+  const liveView = searchOverlay.querySelector("[data-search-live]");
+  const results = searchOverlay.querySelector("[data-search-results]");
+  const empty = searchOverlay.querySelector("[data-search-empty]");
+  activeSearchIndex = -1;
+  if (!term) {
+    renderDefaultSearchView();
+    defaultView.hidden = false;
+    liveView.hidden = true;
+    return;
+  }
+  const matches = getSearchIndex()
+    .map((item) => ({ ...item, score: scoreSearchItem(item, term) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label))
+    .slice(0, 9);
+  defaultView.hidden = true;
+  liveView.hidden = false;
+  results.innerHTML = matches.map((item, index) => renderSearchSuggestion(item, query, index)).join("");
+  empty.hidden = matches.length > 0;
+}
+
+function getMegaLabels(type, copy = getCopy()) {
+  if (type === "heritage") return copy.mega.heritageLinks;
+  if (type === "services") return copy.mega.servicesLinks;
+  if (type === "private") return copy.mega.privateLinks;
+  return copy.mega.collectionLinks;
+}
+
+function renderMegaLinks(type, copy = getCopy()) {
+  const content = megaContent[type] || megaContent.collection;
+  const labels = getMegaLabels(type, copy);
+  const groups = content.groups || [{ labelKey: `${type}Eyebrow`, start: 0, end: content.links.length }];
+  return groups
+    .map((group) => {
+      const heading = copy.mega[group.labelKey] || group.labelKey;
+      const links = content.links
+        .slice(group.start, group.end)
+        .map(([, href], offset) => {
+          const index = group.start + offset;
+          return `<a href="${href}">${labels[index]}</a>`;
+        })
+        .join("");
+      return `<div class="mega-link-group"><span class="mega-group-title">${heading}</span>${links}</div>`;
+    })
+    .join("");
+}
+
+function renderMobileSubmenu(type, copy = getCopy()) {
+  const content = megaContent[type] || megaContent.collection;
+  const labels = getMegaLabels(type, copy);
+  const groups = content.groups || [{ labelKey: `${type}Eyebrow`, start: 0, end: content.links.length }];
+  return groups
+    .map((group) => {
+      const heading = copy.mega[group.labelKey] || group.labelKey;
+      const links = content.links
+        .slice(group.start, group.end)
+        .map(([, href], offset) => {
+          const index = group.start + offset;
+          return `<a href="${href}">${labels[index]}</a>`;
+        })
+        .join("");
+      return `<div class="mobile-submenu-group"><span>${heading}</span>${links}</div>`;
+    })
+    .join("");
 }
 
 function applyLanguage() {
@@ -2080,29 +2909,35 @@ function applyLanguage() {
   if (collectionPanel) {
     collectionPanel.querySelector(".eyebrow").textContent = copy.mega.collectionEyebrow;
     collectionPanel.querySelector("h2").textContent = copy.mega.collectionTitle;
-    collectionPanel.querySelector(".mega-grid").innerHTML = megaContent.collection.links
-      .map(([, href], index) => `<a href="${href}">${copy.mega.collectionLinks[index]}</a>`)
-      .join("");
-    document.querySelector("[data-mobile-submenu-panel='collection']").innerHTML = megaContent.collection.links
-      .map(([, href], index) => `<a href="${href}">${copy.mega.collectionLinks[index]}</a>`)
-      .join("");
+    collectionPanel.querySelector(".mega-grid").innerHTML = renderMegaLinks("collection", copy);
+    document.querySelector("[data-mobile-submenu-panel='collection']").innerHTML = renderMobileSubmenu("collection", copy);
   }
   if (heritagePanel) {
     heritagePanel.querySelector(".eyebrow").textContent = copy.mega.heritageEyebrow;
     heritagePanel.querySelector("h2").textContent = copy.mega.heritageTitle;
-    heritagePanel.querySelector(".mega-grid").innerHTML = megaContent.heritage.links
-      .map(([, href], index) => `<a href="${href}">${copy.mega.heritageLinks[index]}</a>`)
-      .join("");
-    document.querySelector("[data-mobile-submenu-panel='heritage']").innerHTML = megaContent.heritage.links
-      .map(([, href], index) => `<a href="${href}">${copy.mega.heritageLinks[index]}</a>`)
-      .join("");
+    heritagePanel.querySelector(".mega-grid").innerHTML = renderMegaLinks("heritage", copy);
+    document.querySelector("[data-mobile-submenu-panel='heritage']").innerHTML = renderMobileSubmenu("heritage", copy);
+  }
+  const servicesPanel = document.querySelector(".mega-services-panel");
+  if (servicesPanel) {
+    servicesPanel.querySelector(".eyebrow").textContent = copy.mega.servicesEyebrow;
+    servicesPanel.querySelector("h2").textContent = copy.mega.servicesTitle;
+    servicesPanel.querySelector(".mega-grid").innerHTML = renderMegaLinks("services", copy);
+    document.querySelector("[data-mobile-submenu-panel='services']").innerHTML = renderMobileSubmenu("services", copy);
+  }
+  const privatePanel = document.querySelector(".mega-private-panel");
+  if (privatePanel) {
+    privatePanel.querySelector(".eyebrow").textContent = copy.mega.privateEyebrow;
+    privatePanel.querySelector("h2").textContent = copy.mega.privateTitle;
+    privatePanel.querySelector(".mega-grid").innerHTML = renderMegaLinks("private", copy);
+    document.querySelector("[data-mobile-submenu-panel='private']").innerHTML = renderMobileSubmenu("private", copy);
   }
   const footerColumns = document.querySelectorAll(".footer-grid > div");
   if (footerColumns.length) {
     const footer = copy.footer;
     const footerLinks = [
-      [copy.nav[1], copy.mega.collectionLinks[0], copy.nav[4], copy.nav[6]],
-      [copy.nav[2], copy.nav[5], copy.nav[7]],
+      [copy.nav[1], copy.mega.collectionLinks[0], copy.nav[4], copy.mega.servicesLinks[0], copy.mega.privateLinks[0]],
+      [copy.nav[5], copy.nav[6], copy.mega.privateLinks[1]],
     ];
     footerColumns[0].querySelector("p").textContent = footer.description;
     footerColumns[1].querySelector("h3").textContent = footer.showroom;
@@ -2135,39 +2970,91 @@ function applyLanguage() {
   updateAnnouncement(announcementIndex);
 }
 
-function updateMega(type) {
-  const content = megaContent[type] || megaContent.collection;
-  const copy = getCopy().mega;
-  const labels = type === "heritage" ? copy.heritageLinks : copy.collectionLinks;
-  megaEyebrow.textContent = type === "heritage" ? copy.heritageEyebrow : copy.collectionEyebrow;
-  megaTitle.textContent = type === "heritage" ? copy.heritageTitle : copy.collectionTitle;
-  megaLinks.innerHTML = content.links.map(([, href], index) => `<a href="${href}">${labels[index]}</a>`).join("");
-  megaImage.src = content.image;
-  megaImage.alt = content.alt;
+function closeMegaPanels() {
+  megaPanels.forEach((panel) => {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+  });
+}
+
+function openMegaPanel(type) {
+  closeMegaPanels();
+  const panel = document.querySelector(`[data-mega-panel="${type}"]`);
+  if (!panel) return;
+  showHeader();
+  panel.classList.add("is-open");
+  panel.setAttribute("aria-hidden", "false");
 }
 
 toggle.addEventListener("click", () => {
   const open = nav.classList.toggle("is-open");
   toggle.setAttribute("aria-expanded", String(open));
+  showHeader();
+  updateHeaderHeight();
   if (!open) {
     document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
     document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
   }
 });
 
+document.querySelector("[data-search-open]")?.addEventListener("click", openSearch);
+document.querySelector("[data-search-close]")?.addEventListener("click", closeSearch);
+searchInput?.addEventListener("input", () => updateSearchResults(searchInput.value));
+searchInput?.addEventListener("keydown", (event) => {
+  const results = Array.from(searchOverlay?.querySelectorAll("[data-search-result]") || []);
+  if (event.key === "Escape") {
+    closeSearch();
+    return;
+  }
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    if (!results.length) return;
+    event.preventDefault();
+    const movement = event.key === "ArrowDown" ? 1 : -1;
+    activeSearchIndex = (activeSearchIndex + movement + results.length) % results.length;
+    results.forEach((item, index) => item.classList.toggle("is-active", index === activeSearchIndex));
+    results[activeSearchIndex].scrollIntoView({ block: "nearest" });
+    return;
+  }
+  if (event.key === "Enter") {
+    const selected = activeSearchIndex >= 0 ? results[activeSearchIndex] : results[0];
+    const query = searchInput.value.trim();
+    if (selected) {
+      event.preventDefault();
+      saveRecentSearch(query || selected.dataset.searchLabel || "");
+      incrementSearchStat(selected.dataset.searchLabel || query);
+      window.location.hash = selected.getAttribute("href");
+      closeSearch();
+    } else if (query) {
+      saveRecentSearch(query);
+      incrementSearchStat(query);
+    }
+  }
+});
+searchOverlay?.addEventListener("click", (event) => {
+  if (event.target === searchOverlay) closeSearch();
+  const link = event.target.closest?.("a");
+  if (link) {
+    const label = link.dataset.searchLabel || link.textContent.trim();
+    const query = searchInput?.value.trim() || label;
+    saveRecentSearch(query);
+    incrementSearchStat(label);
+    closeSearch();
+  }
+});
+
 document.querySelectorAll("[data-menu]").forEach((link) => {
   const openMenu = () => {
-    if (link.dataset.menu === "collection" || link.dataset.menu === "heritage") {
-      updateMega(link.dataset.menu);
-      mega.classList.add("is-open");
-      return;
-    }
-    mega.classList.remove("is-open");
+    openMegaPanel(link.dataset.menu);
   };
   link.addEventListener("pointerover", openMenu);
   link.addEventListener("mouseover", openMenu);
   link.addEventListener("mouseenter", openMenu);
   link.addEventListener("focus", openMenu);
+});
+
+document.querySelectorAll(".primary-nav-link:not([data-menu])").forEach((link) => {
+  link.addEventListener("pointerover", closeMegaPanels);
+  link.addEventListener("focus", closeMegaPanels);
 });
 
 document.querySelectorAll("[data-mobile-submenu]").forEach((button) => {
@@ -2186,11 +3073,20 @@ document.querySelectorAll("[data-mobile-submenu]").forEach((button) => {
 });
 
 document.addEventListener("click", (event) => {
+  if (
+    searchOverlay &&
+    !searchOverlay.hidden &&
+    !searchOverlay.contains(event.target) &&
+    !event.target.closest("[data-search-open]")
+  ) {
+    closeSearch();
+  }
   const privateViewingLink = event.target.closest("a[href='#/private-viewing']");
   if (privateViewingLink) {
     event.preventDefault();
     nav.classList.remove("is-open");
-    mega.classList.remove("is-open");
+    closeMegaPanels();
+    closeSearch();
     document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
     document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
     toggle.setAttribute("aria-expanded", "false");
@@ -2230,11 +3126,12 @@ function handleLanguageChange(value) {
   select.addEventListener("change", () => handleLanguageChange(select.value));
 });
 
-header.addEventListener("mouseleave", () => mega.classList.remove("is-open"));
+header.addEventListener("mouseleave", closeMegaPanels);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeViewingGate();
-    mega.classList.remove("is-open");
+    closeMegaPanels();
+    closeSearch();
     nav.classList.remove("is-open");
     document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
     document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
@@ -2243,12 +3140,32 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("hashchange", () => {
+  headerAutoHideArmed = false;
+  lastScrollY = 0;
+  showHeader();
   nav.classList.remove("is-open");
   document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
   document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
   toggle.setAttribute("aria-expanded", "false");
-  mega.classList.remove("is-open");
+  closeMegaPanels();
+  closeSearch();
   render();
 });
 
 render();
+updateHeaderHeight();
+showHeader();
+handleHeaderScroll();
+["wheel", "touchmove", "mousedown"].forEach((eventName) => {
+  window.addEventListener(eventName, armHeaderAutoHide, { passive: true });
+});
+window.addEventListener("keydown", (event) => {
+  if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
+    armHeaderAutoHide();
+  }
+});
+window.addEventListener("scroll", requestHeaderScrollUpdate, { passive: true });
+window.addEventListener("resize", () => {
+  updateHeaderHeight();
+  handleHeaderScroll();
+});

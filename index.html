@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=21" />
+    <link rel="stylesheet" href="styles.css?v=26" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -67,6 +67,9 @@
           <span>DIVERSE GEMS</span>
         </a>
         <div class="utility-group utility-right">
+          <button class="utility-link icon-only search-trigger" type="button" data-search-open aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+          </button>
           <a class="utility-link icon-only account-icon" href="#/login" aria-label="Sign up or log in">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
           </a>
@@ -96,27 +99,44 @@
               <a href="#/spinels">Spinels</a>
               <a href="#/alexandrites">Alexandrites</a>
               <a href="#/other-precious-gemstones">Other Precious Gemstones</a>
+              <span>Featured</span>
               <a href="#/new-arrivals">New Arrivals</a>
             </div>
           </div>
+          <div class="nav-menu-item">
+            <div class="nav-menu-link-row">
+              <a class="primary-nav-link" href="#/custom-sourcing" data-route="/custom-sourcing" data-menu="services">Services</a>
+              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="services" aria-expanded="false" aria-label="Open services submenu">›</button>
+            </div>
+            <div class="mobile-submenu" data-mobile-submenu-panel="services">
+              <a href="#/custom-sourcing">Custom Sourcing</a>
+              <a href="#/customisation">Customisation</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <div class="nav-menu-link-row">
+              <a class="primary-nav-link" href="#/private-viewing" data-route="/private-viewing" data-menu="private">Private Viewing</a>
+              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="private" aria-expanded="false" aria-label="Open private viewing submenu">›</button>
+            </div>
+            <div class="mobile-submenu" data-mobile-submenu-panel="private">
+              <a href="#/private-viewing">Book a Private Viewing</a>
+              <a href="#/contact">Contact</a>
+            </div>
+          </div>
+          <a class="primary-nav-link" href="#/events-exhibitions" data-route="/events-exhibitions">Events & Exhibitions</a>
           <div class="nav-menu-item">
             <div class="nav-menu-link-row">
               <a class="primary-nav-link" href="#/heritage" data-route="/heritage" data-menu="heritage">Sri Lankan Heritage</a>
               <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="heritage" aria-expanded="false" aria-label="Open Sri Lankan heritage submenu">›</button>
             </div>
             <div class="mobile-submenu" data-mobile-submenu-panel="heritage">
-              <a href="#/heritage">Sri Lankan Heritage</a>
+              <a href="#/heritage">Local Heritage</a>
               <a href="#/heritage#ceylon-sapphire-story">Ceylon Sapphire Story</a>
               <a href="#/heritage#madagascar-sourcing">Madagascar Sourcing</a>
               <a href="#/heritage#treatment-disclosure">Treatment Disclosure</a>
-              <a href="#/private-viewing">Private Consultation</a>
             </div>
           </div>
-          <a class="primary-nav-link" href="#/new-arrivals" data-route="/new-arrivals">New Arrivals</a>
-          <a class="primary-nav-link" href="#/custom-sourcing" data-route="/custom-sourcing">Custom Sourcing</a>
           <a class="primary-nav-link" href="#/about" data-route="/about">About Us</a>
-          <a class="primary-nav-link" href="#/private-viewing" data-route="/private-viewing">Book a Private Viewing</a>
-          <a class="primary-nav-link" href="#/contact" data-route="/contact">Contact</a>
           <div class="mobile-menu-tools" aria-label="Mobile language and currency controls">
             <label class="selector-label">
               <span>Country / Language</span>
@@ -133,7 +153,7 @@
           </div>
         </div>
       </nav>
-      <div class="mega-panel mega-collection-panel" id="megaPanel" aria-hidden="true">
+      <div class="mega-panel mega-collection-panel" id="megaPanel" data-mega-panel="collection" aria-hidden="true">
         <div class="mega-inner">
           <div>
             <p class="eyebrow" id="megaEyebrow">The Collection</p>
@@ -146,27 +166,82 @@
             <a href="#/spinels">Spinels</a>
             <a href="#/alexandrites">Alexandrites</a>
             <a href="#/other-precious-gemstones">Other Precious Gemstones</a>
+            <span class="mega-group-title">Featured</span>
+            <a href="#/new-arrivals">New Arrivals</a>
           </div>
           <img id="megaImage" src="assets/collection-gems.jpg" alt="Fine gemstones arranged on a white surface" />
         </div>
       </div>
-      <div class="mega-panel mega-heritage-panel" aria-hidden="true">
+      <div class="mega-panel mega-heritage-panel" data-mega-panel="heritage" aria-hidden="true">
         <div class="mega-inner">
           <div>
             <p class="eyebrow">Sri Lankan Heritage</p>
             <h2>From Ratnapura tradition to rare stones selected with care.</h2>
           </div>
           <div class="mega-grid">
-            <a href="#/heritage">Sri Lankan Heritage</a>
+            <a href="#/heritage">Local Heritage</a>
             <a href="#/sapphires">Ceylon Sapphire Story</a>
             <a href="#/custom-sourcing">Madagascar Sourcing</a>
             <a href="#/about">Treatment Disclosure</a>
-            <a href="#/private-viewing">Private Consultation</a>
           </div>
           <img src="assets/heritage-artisan.jpg" alt="Gemstone artisan inspecting a sapphire" />
         </div>
       </div>
+      <div class="mega-panel mega-services-panel" data-mega-panel="services" aria-hidden="true">
+        <div class="mega-inner">
+          <div>
+            <p class="eyebrow">Services</p>
+            <h2>Private gemstone services for collectors and jewellers.</h2>
+          </div>
+          <div class="mega-grid">
+            <a href="#/custom-sourcing">Custom Sourcing</a>
+            <a href="#/customisation">Customisation</a>
+          </div>
+          <img src="assets/private-viewing.jpg" alt="Private gemstone consultation" />
+        </div>
+      </div>
+      <div class="mega-panel mega-private-panel" data-mega-panel="private" aria-hidden="true">
+        <div class="mega-inner">
+          <div>
+            <p class="eyebrow">Private Viewing</p>
+            <h2>Arrange a discreet appointment or speak with our team.</h2>
+          </div>
+          <div class="mega-grid">
+            <a href="#/private-viewing">Book a Private Viewing</a>
+            <a href="#/contact">Contact</a>
+          </div>
+          <img src="assets/private-viewing.jpg" alt="Private gemstone viewing salon" />
+        </div>
+      </div>
     </header>
+
+    <div class="search-overlay" data-search-overlay hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search Diverse Gems">
+        <div class="search-panel-top">
+          <input type="search" data-search-input placeholder="Search gemstones, colours or collections..." aria-label="Search gemstones, colours or collections" />
+          <button class="search-close" type="button" data-search-close aria-label="Close search">×</button>
+        </div>
+        <div class="search-default" data-search-default>
+          <section>
+            <h2>Recent Searches</h2>
+            <div class="search-link-list" data-search-history></div>
+          </section>
+          <section>
+            <h2>Recently Viewed</h2>
+            <div class="search-recent" data-search-recent></div>
+          </section>
+          <section>
+            <h2>Popular Searches</h2>
+            <div class="search-link-list" data-search-popular></div>
+          </section>
+        </div>
+        <div class="search-live" data-search-live hidden>
+          <h2>Suggestions</h2>
+          <div class="search-results" data-search-results></div>
+          <p class="search-empty" data-search-empty hidden>No results found. Try sapphire, private viewing, new arrivals or custom sourcing.</p>
+        </div>
+      </div>
+    </div>
 
     <main id="main" tabindex="-1"></main>
 
@@ -183,6 +258,7 @@
           <h3>Showroom</h3>
           <a href="#/collection">Our Collection</a>
           <a href="#/sapphires">Sapphires</a>
+          <a href="#/events-exhibitions">Events & Exhibitions</a>
           <a href="#/custom-sourcing">Custom Sourcing</a>
           <a href="#/private-viewing">Private Viewing</a>
         </div>
@@ -229,6 +305,6 @@
       </section>
     </div>
 
-    <script src="app.js?v=26" defer></script>
+    <script src="app.js?v=31" defer></script>
   </body>
 </html>
