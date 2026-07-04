@@ -394,12 +394,23 @@ textarea {
 }
 
 .mega-grid a {
-  border-bottom: 1px solid var(--line);
-  padding: 0 0 9px;
+  display: inline-block;
+  justify-self: start;
+  padding: 0 0 5px;
   color: var(--navy);
   font-size: 12px;
   line-height: 1.35;
   font-weight: 400;
+  background-image: linear-gradient(var(--aqua), var(--aqua));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 180ms ease, color 180ms ease;
+}
+
+.mega-grid a:hover,
+.mega-grid a:focus-visible {
+  background-size: 100% 1px;
 }
 
 .mega-group-title,
@@ -2691,14 +2702,23 @@ h3 {
   }
 
   .mobile-submenu a {
-    display: block;
+    display: inline-block;
     margin-left: 12px;
     padding: 12px 0;
-    border-bottom: 1px solid var(--line);
     color: var(--navy);
     font-size: 12px;
     font-weight: 400;
     text-transform: none;
+    background-image: linear-gradient(var(--aqua), var(--aqua));
+    background-repeat: no-repeat;
+    background-position: 0 calc(100% - 8px);
+    background-size: 0 1px;
+    transition: background-size 180ms ease, color 180ms ease;
+  }
+
+  .mobile-submenu a:hover,
+  .mobile-submenu a:focus-visible {
+    background-size: 100% 1px;
   }
 
   .nav-links a::after,
