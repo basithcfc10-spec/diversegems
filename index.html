@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=26" />
+    <link rel="stylesheet" href="styles.css?v=27" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +27,7 @@
       <div class="header-main">
         <div class="utility-group utility-left locale-tools">
           <label class="selector-label">
-            <span>Country / Language</span>
+            <span class="visually-hidden">Country / Language</span>
             <select id="languageSelect" aria-label="Country and language">
               <option value="en">English</option>
               <option value="zh">中文</option>
@@ -35,7 +35,7 @@
             </select>
           </label>
           <label class="selector-label">
-            <span>Currency</span>
+            <span class="visually-hidden">Currency</span>
             <select id="currencySelect" aria-label="Display currency">
               <option value="USD">USD</option>
               <option value="LKR">LKR</option>
@@ -126,20 +126,19 @@
           <a class="primary-nav-link" href="#/events-exhibitions" data-route="/events-exhibitions">Events & Exhibitions</a>
           <div class="nav-menu-item">
             <div class="nav-menu-link-row">
-              <a class="primary-nav-link" href="#/heritage" data-route="/heritage" data-menu="heritage">Sri Lankan Heritage</a>
-              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="heritage" aria-expanded="false" aria-label="Open Sri Lankan heritage submenu">›</button>
+              <a class="primary-nav-link" href="#/about" data-route="/about" data-menu="heritage">About Us</a>
+              <button class="mobile-submenu-toggle" type="button" data-mobile-submenu="heritage" aria-expanded="false" aria-label="Open about us submenu">›</button>
             </div>
             <div class="mobile-submenu" data-mobile-submenu-panel="heritage">
-              <a href="#/heritage">Local Heritage</a>
-              <a href="#/heritage#ceylon-sapphire-story">Ceylon Sapphire Story</a>
-              <a href="#/heritage#madagascar-sourcing">Madagascar Sourcing</a>
-              <a href="#/heritage#treatment-disclosure">Treatment Disclosure</a>
+              <a href="#/heritage">Sri Lankan Heritage</a>
+              <a href="#/sapphires">Ceylon Sapphire Story</a>
+              <a href="#/custom-sourcing">Madagascar Sourcing</a>
+              <a href="#/about">Treatment Disclosure</a>
             </div>
           </div>
-          <a class="primary-nav-link" href="#/about" data-route="/about">About Us</a>
           <div class="mobile-menu-tools" aria-label="Mobile language and currency controls">
             <label class="selector-label">
-              <span>Country / Language</span>
+              <span class="visually-hidden">Country / Language</span>
               <select id="mobileLanguageSelect" aria-label="Country and language">
                 <option value="en">English</option>
                 <option value="zh">中文</option>
@@ -147,7 +146,7 @@
               </select>
             </label>
             <label class="selector-label">
-              <span>Currency</span>
+              <span class="visually-hidden">Currency</span>
               <select id="mobileCurrencySelect" aria-label="Currency"></select>
             </label>
           </div>
@@ -175,11 +174,11 @@
       <div class="mega-panel mega-heritage-panel" data-mega-panel="heritage" aria-hidden="true">
         <div class="mega-inner">
           <div>
-            <p class="eyebrow">Sri Lankan Heritage</p>
+            <p class="eyebrow">About Us</p>
             <h2>From Ratnapura tradition to rare stones selected with care.</h2>
           </div>
           <div class="mega-grid">
-            <a href="#/heritage">Local Heritage</a>
+            <a href="#/heritage">Sri Lankan Heritage</a>
             <a href="#/sapphires">Ceylon Sapphire Story</a>
             <a href="#/custom-sourcing">Madagascar Sourcing</a>
             <a href="#/about">Treatment Disclosure</a>
@@ -305,6 +304,6 @@
       </section>
     </div>
 
-    <script src="app.js?v=31" defer></script>
+    <script src="app.js?v=32" defer></script>
   </body>
 </html>

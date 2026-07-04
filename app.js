@@ -75,7 +75,7 @@ let savedWishlist = JSON.parse(localStorage.getItem("dgWishlist") || "[]");
 
 const translations = {
   en: {
-    nav: ["Home", "Our Collection", "Services", "Private Viewing", "Events & Exhibitions", "Sri Lankan Heritage", "About Us"],
+    nav: ["Home", "Our Collection", "Services", "Private Viewing", "Events & Exhibitions", "About Us"],
     languageLabel: "Country / Language",
     currencyLabel: "Currency",
     loginLabel: "Log in",
@@ -88,14 +88,14 @@ const translations = {
     mega: {
       collectionEyebrow: "The Collection",
       collectionTitle: "Natural stones selected for rarity, origin and quiet brilliance.",
-      heritageEyebrow: "Sri Lankan Heritage",
+      heritageEyebrow: "About Us",
       heritageTitle: "From Ratnapura tradition to rare stones selected with care.",
       servicesEyebrow: "Services",
       servicesTitle: "Private gemstone services for collectors and jewellers.",
       privateEyebrow: "Private Viewing",
       privateTitle: "Arrange a discreet appointment or speak with our team.",
       collectionLinks: ["Sapphires", "Rubies", "Emeralds", "Spinels", "Alexandrites", "Other Precious Gemstones", "New Arrivals"],
-      heritageLinks: ["Local Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure"],
+      heritageLinks: ["Sri Lankan Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure"],
       servicesLinks: ["Custom Sourcing", "Customisation"],
       privateLinks: ["Book a Private Viewing", "Contact"],
       featured: "Featured",
@@ -282,7 +282,7 @@ const translations = {
     },
   },
   zh: {
-    nav: ["首页", "我们的珍藏", "服务", "私人鉴赏", "展会活动", "斯里兰卡传承", "关于我们"],
+    nav: ["首页", "我们的珍藏", "服务", "私人鉴赏", "展会活动", "关于我们"],
     languageLabel: "国家 / 语言",
     currencyLabel: "货币",
     loginLabel: "登录",
@@ -295,14 +295,14 @@ const translations = {
     mega: {
       collectionEyebrow: "珍藏系列",
       collectionTitle: "以稀有度、产地与含蓄光彩精心甄选的天然宝石。",
-      heritageEyebrow: "斯里兰卡传承",
+      heritageEyebrow: "关于我们",
       heritageTitle: "源自拉特纳普勒传统，以细致眼光甄选稀有宝石。",
       servicesEyebrow: "服务",
       servicesTitle: "为收藏家与珠宝商提供私人宝石服务。",
       privateEyebrow: "私人鉴赏",
       privateTitle: "安排私密预约或联系我们团队。",
       collectionLinks: ["蓝宝石", "红宝石", "祖母绿", "尖晶石", "变石", "其他珍贵宝石", "新品"],
-      heritageLinks: ["本地传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露"],
+      heritageLinks: ["斯里兰卡传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露"],
       servicesLinks: ["定制寻石", "定制服务"],
       privateLinks: ["预约私人鉴赏", "联系"],
       featured: "精选",
@@ -482,7 +482,7 @@ const translations = {
     },
   },
   th: {
-    nav: ["หน้าแรก", "คอลเลกชัน", "บริการ", "ชมแบบส่วนตัว", "งานแสดง", "มรดกศรีลังกา", "เกี่ยวกับเรา"],
+    nav: ["หน้าแรก", "คอลเลกชัน", "บริการ", "ชมแบบส่วนตัว", "งานแสดง", "เกี่ยวกับเรา"],
     languageLabel: "ประเทศ / ภาษา",
     currencyLabel: "สกุลเงิน",
     loginLabel: "เข้าสู่ระบบ",
@@ -495,14 +495,14 @@ const translations = {
     mega: {
       collectionEyebrow: "คอลเลกชัน",
       collectionTitle: "อัญมณีธรรมชาติที่คัดสรรจากความหายาก แหล่งกำเนิด และประกายอย่างสงบงาม",
-      heritageEyebrow: "มรดกศรีลังกา",
+      heritageEyebrow: "เกี่ยวกับเรา",
       heritageTitle: "จากธรรมเนียมรัตนปุระสู่อัญมณีหายากที่คัดสรรด้วยความประณีต",
       servicesEyebrow: "บริการ",
       servicesTitle: "บริการอัญมณีแบบส่วนตัวสำหรับนักสะสมและช่างจิวเวลรี",
       privateEyebrow: "ชมแบบส่วนตัว",
       privateTitle: "นัดหมายอย่างเป็นส่วนตัวหรือติดต่อทีมของเรา",
       collectionLinks: ["แซฟไฟร์", "ทับทิม", "มรกต", "สปิเนล", "อเล็กซานไดรต์", "อัญมณีล้ำค่าอื่นๆ", "สินค้าใหม่"],
-      heritageLinks: ["มรดกท้องถิ่น", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ"],
+      heritageLinks: ["มรดกศรีลังกา", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ"],
       servicesLinks: ["จัดหาเฉพาะ", "ปรับแต่งเฉพาะ"],
       privateLinks: ["จองชมแบบส่วนตัว", "ติดต่อ"],
       featured: "แนะนำ",
@@ -748,7 +748,7 @@ const megaContent = {
     ],
   },
   heritage: {
-    eyebrow: "Sri Lankan Heritage",
+    eyebrow: "About Us",
     title: "From Ratnapura tradition to rare stones selected with care.",
     image: "assets/heritage-artisan.jpg",
     alt: "Gemstone artisan inspecting a sapphire",
@@ -1235,8 +1235,8 @@ function getPageLabel(path) {
     "/events-exhibitions": copy.nav[4],
     "/custom-sourcing": copy.pages.customSourcing[0],
     "/customisation": copy.pages.customisation[0],
-    "/heritage": copy.nav[5],
-    "/about": copy.nav[6],
+    "/heritage": copy.mega.heritageLinks[0],
+    "/about": copy.nav[5],
     "/private-viewing": copy.nav[3],
     "/contact": copy.pages.contact[0],
     "/login": copy.loginLabel,
@@ -2249,7 +2249,8 @@ function render() {
       (route === "/collection" && ["/new-arrivals"].includes(path)) ||
       (route === "/events-exhibitions" && path.startsWith("/events-exhibitions/")) ||
       (route === "/custom-sourcing" && ["/custom-sourcing", "/customisation"].includes(path)) ||
-      (route === "/private-viewing" && ["/private-viewing", "/contact"].includes(path));
+      (route === "/private-viewing" && ["/private-viewing", "/contact"].includes(path)) ||
+      (route === "/about" && path === "/heritage");
     link.classList.toggle("is-active", active);
   });
   document.title = path === "/" ? "Diverse Gems | Fine Sri Lankan Gemstones" : `Diverse Gems | ${path.slice(1).replaceAll("-", " ")}`;
@@ -2726,7 +2727,7 @@ function getSearchIndex() {
     [copy.nav[0], "#/", "Page", "home diverse gems"],
     [copy.nav[1], "#/collection", "Collection", "collection gemstones sapphires rubies emeralds"],
     [copy.pages.newArrivals[0], "#/new-arrivals", "Collection", "new arrivals recently acquired stones"],
-    [copy.nav[5], "#/heritage", "Page", "sri lankan heritage ratnapura ceylon sapphire story"],
+    [copy.mega.heritageLinks[0], "#/heritage", "Page", "sri lankan heritage ratnapura ceylon sapphire story"],
     [copy.nav[4], "#/events-exhibitions", "Page", "events exhibitions gemstone shows"],
     [copy.pages.customSourcing[0], "#/custom-sourcing", "Service", "custom sourcing gemstone search"],
     [copy.pages.customisation[0], "#/customisation", "Service", "customisation color cut size weight"],
@@ -2938,7 +2939,7 @@ function applyLanguage() {
     const footer = copy.footer;
     const footerLinks = [
       [copy.nav[1], copy.mega.collectionLinks[0], copy.nav[4], copy.mega.servicesLinks[0], copy.mega.privateLinks[0]],
-      [copy.nav[5], copy.nav[6], copy.mega.privateLinks[1]],
+      [copy.mega.heritageLinks[0], copy.nav[5], copy.mega.privateLinks[1]],
     ];
     footerColumns[0].querySelector("p").textContent = footer.description;
     footerColumns[1].querySelector("h3").textContent = footer.showroom;
