@@ -1093,12 +1093,12 @@ h3 {
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(22px, 2vw, 32px);
+  gap: clamp(18px, 1.6vw, 26px);
 }
 
 .category-card {
   position: relative;
-  min-height: 360px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1132,10 +1132,10 @@ h3 {
 }
 
 .category-card img {
-  aspect-ratio: 1.25 / 1;
+  aspect-ratio: 1.52 / 1;
   object-fit: cover;
   height: 100%;
-  min-height: 360px;
+  min-height: 300px;
   transform: scale(1.01);
   transition: transform 620ms ease;
 }
