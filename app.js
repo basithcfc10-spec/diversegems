@@ -2781,6 +2781,7 @@ function renderDefaultSearchView() {
   const historyContainer = searchOverlay.querySelector("[data-search-history]");
   const viewedContainer = searchOverlay.querySelector("[data-search-recent]");
   const popularContainer = searchOverlay.querySelector("[data-search-popular]");
+  const hasPersonalizedContent = history.length > 0 || viewed.length > 0;
   const index = getSearchIndex();
   const historyItems = history.map((label) => {
     const term = label.toLowerCase();
@@ -2792,7 +2793,7 @@ function renderDefaultSearchView() {
   });
   historyContainer.closest("section").hidden = history.length === 0;
   viewedContainer.closest("section").hidden = viewed.length === 0;
-  popularContainer.closest("section").hidden = false;
+  popularContainer.closest("section").hidden = hasPersonalizedContent;
   historyContainer.innerHTML = historyItems.map((item) => renderSearchLinkItem(item)).join("");
   viewedContainer.innerHTML = viewed.map(renderSearchProduct).join("");
   popularContainer.innerHTML = popular.map((item) => renderSearchLinkItem(item)).join("");
