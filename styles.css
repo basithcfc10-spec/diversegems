@@ -2002,6 +2002,11 @@ h3 {
   padding: 18px 0;
 }
 
+.collection-listing-section {
+  padding-top: clamp(18px, 2.6vw, 34px);
+  padding-bottom: clamp(52px, 7vw, 92px);
+}
+
 .filter-header {
   display: flex;
   justify-content: space-between;

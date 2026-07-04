@@ -1377,7 +1377,7 @@ function renderCollectionToolbar(collection, slug) {
   return `
     <div class="collection-tools reveal" data-collection-tools>
       <div class="filter-header">
-        <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="true">${filters.filters}</button>
+        <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="false">${filters.filters}</button>
         <label class="sort-control">
           <span>${filters.sort}</span>
           <select data-sort>
@@ -1390,7 +1390,7 @@ function renderCollectionToolbar(collection, slug) {
           </select>
         </label>
       </div>
-      <div class="filter-panel" data-filter-panel>
+      <div class="filter-panel is-collapsed" data-filter-panel>
         <label><span>${getCopy().common.specs[0]}</span><select data-filter="origin">${optionList(getUniqueValues(collection.stones, 1), filters.allOrigins)}</select></label>
         <label><span>${getCopy().common.specs[5]}</span><select data-filter="clarity">${optionList(getUniqueValues(collection.stones, 6), filters.allClarity)}</select></label>
         <label><span>${getCopy().common.specs[2]}</span><select data-filter="shape">${optionList(getUniqueValues(collection.stones, 3), filters.allShapes)}</select></label>
@@ -1697,7 +1697,7 @@ function renderCollectionPage(slug) {
   const [title, lead] = copy.collectionTitles[slug] || [collection.title, collection.intro];
   return `
     ${pageShell({ eyebrow: copy.common.collectionEyebrow, title, lead })}
-    <section class="section">
+    <section class="section collection-listing-section">
       ${renderCollectionToolbar(collection, slug)}
       <div class="catalogue-grid" data-catalogue-grid>
         ${collection.stones.map((stone, index) => stoneTile([...stone, getStoneImage(stone, slug)], index, slug)).join("")}
