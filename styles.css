@@ -570,6 +570,11 @@ main {
   margin-top: 28px;
 }
 
+.search-default[hidden],
+.search-live[hidden] {
+  display: none;
+}
+
 .search-results {
   display: grid;
   gap: 4px;
