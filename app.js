@@ -95,7 +95,7 @@ const translations = {
       privateEyebrow: "Private Viewing",
       privateTitle: "Arrange a discreet appointment or speak with our team.",
       collectionLinks: ["Sapphires", "Rubies", "Emeralds", "Spinels", "Alexandrites", "Other Precious Gemstones", "New Arrivals"],
-      heritageLinks: ["Sri Lankan Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure"],
+      heritageLinks: ["Who We Are", "Sri Lankan Heritage", "Ceylon Sapphire Story", "Madagascar Sourcing", "Treatment Disclosure"],
       servicesLinks: ["Custom Sourcing", "Customisation"],
       privateLinks: ["Book a Private Viewing", "Contact"],
       featured: "Featured",
@@ -137,6 +137,7 @@ const translations = {
       customSourcing: ["Custom sourcing", "Rare stones, sourced with discretion.", "For clients seeking a particular origin, colour, size, treatment profile or certification standard, Diverse Gems conducts private sourcing with a focus on Sri Lanka and selected Madagascar supply."],
       customisation: ["Customisation", "Personal gemstone presentation and jewellery planning.", "For clients refining a shortlist into a bespoke piece or private collection direction, our team can assist with stone matching, setting considerations and presentation guidance."],
       heritage: ["Sri Lankan heritage", "An island renowned for sapphire.", "Sri Lanka remains our primary sourcing heritage, complemented by selected Madagascar gemstones where rarity, beauty and documentation meet our standard."],
+      whoWeAre: ["About Diverse Gems", "A legacy shaped by Ceylon gemstone heritage.", "For more than 25 years, Diverse Gems has represented Sri Lanka's gemstone excellence through certified natural gemstones, generational knowledge and private international service."],
       about: ["About Diverse Gems", "A private house for exceptional natural gemstones.", "Diverse Gems exports fine Sri Lankan sapphires and rare coloured stones, with select Madagascar acquisitions, to collectors, jewellers and trade clients who expect discretion, documentation and refined service."],
       privateViewing: ["Private viewing", "A discreet appointment in Sri Lanka.", "Private inspections are available only within Sri Lanka and are arranged for clients with a genuine interest in selected gemstones."],
       events: ["Events & Exhibitions", "International showcases and private exhibition appointments.", "Explore upcoming appearances and past exhibitions where Diverse Gems has presented natural sapphires, rubies, emeralds and rare collector gemstones to clients around the world."],
@@ -302,7 +303,7 @@ const translations = {
       privateEyebrow: "私人鉴赏",
       privateTitle: "安排私密预约或联系我们团队。",
       collectionLinks: ["蓝宝石", "红宝石", "祖母绿", "尖晶石", "变石", "其他珍贵宝石", "新品"],
-      heritageLinks: ["斯里兰卡传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露"],
+      heritageLinks: ["我们是谁", "斯里兰卡传承", "锡兰蓝宝石故事", "马达加斯加采购", "处理披露"],
       servicesLinks: ["定制寻石", "定制服务"],
       privateLinks: ["预约私人鉴赏", "联系"],
       featured: "精选",
@@ -344,6 +345,7 @@ const translations = {
       customSourcing: ["定制寻石", "以私密方式寻找稀有宝石。", "针对指定产地、颜色、尺寸、处理状态或证书标准的客户，Diverse Gems 提供以斯里兰卡与精选马达加斯加供应为重点的私人寻石服务。"],
       customisation: ["定制服务", "私人宝石呈现与珠宝规划。", "当客户希望将候选宝石发展为定制珠宝或私人收藏方向时，我们可协助宝石搭配、镶嵌考量与呈现建议。"],
       heritage: ["斯里兰卡传承", "以蓝宝石闻名的岛屿。", "斯里兰卡是我们的主要采购传承，并辅以符合稀有度、美感与文件标准的精选马达加斯加宝石。"],
+      whoWeAre: ["关于 Diverse Gems", "植根锡兰宝石传承的卓越传统。", "二十五年来，Diverse Gems 以认证天然宝石、世代经验与私密国际服务代表斯里兰卡宝石行业的卓越水准。"],
       about: ["关于 Diverse Gems", "面向卓越天然宝石的私人品牌。", "Diverse Gems 向收藏家、珠宝商与贸易客户出口高级斯里兰卡蓝宝石和稀有彩色宝石，并提供精选马达加斯加宝石。"],
       privateViewing: ["私人鉴赏", "在斯里兰卡的私密预约。", "私人鉴赏仅在斯里兰卡提供，并为对甄选宝石有真实兴趣的客户安排。"],
       events: ["展会活动", "国际展示与私人展会预约。", "浏览 Diverse Gems 展示天然蓝宝石、红宝石、祖母绿及稀有收藏宝石的未来与过往展会。"],
@@ -502,7 +504,7 @@ const translations = {
       privateEyebrow: "ชมแบบส่วนตัว",
       privateTitle: "นัดหมายอย่างเป็นส่วนตัวหรือติดต่อทีมของเรา",
       collectionLinks: ["แซฟไฟร์", "ทับทิม", "มรกต", "สปิเนล", "อเล็กซานไดรต์", "อัญมณีล้ำค่าอื่นๆ", "สินค้าใหม่"],
-      heritageLinks: ["มรดกศรีลังกา", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ"],
+      heritageLinks: ["เราเป็นใคร", "มรดกศรีลังกา", "เรื่องราวแซฟไฟร์ซีลอน", "การจัดหาจากมาดากัสการ์", "การเปิดเผยการปรับปรุงคุณภาพ"],
       servicesLinks: ["จัดหาเฉพาะ", "ปรับแต่งเฉพาะ"],
       privateLinks: ["จองชมแบบส่วนตัว", "ติดต่อ"],
       featured: "แนะนำ",
@@ -544,6 +546,7 @@ const translations = {
       customSourcing: ["จัดหาเฉพาะ", "อัญมณีหายากที่จัดหาอย่างเป็นส่วนตัว", "สำหรับลูกค้าที่ต้องการแหล่งกำเนิด สี ขนาด ลักษณะการปรับปรุง หรือมาตรฐานใบรับรองเฉพาะ Diverse Gems ให้บริการจัดหาแบบส่วนตัวโดยเน้นศรีลังกาและแหล่งมาดากัสการ์ที่คัดสรร"],
       customisation: ["ปรับแต่งเฉพาะ", "การนำเสนออัญมณีและวางแผนจิวเวลรีแบบส่วนตัว", "สำหรับลูกค้าที่ต้องการพัฒนารายการคัดเลือกไปสู่ชิ้นงานเฉพาะหรือทิศทางการสะสม ทีมของเราช่วยให้คำแนะนำด้านการจับคู่ การตั้งตัวเรือน และการนำเสนอ"],
       heritage: ["มรดกศรีลังกา", "เกาะที่มีชื่อเสียงด้านแซฟไฟร์", "ศรีลังกาคือมรดกหลักด้านการจัดหาของเรา เสริมด้วยอัญมณีมาดากัสการ์ที่ผ่านมาตรฐานด้านความหายาก ความงาม และเอกสาร"],
+      whoWeAre: ["เกี่ยวกับ Diverse Gems", "มรดกแห่งความเป็นเลิศในอัญมณีธรรมชาติ", "กว่า 25 ปี Diverse Gems เป็นตัวแทนความเป็นเลิศของอุตสาหกรรมอัญมณีศรีลังกาผ่านอัญมณีธรรมชาติพร้อมใบรับรอง ความรู้จากรุ่นสู่รุ่น และบริการระดับสากลแบบส่วนตัว"],
       about: ["เกี่ยวกับ Diverse Gems", "บ้านส่วนตัวสำหรับอัญมณีธรรมชาติชั้นเลิศ", "Diverse Gems ส่งออกแซฟไฟร์ศรีลังกาชั้นดีและอัญมณีสีหายาก พร้อมชิ้นคัดจากมาดากัสการ์ ให้กับนักสะสม ช่างอัญมณี และลูกค้าการค้าที่ต้องการความเป็นส่วนตัว เอกสาร และบริการประณีต"],
       privateViewing: ["ชมแบบส่วนตัว", "นัดหมายอย่างเป็นส่วนตัวในศรีลังกา", "การชมแบบส่วนตัวมีเฉพาะในศรีลังกา และจัดให้ลูกค้าที่สนใจอัญมณีที่คัดสรรอย่างแท้จริง"],
       events: ["งานแสดง", "การจัดแสดงระดับนานาชาติและนัดหมายส่วนตัว", "สำรวจงานแสดงที่กำลังจะมาถึงและงานที่ผ่านมา ซึ่ง Diverse Gems ได้นำเสนอแซฟไฟร์ รูบี้ มรกต และอัญมณีหายากสำหรับนักสะสม"],
@@ -753,12 +756,13 @@ const megaContent = {
     image: "assets/heritage-artisan.jpg",
     alt: "Gemstone artisan inspecting a sapphire",
     links: [
+      ["Who We Are", "#/who-we-are"],
       ["Sri Lankan Heritage", "#/heritage"],
       ["Ceylon Sapphire Story", "#/sapphires"],
       ["Madagascar Sourcing", "#/custom-sourcing"],
       ["Treatment Disclosure", "#/about"],
     ],
-    groups: [{ labelKey: "heritageEyebrow", start: 0, end: 4 }],
+    groups: [{ labelKey: "heritageEyebrow", start: 0, end: 5 }],
   },
   services: {
     eyebrow: "Services",
@@ -1146,6 +1150,7 @@ const routes = {
   "/events-exhibitions": renderEventsPage,
   "/custom-sourcing": renderCustomSourcing,
   "/customisation": renderCustomisation,
+  "/who-we-are": renderWhoWeAre,
   "/heritage": renderHeritage,
   "/about": renderAbout,
   "/private-viewing": renderPrivateViewing,
@@ -1235,7 +1240,8 @@ function getPageLabel(path) {
     "/events-exhibitions": copy.nav[4],
     "/custom-sourcing": copy.pages.customSourcing[0],
     "/customisation": copy.pages.customisation[0],
-    "/heritage": copy.mega.heritageLinks[0],
+    "/who-we-are": copy.mega.heritageLinks[0],
+    "/heritage": copy.mega.heritageLinks[1],
     "/about": copy.nav[5],
     "/private-viewing": copy.nav[3],
     "/contact": copy.pages.contact[0],
@@ -2023,6 +2029,64 @@ function renderHeritage() {
   `;
 }
 
+function renderWhoWeAre() {
+  const copy = getCopy();
+  const [eyebrow, title, lead] = copy.pages.whoWeAre || translations.en.pages.whoWeAre;
+  const commitments = [
+    "Authentic Natural Gemstones",
+    "Certified Quality",
+    "Ethical & Responsible Sourcing",
+    "Precision Craftsmanship",
+    "Personalized Customer Service",
+    "Long-Term Trust",
+  ];
+  return `
+    ${pageShell({ eyebrow, title, lead })}
+    <section class="section compact who-we-are-section">
+      <div class="split">
+        <div class="text-stack reveal">
+          <h2>A Legacy of Excellence in Natural Gemstones</h2>
+          <p>For more than 25 years, Diverse Gems has proudly represented the excellence of Sri Lanka's gemstone industry, serving clients around the world with premium certified natural gemstones and exceptional customer service.</p>
+          <p>Built on a generational legacy deeply rooted in the rich gemstone heritage of Ceylon, our company combines decades of expertise with a passion for discovering nature's most extraordinary treasures.</p>
+          <p>Today, Diverse Gems is trusted by international collectors, luxury jewellery brands, gemstone dealers, designers, and investors seeking authentic, high-quality natural gemstones from the world's most celebrated origins.</p>
+        </div>
+        <div class="editorial-image reveal"><img src="${images.hero}" alt="Gem specialist inspecting a blue gemstone" loading="lazy" /></div>
+      </div>
+    </section>
+    <section class="section compact who-we-are-section">
+      <div class="split reverse">
+        <div class="editorial-image reveal"><img src="${images.heritage}" alt="Gemstone artisan inspecting a sapphire" loading="lazy" /></div>
+        <div class="text-stack reveal">
+          <h2>Rooted in Ceylon's Gemstone Heritage</h2>
+          <p>Known for centuries as the "Island of Gems," Sri Lanka has earned a global reputation for producing some of the world's finest Ceylon sapphires and precious gemstones. This remarkable heritage forms the foundation of Diverse Gems.</p>
+          <p>Our deep understanding of gemstone quality, grading, and craftsmanship has been passed down through generations, allowing us to carefully source and select gemstones that meet the highest international standards.</p>
+          <p>While our roots remain firmly planted in Sri Lanka, our sourcing network also extends to the renowned gemstone regions of Tanzania and Madagascar, enabling us to offer an exceptional collection of rare and vibrant natural gemstones.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section compact who-we-are-section">
+      <div class="who-commitment reveal">
+        <div>
+          <p class="eyebrow">Our Commitment</p>
+          <h2>Guided by trust, expertise and responsible sourcing.</h2>
+          <p>At Diverse Gems, every decision is guided by the principles that have shaped our reputation for more than two decades.</p>
+        </div>
+        <ul class="commitment-list">
+          ${commitments.map((item) => `<li>${item}</li>`).join("")}
+        </ul>
+      </div>
+      <div class="who-closing reveal">
+        <img src="${images.collection}" alt="A selection of coloured gemstones on a white surface" loading="lazy" />
+        <div>
+          <p>Every gemstone begins its journey deep within the earth before being transformed through generations of expertise into a timeless treasure.</p>
+          <p>Whether you are seeking a rare Ceylon sapphire, an exceptional gemstone from Tanzania or Madagascar, or a certified investment-grade gemstone, we are committed to helping you discover a gemstone of remarkable beauty, authenticity, and enduring value.</p>
+          <p>From our hands to yours, we proudly deliver the world's finest natural gemstones to collectors, jewellers, designers, and investors across the globe.</p>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderAbout() {
   const copy = getCopy();
   const [eyebrow, title, lead] = copy.pages.about;
@@ -2250,7 +2314,7 @@ function render() {
       (route === "/events-exhibitions" && path.startsWith("/events-exhibitions/")) ||
       (route === "/custom-sourcing" && ["/custom-sourcing", "/customisation"].includes(path)) ||
       (route === "/private-viewing" && ["/private-viewing", "/contact"].includes(path)) ||
-      (route === "/about" && path === "/heritage");
+      (route === "/about" && ["/who-we-are", "/heritage", "/about"].includes(path));
     link.classList.toggle("is-active", active);
   });
   document.title = path === "/" ? "Diverse Gems | Fine Sri Lankan Gemstones" : `Diverse Gems | ${path.slice(1).replaceAll("-", " ")}`;
@@ -2727,7 +2791,8 @@ function getSearchIndex() {
     [copy.nav[0], "#/", "Page", "home diverse gems"],
     [copy.nav[1], "#/collection", "Collection", "collection gemstones sapphires rubies emeralds"],
     [copy.pages.newArrivals[0], "#/new-arrivals", "Collection", "new arrivals recently acquired stones"],
-    [copy.mega.heritageLinks[0], "#/heritage", "Page", "sri lankan heritage ratnapura ceylon sapphire story"],
+    [copy.mega.heritageLinks[0], "#/who-we-are", "Page", "about diverse gems who we are legacy excellence natural gemstones"],
+    [copy.mega.heritageLinks[1], "#/heritage", "Page", "sri lankan heritage ratnapura ceylon sapphire story"],
     [copy.nav[4], "#/events-exhibitions", "Page", "events exhibitions gemstone shows"],
     [copy.pages.customSourcing[0], "#/custom-sourcing", "Service", "custom sourcing gemstone search"],
     [copy.pages.customisation[0], "#/customisation", "Service", "customisation color cut size weight"],
@@ -2939,7 +3004,7 @@ function applyLanguage() {
     const footer = copy.footer;
     const footerLinks = [
       [copy.nav[1], copy.mega.collectionLinks[0], copy.nav[4], copy.mega.servicesLinks[0], copy.mega.privateLinks[0]],
-      [copy.mega.heritageLinks[0], copy.nav[5], copy.mega.privateLinks[1]],
+      [copy.mega.heritageLinks[1], copy.nav[5], copy.mega.privateLinks[1]],
     ];
     footerColumns[0].querySelector("p").textContent = footer.description;
     footerColumns[1].querySelector("h3").textContent = footer.showroom;
