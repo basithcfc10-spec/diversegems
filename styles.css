@@ -1317,6 +1317,13 @@ h3 {
   color: var(--aqua);
 }
 
+.navy-band .navy-band-lead {
+  max-width: 720px;
+  margin-top: 18px;
+  font-size: clamp(15px, 1.05rem, 18px);
+  line-height: 1.6;
+}
+
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

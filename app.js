@@ -113,9 +113,10 @@ const translations = {
       standardTitle: "Selected for origin, beauty and confidence.",
       standardLead: "Each gemstone is considered for colour, crystal, cut, treatment disclosure, certification and suitability for high jewellery or long-term collecting, with sourcing focused on Sri Lanka and select Madagascar stones.",
       rules: [["Provenance", "Documented origin wherever available"], ["Certification", "Recognised laboratories on important stones"], ["Discretion", "Private enquiries for serious buyers"]],
-      heritageEyebrow: "Sri Lankan heritage",
-      heritageTitle: "From island geology to modern connoisseurship.",
-      heritageButton: "Discover the Heritage",
+      heritageEyebrow: "About Diverse Gems",
+      heritageTitle: "A generational legacy in natural gemstones.",
+      heritageLead: "For more than 25 years, Diverse Gems has served collectors, jewellers and investors with certified natural gemstones, rooted in Ceylon heritage and guided by long-term trust.",
+      heritageButton: "Discover Our Story",
       appointmentEyebrow: "Private appointments",
       appointmentTitle: "Inspect selected stones in person.",
       appointmentLead: "Clients in Sri Lanka may request a private viewing for shortlisted gemstones in an intimate consultation setting.",
@@ -321,9 +322,10 @@ const translations = {
       standardTitle: "为产地、美感与信心而甄选。",
       standardLead: "每颗宝石都会从颜色、晶体、切工、处理披露、证书以及高级珠宝或长期收藏适配性进行考量，采购重点为斯里兰卡与精选马达加斯加宝石。",
       rules: [["产地", "尽可能提供可靠产地记录"], ["证书", "重要宝石配备认可实验室文件"], ["私密", "为认真买家提供私人咨询"]],
-      heritageEyebrow: "斯里兰卡传承",
-      heritageTitle: "从岛屿地质到现代鉴赏。",
-      heritageButton: "了解传承",
+      heritageEyebrow: "关于 Diverse Gems",
+      heritageTitle: "传承世代的天然宝石专业。",
+      heritageLead: "二十五余年来，Diverse Gems 以锡兰宝石传承为根基，为收藏家、珠宝商与投资者提供认证天然宝石与长期可信赖的服务。",
+      heritageButton: "了解我们的故事",
       appointmentEyebrow: "私人预约",
       appointmentTitle: "亲自鉴赏甄选宝石。",
       appointmentLead: "在斯里兰卡的客户可申请私密环境下鉴赏已筛选宝石。",
@@ -522,9 +524,10 @@ const translations = {
       standardTitle: "คัดสรรจากแหล่งกำเนิด ความงาม และความมั่นใจ",
       standardLead: "อัญมณีแต่ละเม็ดได้รับการพิจารณาด้านสี เนื้อคริสตัล การเจียระไน การเปิดเผยการปรับปรุงคุณภาพ ใบรับรอง และความเหมาะสมสำหรับเครื่องประดับชั้นสูงหรือการสะสมระยะยาว โดยเน้นศรีลังกาและอัญมณีมาดากัสการ์ที่คัดพิเศษ",
       rules: [["แหล่งกำเนิด", "มีเอกสารแหล่งกำเนิดเมื่อสามารถยืนยันได้"], ["ใบรับรอง", "อัญมณีสำคัญใช้เอกสารจากห้องปฏิบัติการที่ได้รับการยอมรับ"], ["ความเป็นส่วนตัว", "สอบถามแบบส่วนตัวสำหรับผู้ซื้อจริงจัง"]],
-      heritageEyebrow: "มรดกศรีลังกา",
-      heritageTitle: "จากธรณีวิทยาของเกาะสู่การสะสมสมัยใหม่",
-      heritageButton: "ค้นพบมรดก",
+      heritageEyebrow: "เกี่ยวกับ Diverse Gems",
+      heritageTitle: "มรดกหลายรุ่นในอัญมณีธรรมชาติ",
+      heritageLead: "กว่า 25 ปีที่ Diverse Gems ให้บริการนักสะสม ช่างอัญมณี และนักลงทุนด้วยอัญมณีธรรมชาติที่มีเอกสารรับรอง โดยมีรากฐานจากมรดกซีลอนและความไว้วางใจระยะยาว",
+      heritageButton: "ค้นพบเรื่องราวของเรา",
       appointmentEyebrow: "นัดหมายส่วนตัว",
       appointmentTitle: "ชมอัญมณีที่คัดสรรด้วยตนเอง",
       appointmentLead: "ลูกค้าในศรีลังกาสามารถขอนัดชมอัญมณีที่คัดไว้ในบรรยากาศการปรึกษาที่เป็นส่วนตัว",
@@ -1489,8 +1492,9 @@ function renderHome() {
         <div>
           <p class="eyebrow">${home.heritageEyebrow}</p>
           <h2>${home.heritageTitle}</h2>
+          <p class="navy-band-lead">${home.heritageLead}</p>
         </div>
-        <a class="btn secondary home-invert" href="#/heritage">${home.heritageButton}</a>
+        <a class="btn secondary home-invert" href="#/who-we-are">${home.heritageButton}</a>
       </div>
     </section>
 
