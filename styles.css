@@ -2285,6 +2285,89 @@ h3 {
   color: var(--navy);
 }
 
+.account-error {
+  margin: -14px 0 6px;
+  color: #a3251c;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.account-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 80;
+  max-width: min(420px, calc(100vw - 40px));
+  padding: 14px 20px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: 0 18px 40px rgba(19, 36, 66, 0.28);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.account-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.account-saved-heading {
+  max-width: 1120px;
+  margin: 0 auto 24px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2rem, 32px);
+  font-weight: 500;
+}
+
+.admin-user-list {
+  max-width: 720px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.admin-user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-user-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.admin-user-email {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.admin-role-badge {
+  flex-shrink: 0;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-role-badge.is-admin {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+
 .viewing-gate {
   position: fixed;
   inset: 0;
