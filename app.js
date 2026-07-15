@@ -79,6 +79,7 @@ const SUPABASE_ANON_KEY =
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentUser = null;
 let currentProfile = null;
+let authReady = false;
 let accountToastTimer = null;
 
 function showAccountToast(message) {
@@ -2419,11 +2420,13 @@ function getPath() {
 
 function render() {
   const path = getPath();
-  if (path === "/account" && !currentUser) {
+  // Only enforce these once we've actually checked for a persisted session — otherwise a page
+  // refresh on /account or /admin bounces a signed-in user to /login before that check resolves.
+  if (authReady && path === "/account" && !currentUser) {
     location.hash = "#/login";
     return;
   }
-  if (path === "/admin" && (!currentUser || currentProfile?.role !== "admin")) {
+  if (authReady && path === "/admin" && (!currentUser || currentProfile?.role !== "admin")) {
     location.hash = "#/";
     return;
   }
@@ -2527,6 +2530,7 @@ async function handleAccountFormSubmit(event, form) {
       // separate onAuthStateChange listener — otherwise the redirect below can render /account
       // before that background fetch resolves, showing an empty list for a moment.
       currentUser = data.user;
+      authReady = true;
       await mergeCloudFavorites();
       await loadCurrentProfile();
       updateAccountIcon();
@@ -2687,6 +2691,7 @@ function updateAccountIcon() {
 async function handleAuthStateChange(session) {
   const previousUserId = currentUser?.id;
   currentUser = session?.user || null;
+  authReady = true;
   updateAccountIcon();
   if (currentUser && currentUser.id !== previousUserId) {
     await mergeCloudFavorites();
