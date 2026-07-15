@@ -2521,8 +2521,15 @@ async function handleAccountFormSubmit(event, form) {
     } else {
       const email = form.elements.email.value.trim();
       const password = form.elements.password.value;
-      const { error } = await sb.auth.signInWithPassword({ email, password });
+      const { data, error } = await sb.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      // Set state and pull this account's favourites in directly, rather than waiting on the
+      // separate onAuthStateChange listener — otherwise the redirect below can render /account
+      // before that background fetch resolves, showing an empty list for a moment.
+      currentUser = data.user;
+      await mergeCloudFavorites();
+      await loadCurrentProfile();
+      updateAccountIcon();
       location.hash = "#/account";
     }
   } catch (err) {
