@@ -73,6 +73,13 @@ let selectedCurrency = localStorage.getItem("dgCurrency") || "USD";
 let selectedLanguage = localStorage.getItem("dgLanguage") || "en";
 let savedWishlist = JSON.parse(localStorage.getItem("dgWishlist") || "[]");
 
+const SUPABASE_URL = "https://xihfzfyqpvkecqracmdl.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpaGZ6ZnlxcHZrZWNxcmFjbWRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNjc2MTUsImV4cCI6MjA5OTY0MzYxNX0.EC5XY6yQ4XyQBPswS5FEJMwzK68mfWyft-bDMwKd7xo";
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+let currentProfile = null;
+
 const translations = {
   en: {
     nav: ["Home", "Our Collection", "Services", "Private Viewing", "Events & Exhibitions", "About Us"],
@@ -1033,6 +1040,16 @@ const accountCopy = {
     confirmPassword: "Confirm password",
     createButton: "Create Account",
     backToSignIn: "Already have an account?",
+    signOut: "Sign Out",
+    myAccountTitle: "My Account",
+    savedGemsTitle: "Saved Gemstones",
+    checkEmailNotice: "Account created. Please check your email to confirm it, then sign in.",
+    passwordMismatch: "Passwords do not match.",
+    authErrorGeneric: "Something went wrong. Please try again.",
+    adminEyebrow: "Admin",
+    adminTitle: "Registered Clients",
+    adminLoading: "Loading clients…",
+    adminError: "Unable to load clients.",
   },
   zh: {
     signInTitle: "登录",
@@ -1052,6 +1069,16 @@ const accountCopy = {
     confirmPassword: "确认密码",
     createButton: "创建账户",
     backToSignIn: "已有账户？",
+    signOut: "退出登录",
+    myAccountTitle: "我的账户",
+    savedGemsTitle: "收藏的宝石",
+    checkEmailNotice: "账户已创建。请查收邮件以确认账户，然后登录。",
+    passwordMismatch: "两次输入的密码不一致。",
+    authErrorGeneric: "出现问题，请重试。",
+    adminEyebrow: "管理员",
+    adminTitle: "注册客户",
+    adminLoading: "正在加载客户…",
+    adminError: "无法加载客户列表。",
   },
   th: {
     signInTitle: "เข้าสู่ระบบ",
@@ -1071,6 +1098,16 @@ const accountCopy = {
     confirmPassword: "ยืนยันรหัสผ่าน",
     createButton: "สร้างบัญชี",
     backToSignIn: "มีบัญชีอยู่แล้ว?",
+    signOut: "ออกจากระบบ",
+    myAccountTitle: "บัญชีของฉัน",
+    savedGemsTitle: "อัญมณีที่บันทึกไว้",
+    checkEmailNotice: "สร้างบัญชีเรียบร้อยแล้ว กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชี จากนั้นเข้าสู่ระบบ",
+    passwordMismatch: "รหัสผ่านไม่ตรงกัน",
+    authErrorGeneric: "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
+    adminEyebrow: "ผู้ดูแลระบบ",
+    adminTitle: "ลูกค้าที่ลงทะเบียน",
+    adminLoading: "กำลังโหลดรายชื่อลูกค้า…",
+    adminError: "ไม่สามารถโหลดรายชื่อลูกค้าได้",
   },
 };
 
@@ -1161,6 +1198,8 @@ const routes = {
   "/login": renderLogin,
   "/register": renderRegister,
   "/saved": renderSaved,
+  "/account": renderAccount,
+  "/admin": renderAdmin,
 };
 
 Object.keys(collections).forEach((slug) => {
@@ -2184,9 +2223,10 @@ function renderLogin() {
         <div class="account-panel">
           <h1>${account.signInTitle}</h1>
           <p>${account.signInLead}</p>
+          <p class="account-error" data-account-error hidden></p>
           <form class="account-form" data-account-form>
-            <input type="email" autocomplete="email" placeholder="${account.email}" aria-label="${account.email}" />
-            <input type="password" autocomplete="current-password" placeholder="${account.password}" aria-label="${account.password}" />
+            <input type="email" name="email" autocomplete="email" placeholder="${account.email}" aria-label="${account.email}" required />
+            <input type="password" name="password" autocomplete="current-password" placeholder="${account.password}" aria-label="${account.password}" required />
             <button class="btn account-action" type="submit">${account.signInButton}</button>
           </form>
           <a class="forgot-link" href="#/contact">${account.forgot} <span aria-hidden="true">›</span></a>
@@ -2210,16 +2250,18 @@ function renderRegister() {
         <div class="account-panel">
           <h1>${account.createTitle}</h1>
           <p>${account.createLead}</p>
+          <p class="account-error" data-account-error hidden></p>
+          <p class="account-notice" data-account-notice hidden></p>
           <form class="account-form account-form-register" data-account-form>
             <div class="account-form-grid">
-              <input type="text" autocomplete="given-name" placeholder="${account.firstName}" aria-label="${account.firstName}" required />
-              <input type="text" autocomplete="family-name" placeholder="${account.lastName}" aria-label="${account.lastName}" required />
+              <input type="text" name="firstName" autocomplete="given-name" placeholder="${account.firstName}" aria-label="${account.firstName}" required />
+              <input type="text" name="lastName" autocomplete="family-name" placeholder="${account.lastName}" aria-label="${account.lastName}" required />
             </div>
-            <input type="email" autocomplete="email" placeholder="${account.email}" aria-label="${account.email}" required />
-            <input type="tel" autocomplete="tel" placeholder="${account.phone}" aria-label="${account.phone}" />
+            <input type="email" name="email" autocomplete="email" placeholder="${account.email}" aria-label="${account.email}" required />
+            <input type="tel" name="phone" autocomplete="tel" placeholder="${account.phone}" aria-label="${account.phone}" />
             <div class="account-form-grid">
-              <input type="password" autocomplete="new-password" placeholder="${account.password}" aria-label="${account.password}" required />
-              <input type="password" autocomplete="new-password" placeholder="${account.confirmPassword}" aria-label="${account.confirmPassword}" required />
+              <input type="password" name="password" autocomplete="new-password" placeholder="${account.password}" aria-label="${account.password}" required />
+              <input type="password" name="confirmPassword" autocomplete="new-password" placeholder="${account.confirmPassword}" aria-label="${account.confirmPassword}" required />
             </div>
             <button class="btn account-action" type="submit">${account.createButton}</button>
           </form>
@@ -2251,6 +2293,53 @@ function renderSaved() {
           ? `<div class="catalogue-grid" data-catalogue-grid>${savedStones.join("")}</div>`
           : `<div class="empty-state"><p>${product.noSaved}</p><a class="btn" href="#/collection">${copy.common.browseCollection}</a></div>`
       }
+    </section>
+  `;
+}
+
+function renderAccount() {
+  const account = accountCopy[selectedLanguage] || accountCopy.en;
+  const copy = getCopy();
+  const product = copy.common.product;
+  const savedStones = Object.entries(collections).flatMap(([slug, collection]) =>
+    collection.stones
+      .filter((stone) => savedWishlist.includes(getStoneId(stone, slug)))
+      .map((stone, index) => stoneTile([...stone, getStoneImage(stone, slug)], index, slug))
+  );
+  return `
+    <section class="section account-section">
+      <div class="account-shell account-shell-single reveal">
+        <div class="account-panel">
+          <h1>${account.myAccountTitle}</h1>
+          <p>${currentUser?.email || ""}</p>
+          <button class="btn account-action" type="button" data-sign-out>${account.signOut}</button>
+        </div>
+      </div>
+    </section>
+    <section class="section compact">
+      <h2 class="account-saved-heading">${account.savedGemsTitle}</h2>
+      ${
+        savedStones.length
+          ? `<div class="catalogue-grid" data-catalogue-grid>${savedStones.join("")}</div>`
+          : `<div class="empty-state"><p>${product.noSaved}</p><a class="btn" href="#/collection">${copy.common.browseCollection}</a></div>`
+      }
+    </section>
+  `;
+}
+
+function renderAdmin() {
+  const account = accountCopy[selectedLanguage] || accountCopy.en;
+  return `
+    <section class="page-hero reveal">
+      <div class="page-hero-inner">
+        <p class="eyebrow">${account.adminEyebrow}</p>
+        <h1>${account.adminTitle}</h1>
+      </div>
+    </section>
+    <section class="section compact">
+      <div class="admin-user-list" data-admin-user-list>
+        <p>${account.adminLoading}</p>
+      </div>
     </section>
   `;
 }
@@ -2304,6 +2393,14 @@ function getPath() {
 
 function render() {
   const path = getPath();
+  if (path === "/account" && !currentUser) {
+    location.hash = "#/login";
+    return;
+  }
+  if (path === "/admin" && (!currentUser || currentProfile?.role !== "admin")) {
+    location.hash = "#/";
+    return;
+  }
   const stoneMatch = findStoneByPath(path);
   const eventMatch = findExhibitionByPath(path);
   const renderer = routes[path] || renderHome;
@@ -2334,6 +2431,8 @@ function render() {
   setupProductTabs();
   setupEventSlider();
   setupControls();
+  setupSignOut();
+  setupAdminPage();
   updateHeaderHeight();
   handleHeaderScroll();
 }
@@ -2359,10 +2458,96 @@ function setupBooking() {
 
 function setupAccountForms() {
   document.querySelectorAll("[data-account-form]").forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+    form.addEventListener("submit", (event) => handleAccountFormSubmit(event, form));
+  });
+}
+
+async function handleAccountFormSubmit(event, form) {
+  event.preventDefault();
+  const account = accountCopy[selectedLanguage] || accountCopy.en;
+  const panel = form.closest(".account-panel") || form.parentElement;
+  const errorEl = panel.querySelector("[data-account-error]");
+  const noticeEl = panel.querySelector("[data-account-notice]");
+  if (errorEl) errorEl.hidden = true;
+  if (noticeEl) noticeEl.hidden = true;
+
+  const submitButton = form.querySelector("button[type=submit]");
+  submitButton.disabled = true;
+
+  try {
+    const isRegister = form.classList.contains("account-form-register");
+    if (isRegister) {
+      const email = form.elements.email.value.trim();
+      const password = form.elements.password.value;
+      const confirmPassword = form.elements.confirmPassword.value;
+      const firstName = form.elements.firstName.value.trim();
+      const lastName = form.elements.lastName.value.trim();
+      if (password !== confirmPassword) {
+        throw new Error(account.passwordMismatch);
+      }
+      const { error } = await sb.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: `${firstName} ${lastName}`.trim() } },
+      });
+      if (error) throw error;
+      if (noticeEl) {
+        noticeEl.textContent = account.checkEmailNotice;
+        noticeEl.hidden = false;
+      }
+      form.reset();
+    } else {
+      const email = form.elements.email.value.trim();
+      const password = form.elements.password.value;
+      const { error } = await sb.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      location.hash = "#/account";
+    }
+  } catch (err) {
+    if (errorEl) {
+      errorEl.textContent = err.message || account.authErrorGeneric;
+      errorEl.hidden = false;
+    }
+  } finally {
+    submitButton.disabled = false;
+  }
+}
+
+function setupSignOut() {
+  document.querySelectorAll("[data-sign-out]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      await sb.auth.signOut();
+      location.hash = "#/";
     });
   });
+}
+
+function setupAdminPage() {
+  const container = document.querySelector("[data-admin-user-list]");
+  if (!container || !currentUser) return;
+  const account = accountCopy[selectedLanguage] || accountCopy.en;
+  sb.from("profiles")
+    .select("email, full_name, role, created_at")
+    .order("created_at", { ascending: false })
+    .then(({ data, error }) => {
+      if (error || !data) {
+        container.innerHTML = `<p>${account.adminError}</p>`;
+        return;
+      }
+      container.innerHTML = data
+        .map(
+          (profile) => `
+            <div class="admin-user-row">
+              <div>
+                <p class="admin-user-name">${profile.full_name || profile.email}</p>
+                <p class="admin-user-email">${profile.email}</p>
+              </div>
+              <span class="admin-role-badge ${profile.role === "admin" ? "is-admin" : ""}">${profile.role}</span>
+            </div>
+          `
+        )
+        .join("");
+    });
 }
 
 function setupNewsletter() {
@@ -2425,9 +2610,60 @@ function setupWishlist() {
         item.setAttribute("aria-pressed", String(active));
       });
       saveWishlist();
-      if (getPath() === "/saved") render();
+      syncFavoriteToCloud(id, active);
+      if (["/saved", "/account"].includes(getPath())) render();
     });
   });
+}
+
+function syncFavoriteToCloud(gemSlug, saved) {
+  if (!currentUser) return;
+  if (saved) {
+    sb.from("favorites").upsert({ user_id: currentUser.id, gem_slug: gemSlug }, { onConflict: "user_id,gem_slug" });
+  } else {
+    sb.from("favorites").delete().eq("user_id", currentUser.id).eq("gem_slug", gemSlug);
+  }
+}
+
+async function mergeCloudFavorites() {
+  if (!currentUser) return;
+  const { data, error } = await sb.from("favorites").select("gem_slug").eq("user_id", currentUser.id);
+  if (error || !data) return;
+  const cloudSlugs = data.map((row) => row.gem_slug);
+  const merged = Array.from(new Set([...savedWishlist, ...cloudSlugs]));
+  if (merged.length !== savedWishlist.length) {
+    savedWishlist = merged;
+    saveWishlist();
+  }
+  savedWishlist.filter((slug) => !cloudSlugs.includes(slug)).forEach((slug) => syncFavoriteToCloud(slug, true));
+}
+
+async function loadCurrentProfile() {
+  if (!currentUser) {
+    currentProfile = null;
+    return;
+  }
+  const { data } = await sb.from("profiles").select("role").eq("id", currentUser.id).maybeSingle();
+  currentProfile = data || null;
+}
+
+function updateAccountIcon() {
+  const link = document.querySelector("[data-account-link]");
+  if (!link) return;
+  link.setAttribute("href", currentUser ? "#/account" : "#/login");
+}
+
+async function handleAuthStateChange(session) {
+  const previousUserId = currentUser?.id;
+  currentUser = session?.user || null;
+  updateAccountIcon();
+  if (currentUser && currentUser.id !== previousUserId) {
+    await mergeCloudFavorites();
+    await loadCurrentProfile();
+  } else if (!currentUser) {
+    currentProfile = null;
+  }
+  if (["/saved", "/account", "/admin"].includes(getPath())) render();
 }
 
 function setupProductGallery() {
@@ -3227,6 +3463,11 @@ render();
 updateHeaderHeight();
 showHeader();
 handleHeaderScroll();
+
+sb.auth.onAuthStateChange((_event, session) => {
+  handleAuthStateChange(session);
+});
+sb.auth.getSession().then(({ data }) => handleAuthStateChange(data.session));
 ["wheel", "touchmove", "mousedown"].forEach((eventName) => {
   window.addEventListener(eventName, armHeaderAutoHide, { passive: true });
 });
