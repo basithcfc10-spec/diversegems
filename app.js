@@ -79,6 +79,24 @@ const SUPABASE_ANON_KEY =
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentUser = null;
 let currentProfile = null;
+let accountToastTimer = null;
+
+function showAccountToast(message) {
+  const toast = document.querySelector("[data-account-toast]");
+  if (!toast) return;
+  toast.classList.remove("is-visible");
+  toast.textContent = message;
+  toast.hidden = false;
+  void toast.offsetWidth; // force reflow so the transition actually runs
+  toast.classList.add("is-visible");
+  if (accountToastTimer) window.clearTimeout(accountToastTimer);
+  accountToastTimer = window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+    window.setTimeout(() => {
+      toast.hidden = true;
+    }, 300);
+  }, 6000);
+}
 
 const translations = {
   en: {
@@ -2251,7 +2269,6 @@ function renderRegister() {
           <h1>${account.createTitle}</h1>
           <p>${account.createLead}</p>
           <p class="account-error" data-account-error hidden></p>
-          <p class="account-notice" data-account-notice hidden></p>
           <form class="account-form account-form-register" data-account-form>
             <div class="account-form-grid">
               <input type="text" name="firstName" autocomplete="given-name" placeholder="${account.firstName}" aria-label="${account.firstName}" required />
@@ -2467,9 +2484,7 @@ async function handleAccountFormSubmit(event, form) {
   const account = accountCopy[selectedLanguage] || accountCopy.en;
   const panel = form.closest(".account-panel") || form.parentElement;
   const errorEl = panel.querySelector("[data-account-error]");
-  const noticeEl = panel.querySelector("[data-account-notice]");
   if (errorEl) errorEl.hidden = true;
-  if (noticeEl) noticeEl.hidden = true;
 
   const submitButton = form.querySelector("button[type=submit]");
   submitButton.disabled = true;
@@ -2491,11 +2506,9 @@ async function handleAccountFormSubmit(event, form) {
         options: { data: { full_name: `${firstName} ${lastName}`.trim() } },
       });
       if (error) throw error;
-      if (noticeEl) {
-        noticeEl.textContent = account.checkEmailNotice;
-        noticeEl.hidden = false;
-      }
-      form.reset();
+      showAccountToast(account.checkEmailNotice);
+      location.hash = "#/";
+      return;
     } else {
       const email = form.elements.email.value.trim();
       const password = form.elements.password.value;
