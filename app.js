@@ -1135,6 +1135,9 @@ const viewingGateCopy = {
     eyebrow: "Private appointment",
     title: "Sign in to request a private viewing.",
     lead: "Private gemstone viewings are arranged through a client account. Do you already have an account?",
+    favoriteEyebrow: "Save to your account",
+    favoriteTitle: "Sign in to save this gemstone.",
+    favoriteLead: "Saved gemstones are kept in your client account so they follow you to any device. Do you already have an account?",
     signIn: "Sign In",
     signUp: "Sign Up",
   },
@@ -1143,6 +1146,9 @@ const viewingGateCopy = {
     eyebrow: "私人预约",
     title: "请登录后申请私人鉴赏。",
     lead: "私人宝石鉴赏需通过客户账户安排。您已经有账户了吗？",
+    favoriteEyebrow: "保存至您的账户",
+    favoriteTitle: "请登录以收藏此宝石。",
+    favoriteLead: "收藏的宝石将保存在您的客户账户中，可在任何设备上查看。您已经有账户了吗？",
     signIn: "登录",
     signUp: "注册",
   },
@@ -1151,6 +1157,9 @@ const viewingGateCopy = {
     eyebrow: "นัดหมายส่วนตัว",
     title: "กรุณาเข้าสู่ระบบเพื่อขอชมแบบส่วนตัว",
     lead: "การชมอัญมณีแบบส่วนตัวจะจัดผ่านบัญชีลูกค้า คุณมีบัญชีอยู่แล้วหรือไม่?",
+    favoriteEyebrow: "บันทึกลงในบัญชีของคุณ",
+    favoriteTitle: "กรุณาเข้าสู่ระบบเพื่อบันทึกอัญมณีนี้",
+    favoriteLead: "อัญมณีที่บันทึกไว้จะถูกเก็บไว้ในบัญชีของคุณ เพื่อให้เข้าถึงได้จากทุกอุปกรณ์ คุณมีบัญชีอยู่แล้วหรือไม่?",
     signIn: "เข้าสู่ระบบ",
     signUp: "สมัครสมาชิก",
   },
@@ -2610,6 +2619,10 @@ function setupWishlist() {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (!currentUser) {
+        openViewingGate("favorite");
+        return;
+      }
       const id = button.dataset.stoneId;
       if (!id) return;
       if (savedWishlist.includes(id)) {
@@ -2900,21 +2913,25 @@ function requestHeaderScrollUpdate() {
   });
 }
 
-function applyViewingGateLanguage() {
+let activeGateIntent = "viewing";
+
+function applyViewingGateLanguage(intent = activeGateIntent) {
   if (!viewingGate) return;
+  activeGateIntent = intent;
   const copy = viewingGateCopy[selectedLanguage] || viewingGateCopy.en;
+  const isFavorite = intent === "favorite";
   viewingGate.querySelector(".viewing-gate-close")?.setAttribute("aria-label", copy.close);
-  viewingGate.querySelector("[data-viewing-gate-eyebrow]").textContent = copy.eyebrow;
-  viewingGate.querySelector("[data-viewing-gate-title]").textContent = copy.title;
-  viewingGate.querySelector("[data-viewing-gate-lead]").textContent = copy.lead;
+  viewingGate.querySelector("[data-viewing-gate-eyebrow]").textContent = isFavorite ? copy.favoriteEyebrow : copy.eyebrow;
+  viewingGate.querySelector("[data-viewing-gate-title]").textContent = isFavorite ? copy.favoriteTitle : copy.title;
+  viewingGate.querySelector("[data-viewing-gate-lead]").textContent = isFavorite ? copy.favoriteLead : copy.lead;
   const actions = viewingGate.querySelectorAll("[data-viewing-gate-action]");
   if (actions[0]) actions[0].textContent = copy.signIn;
   if (actions[1]) actions[1].textContent = copy.signUp;
 }
 
-function openViewingGate() {
+function openViewingGate(intent = "viewing") {
   if (!viewingGate) return;
-  applyViewingGateLanguage();
+  applyViewingGateLanguage(intent);
   showHeader();
   viewingGate.hidden = false;
   document.body.style.overflow = "hidden";
@@ -3402,7 +3419,7 @@ document.addEventListener("click", (event) => {
     closeSearch();
   }
   const privateViewingLink = event.target.closest("a[href='#/private-viewing']");
-  if (privateViewingLink) {
+  if (privateViewingLink && !currentUser) {
     event.preventDefault();
     nav.classList.remove("is-open");
     closeMegaPanels();
@@ -3410,7 +3427,7 @@ document.addEventListener("click", (event) => {
     document.querySelectorAll(".nav-menu-item.is-open").forEach((item) => item.classList.remove("is-open"));
     document.querySelectorAll("[data-mobile-submenu]").forEach((button) => button.setAttribute("aria-expanded", "false"));
     toggle.setAttribute("aria-expanded", "false");
-    openViewingGate();
+    openViewingGate("viewing");
     return;
   }
   if (event.target.closest("[data-viewing-gate-close]")) {
