@@ -2653,12 +2653,14 @@ function setupWishlist() {
   });
 }
 
-function syncFavoriteToCloud(gemSlug, saved) {
+async function syncFavoriteToCloud(gemSlug, saved) {
   if (!currentUser) return;
-  if (saved) {
-    sb.from("favorites").upsert({ user_id: currentUser.id, gem_slug: gemSlug }, { onConflict: "user_id,gem_slug" });
-  } else {
-    sb.from("favorites").delete().eq("user_id", currentUser.id).eq("gem_slug", gemSlug);
+  const { error } = saved
+    ? await sb.from("favorites").upsert({ user_id: currentUser.id, gem_slug: gemSlug }, { onConflict: "user_id,gem_slug" })
+    : await sb.from("favorites").delete().eq("user_id", currentUser.id).eq("gem_slug", gemSlug);
+  if (error) {
+    console.error("[favorites] failed to sync to Supabase:", error);
+    showAccountToast(`Could not save this favourite: ${error.message}`);
   }
 }
 
