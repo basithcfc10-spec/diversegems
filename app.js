@@ -2655,13 +2655,11 @@ async function mergeCloudFavorites() {
   if (!currentUser) return;
   const { data, error } = await sb.from("favorites").select("gem_slug").eq("user_id", currentUser.id);
   if (error || !data) return;
-  const cloudSlugs = data.map((row) => row.gem_slug);
-  const merged = Array.from(new Set([...savedWishlist, ...cloudSlugs]));
-  if (merged.length !== savedWishlist.length) {
-    savedWishlist = merged;
-    saveWishlist();
-  }
-  savedWishlist.filter((slug) => !cloudSlugs.includes(slug)).forEach((slug) => syncFavoriteToCloud(slug, true));
+  // Replace (not merge) the shared local cache with this account's cloud favourites only —
+  // the cache is a single localStorage bucket, so merging would leak whatever was left over
+  // from a previously signed-in account on this browser into the new one.
+  savedWishlist = data.map((row) => row.gem_slug);
+  saveWishlist();
 }
 
 async function loadCurrentProfile() {
@@ -2688,6 +2686,12 @@ async function handleAuthStateChange(session) {
     await loadCurrentProfile();
   } else if (!currentUser) {
     currentProfile = null;
+    if (previousUserId) {
+      // Signed out — clear this browser's cached favourites so the next
+      // account (or a guest) doesn't see the previous account's saved gems.
+      savedWishlist = [];
+      saveWishlist();
+    }
   }
   if (["/saved", "/account", "/admin"].includes(getPath())) render();
 }
